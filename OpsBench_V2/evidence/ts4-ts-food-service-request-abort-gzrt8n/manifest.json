@@ -1,0 +1,359 @@
+{
+  "case": "ts4-ts-food-service-request-abort-gzrt8n",
+  "gt_sha256": "935df1015cddf514233d58707e5d79be921dda6e2f0172922dc72b22fb81df02",
+  "sources": {
+    "normal_traces": {
+      "status": "available",
+      "path": "telemetry/normal_traces.parquet",
+      "sha256": "d19ff35c648a911555260e31dd3d254a5ddd07b4b7131152bd251c7e6bfdda42",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "parent_span_id": "VARCHAR",
+        "span_name": "VARCHAR",
+        "attr.span_kind": "VARCHAR",
+        "service_name": "VARCHAR",
+        "duration": "UBIGINT",
+        "attr.status_code": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.http.request.content_length": "UBIGINT",
+        "attr.http.response.content_length": "UBIGINT",
+        "attr.http.request.method": "VARCHAR",
+        "attr.http.response.status_code": "USMALLINT"
+      }
+    },
+    "normal_logs": {
+      "status": "available",
+      "path": "telemetry/normal_logs.parquet",
+      "sha256": "5b9eaade2145934d93a41d39373d239bf6c8bfb90ac41c8f1629f007c71fdcdf",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "level": "VARCHAR",
+        "service_name": "VARCHAR",
+        "message": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.template_id": "USMALLINT",
+        "attr.log_template": "VARCHAR"
+      }
+    },
+    "normal_metrics": {
+      "status": "available",
+      "path": "telemetry/normal_metrics.parquet",
+      "sha256": "395d620d77975a16c2357bfebee4d8ba6f9df0f06209094d1c8480b7484f7664",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "normal_metrics_sum": {
+      "status": "available",
+      "path": "telemetry/normal_metrics_sum.parquet",
+      "sha256": "3cd1efa5676c243575071220a20a34ada67a8459948ac04ddd4bb98936b78b03",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "normal_metrics_histogram": {
+      "status": "available",
+      "path": "telemetry/normal_metrics_histogram.parquet",
+      "sha256": "9ecf1253529cfedf13aba00811b64bfd4df2d9b0b3ab7a5604ded008a3477804",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "service_name": "VARCHAR",
+        "count": "DOUBLE",
+        "sum": "DOUBLE",
+        "min": "DOUBLE",
+        "max": "DOUBLE",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.jvm.gc.action": "VARCHAR",
+        "attr.jvm.gc.name": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_traces": {
+      "status": "available",
+      "path": "telemetry/abnormal_traces.parquet",
+      "sha256": "c13d924464b31f5a6962bba775ae7c68de3db1e8f5b9adbf8e59552b9d2a9782",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "parent_span_id": "VARCHAR",
+        "span_name": "VARCHAR",
+        "attr.span_kind": "VARCHAR",
+        "service_name": "VARCHAR",
+        "duration": "UBIGINT",
+        "attr.status_code": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.http.request.content_length": "UBIGINT",
+        "attr.http.response.content_length": "UBIGINT",
+        "attr.http.request.method": "VARCHAR",
+        "attr.http.response.status_code": "USMALLINT"
+      }
+    },
+    "abnormal_logs": {
+      "status": "available",
+      "path": "telemetry/abnormal_logs.parquet",
+      "sha256": "a73d787e56f383ad0f5fdc71c0f4f039552b9a38611aa2314538be394649a217",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "level": "VARCHAR",
+        "service_name": "VARCHAR",
+        "message": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.template_id": "USMALLINT",
+        "attr.log_template": "VARCHAR"
+      }
+    },
+    "abnormal_metrics": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics.parquet",
+      "sha256": "c052df43108a889724e0168fa737a65824af35f651756947b998db7e94c9f7df",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_metrics_sum": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics_sum.parquet",
+      "sha256": "58070c04dfaab37fa69af3c6d9f30448c6bbcd6399264fe12d4b2e9fa780eece",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_metrics_histogram": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics_histogram.parquet",
+      "sha256": "67be9e1097cbaa7fc49a1a5ee00ea002b0228966a14a1503dcd4e1e25989a380",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "service_name": "VARCHAR",
+        "count": "DOUBLE",
+        "sum": "DOUBLE",
+        "min": "DOUBLE",
+        "max": "DOUBLE",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.jvm.gc.action": "VARCHAR",
+        "attr.jvm.gc.name": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    }
+  },
+  "rule_contract_sha256": "28f3593aed5355a258608a3dac7c12e07508acb22ee89f70285847a8e4346b35",
+  "engine_sha256": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enumerate.py": "93bc08e49144ce7e8bd3f3c95eaabeae57d633836d5348db04fc079a3714f2a1",
+    "pipeline.py": "6cb42efab816d34d6eee4746a081f838a8b288464fa4e274d28aae027affb0a1",
+    "prepare_cases.py": "c8595d22c582e9233a796318285e131aedb83c49e85303a7ef91d90f638ba9b6",
+    "render.py": "d6ffc10d9bdfb58e7577148f9bdc1cdbc0b53aac8612f9c87370f72117a6c3f2",
+    "rules.py": "5218cf46aca66115bb2d8c0af7c942b447e63e7466eaf9c08303536b9cbd921f",
+    "storage.py": "739e4b462801c778503326055b9aa36a43f02c4c46b471c0270f77caa6489133",
+    "verify.py": "14d0b0ae824681069d6656165f701696270df959222f32c3f84c24d3beee7c04"
+  },
+  "inventory": {
+    "normal_traces": {
+      "n": 150511,
+      "first_time": "2025-09-04 02:54:54.019291+00:00",
+      "last_time": "2025-09-04 02:58:53.998635+00:00",
+      "observed_extent_seconds": 239.979344,
+      "status": "available",
+      "query_ref": "q_65c876bc4f0cd2b52954",
+      "scope_rows": 10462,
+      "scope_count_query_ref": "q_9ca32dc1f360a6068f89",
+      "full_row_selector_sql": "SELECT * FROM normal_traces WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_logs": {
+      "n": 73526,
+      "first_time": "2025-09-04 02:54:54.021000+00:00",
+      "last_time": "2025-09-04 02:58:53.999000+00:00",
+      "observed_extent_seconds": 239.978,
+      "status": "available",
+      "query_ref": "q_86c381a8425afc848680",
+      "scope_rows": 3737,
+      "scope_count_query_ref": "q_ce40d6b5fe6fc32f5dcf",
+      "full_row_selector_sql": "SELECT * FROM normal_logs WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics": {
+      "n": 69940,
+      "first_time": "2025-09-04 02:54:54.297975+00:00",
+      "last_time": "2025-09-04 02:58:53.837660+00:00",
+      "observed_extent_seconds": 239.539685,
+      "status": "available",
+      "query_ref": "q_204d140ca35c257f01f7",
+      "scope_rows": 4860,
+      "scope_count_query_ref": "q_6f3d173e42df34cce90a",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics_sum": {
+      "n": 39408,
+      "first_time": "2025-09-04 02:54:54.297975+00:00",
+      "last_time": "2025-09-04 02:58:53.837660+00:00",
+      "observed_extent_seconds": 239.539685,
+      "status": "available",
+      "query_ref": "q_30def8febead625210eb",
+      "scope_rows": 1756,
+      "scope_count_query_ref": "q_2925b71eadda906f21c6",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics_sum WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics_histogram": {
+      "n": 644,
+      "first_time": "2025-09-04 02:55:22.308000+00:00",
+      "last_time": "2025-09-04 02:58:31.754000+00:00",
+      "observed_extent_seconds": 189.446,
+      "status": "available",
+      "query_ref": "q_f51a62e6f60ff9214d12",
+      "scope_rows": 88,
+      "scope_count_query_ref": "q_fd44375cd41858b4ee31",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics_histogram WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_traces": {
+      "n": 133853,
+      "first_time": "2025-09-04 02:58:54.002000+00:00",
+      "last_time": "2025-09-04 03:02:53.949705+00:00",
+      "observed_extent_seconds": 239.947705,
+      "status": "available",
+      "query_ref": "q_0eac2427bbb350ed29b7",
+      "scope_rows": 8027,
+      "scope_count_query_ref": "q_7f6b8671d84ed6f98745",
+      "full_row_selector_sql": "SELECT * FROM abnormal_traces WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_logs": {
+      "n": 64691,
+      "first_time": "2025-09-04 02:58:54.002000+00:00",
+      "last_time": "2025-09-04 03:02:53.951000+00:00",
+      "observed_extent_seconds": 239.949,
+      "status": "available",
+      "query_ref": "q_c852b84142c09957632f",
+      "scope_rows": 1190,
+      "scope_count_query_ref": "q_471970bcd68b725420e8",
+      "full_row_selector_sql": "SELECT * FROM abnormal_logs WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics": {
+      "n": 69940,
+      "first_time": "2025-09-04 02:58:54.345845+00:00",
+      "last_time": "2025-09-04 03:02:53.821107+00:00",
+      "observed_extent_seconds": 239.475262,
+      "status": "available",
+      "query_ref": "q_cfa2361ca6a83e2d1852",
+      "scope_rows": 4860,
+      "scope_count_query_ref": "q_d94118e9131f09fa9e58",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics_sum": {
+      "n": 38656,
+      "first_time": "2025-09-04 02:58:54.345845+00:00",
+      "last_time": "2025-09-04 03:02:53.821107+00:00",
+      "observed_extent_seconds": 239.475262,
+      "status": "available",
+      "query_ref": "q_e5459c3a6bab4ab065fa",
+      "scope_rows": 1720,
+      "scope_count_query_ref": "q_3d8b567637d02af927f2",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics_sum WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics_histogram": {
+      "n": 479,
+      "first_time": "2025-09-04 02:59:22.809000+00:00",
+      "last_time": "2025-09-04 03:02:29.330000+00:00",
+      "observed_extent_seconds": 186.521,
+      "status": "available",
+      "query_ref": "q_47cde07fb8454be3acbf",
+      "scope_rows": 33,
+      "scope_count_query_ref": "q_14dbaa69f8e641ae88b3",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics_histogram WHERE service_name IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-food-service','ts-preserve-service','ts-train-food-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    }
+  },
+  "enumeration_complete_under_contract": true,
+  "limitations": [
+    "Not all possible fault mechanisms; only registered rules and observed groups.",
+    "No counter rates or histogram quantiles without temporality metadata.",
+    "No exact injection-mechanism labels inferred from GT.",
+    "Propagation predicates establish request-linked compatibility, not causality.",
+    "Missing tables retained as unavailable; unseen groups cannot be enumerated."
+  ]
+}

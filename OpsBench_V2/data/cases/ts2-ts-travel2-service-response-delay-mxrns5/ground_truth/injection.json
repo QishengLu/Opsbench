@@ -1,0 +1,39 @@
+{
+    "benchmark": "clickhouse",
+    "created_at": "2025-08-10T15:09:48.21Z",
+    "description": "Fault for task c5a93945-35aa-4e11-bf24-7578b303209c",
+    "display_config": "{\"delay_duration\":4903,\"duration\":4,\"injection_point\":{\"app_name\":\"ts-travel2-service\",\"method\":\"POST\",\"route\":\"/api/v1/seatservice/seats/left_tickets\",\"server_address\":\"ts-seat-service\",\"server_port\":\"8080\"},\"namespace\":\"ts\"}",
+    "end_time": "2025-08-10T15:13:48Z",
+    "engine_config": "{\"name\":\"InjectionConf\",\"range\":[0,30],\"children\":{\"8\":{\"name\":\"8\",\"range\":[0,3],\"children\":{\"0\":{\"name\":\"0\",\"range\":[1,60],\"children\":null,\"description\":\"Time Unit Minute\",\"value\":4},\"1\":{\"name\":\"1\",\"range\":[0,0],\"children\":null,\"description\":\"{ts: 0}\",\"value\":0},\"2\":{\"name\":\"2\",\"range\":[0,67],\"children\":null,\"description\":\"Flattened HTTP Endpoint Index\",\"value\":50},\"3\":{\"name\":\"3\",\"range\":[10,5000],\"children\":null,\"description\":\"Delay in milliseconds\",\"value\":4903}},\"description\":\"\",\"value\":0}},\"description\":\"\",\"value\":8}",
+    "fault_type": 8,
+    "ground_truth": {
+        "container": [
+            "ts-seat-service",
+            "ts-travel2-service"
+        ],
+        "function": null,
+        "metric": [
+            "http_latency"
+        ],
+        "pod": [
+            "ts-seat-service-75676c6d97-srdsf",
+            "ts-travel2-service-79fb6f545d-ndlnv"
+        ],
+        "service": [
+            "ts-travel2-service",
+            "ts-seat-service"
+        ],
+        "span": [
+            "ts-travel2-service",
+            "ts-seat-service"
+        ]
+    },
+    "id": 4602,
+    "injection_name": "ts2-ts-travel2-service-response-delay-mxrns5",
+    "pre_duration": 4,
+    "start_time": "2025-08-10T15:09:48Z",
+    "status": 2,
+    "task": null,
+    "task_id": "c5a93945-35aa-4e11-bf24-7578b303209c",
+    "updated_at": "2025-08-10T15:13:48.727Z"
+}

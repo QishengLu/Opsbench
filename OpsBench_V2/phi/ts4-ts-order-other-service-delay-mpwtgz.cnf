@@ -1,0 +1,71 @@
+c OpsBench V2 ts4-ts-order-other-service-delay-mpwtgz
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 228 34
+c node:mysql
+0
+c node:ts-order-other-service
+3 6 16 18 21 23 29 32 36 37 40 47 50 53 56 60 63 64 65 66 76 78 79 81 85 86 90 97 102 105 108 109 112 119 120 126 128 133 139 142 143 144 145 148 154 156 159 172 173 175 178 181 186 189 193 198 199 211 212 213 214 226 228 0
+c node:ts-preserve-service
+57 88 111 130 162 168 179 194 0
+c node:ts-seat-service
+9 19 26 27 44 62 69 71 93 124 125 134 141 158 161 170 216 222 0
+c node:ts-security-service
+4 10 30 33 70 74 75 77 89 91 110 114 116 166 185 192 195 196 197 217 0
+c node:ts-travel-plan-service
+1 2 5 13 28 43 72 84 98 100 103 106 118 122 127 129 138 147 155 163 169 180 182 183 200 204 206 207 218 224 0
+c node:ts-travel-service
+38 42 45 61 96 135 149 157 176 203 215 219 221 0
+c node:ts-travel2-service
+11 12 14 15 17 20 22 24 25 31 39 41 51 52 54 55 58 94 104 107 115 123 132 136 146 151 171 184 191 202 205 220 0
+c node:ts-ui-dashboard
+7 8 34 35 46 48 59 67 68 83 92 95 99 113 121 131 137 140 150 153 165 167 177 190 201 208 209 210 223 227 0
+c dependency:mysql->ts-order-other-service
+0
+c propagation:mysql->ts-order-other-service
+0
+c dependency:ts-order-other-service->ts-seat-service
+164 0
+c propagation:ts-order-other-service->ts-seat-service
+0
+c dependency:ts-order-other-service->ts-security-service
+174 0
+c propagation:ts-order-other-service->ts-security-service
+0
+c dependency:ts-order-other-service->ts-ui-dashboard
+80 0
+c propagation:ts-order-other-service->ts-ui-dashboard
+0
+c dependency:ts-preserve-service->ts-ui-dashboard
+188 0
+c propagation:ts-preserve-service->ts-ui-dashboard
+87 0
+c dependency:ts-seat-service->ts-travel-plan-service
+187 0
+c propagation:ts-seat-service->ts-travel-plan-service
+0
+c dependency:ts-seat-service->ts-travel-service
+73 0
+c propagation:ts-seat-service->ts-travel-service
+0
+c dependency:ts-seat-service->ts-travel2-service
+152 0
+c propagation:ts-seat-service->ts-travel2-service
+0
+c dependency:ts-security-service->ts-preserve-service
+82 0
+c propagation:ts-security-service->ts-preserve-service
+0
+c dependency:ts-travel-plan-service->ts-ui-dashboard
+49 117 160 0
+c propagation:ts-travel-plan-service->ts-ui-dashboard
+0
+c dependency:ts-travel-service->ts-preserve-service
+225 0
+c propagation:ts-travel-service->ts-preserve-service
+0
+c dependency:ts-travel2-service->ts-ui-dashboard
+101 0
+c propagation:ts-travel2-service->ts-ui-dashboard
+0
+c root_boundary
+0

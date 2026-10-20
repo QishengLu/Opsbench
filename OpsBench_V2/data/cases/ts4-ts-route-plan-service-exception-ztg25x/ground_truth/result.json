@@ -1,0 +1,616 @@
+{
+    "case_name": "ts4-ts-route-plan-service-exception-ztg25x",
+    "injection_nodes": [
+        "container|ts-route-plan-service"
+    ],
+    "alarm_nodes": [
+        544,
+        295,
+        297,
+        529,
+        308,
+        541
+    ],
+    "propagation_result": {
+        "injection_node_ids": [
+            210
+        ],
+        "injection_states": [
+            "unknown"
+        ],
+        "paths": [
+            {
+                "nodes": [
+                    427,
+                    497,
+                    494,
+                    544
+                ],
+                "states": [
+                    [
+                        "erroring",
+                        "missing",
+                        "slow"
+                    ],
+                    [
+                        "healthy",
+                        "missing",
+                        "slow"
+                    ],
+                    [
+                        "erroring",
+                        "missing",
+                        "slow"
+                    ],
+                    [
+                        "erroring",
+                        "missing",
+                        "slow"
+                    ]
+                ],
+                "edges": [
+                    "calls_backward",
+                    "calls_backward",
+                    "calls_backward"
+                ],
+                "rules": [
+                    "manifest:JVMException:Lext",
+                    "manifest:JVMException:Lext",
+                    "manifest:JVMException:Lext"
+                ],
+                "confidence": 1.0,
+                "state_start_times": [
+                    1756369819,
+                    1756369819,
+                    1756369819,
+                    1756369819
+                ],
+                "propagation_delays": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "gate_results": [
+                    {
+                        "gate_name": "manifest_layer",
+                        "passed": true,
+                        "evidence": {
+                            "fault_type_name": "JVMException",
+                            "edges": [
+                                {
+                                    "edge_index": 0,
+                                    "edge_desc": "calls_backward",
+                                    "layer": 2,
+                                    "dst_node_id": 497,
+                                    "edge_admitted": true,
+                                    "features_admitted": true,
+                                    "features_match_band": false,
+                                    "tier_relaxed": true,
+                                    "tier_relax_source": "extension",
+                                    "expected_features": [
+                                        {
+                                            "kind": "span",
+                                            "feature": "error_rate",
+                                            "band": [
+                                                0.05,
+                                                1.0
+                                            ],
+                                            "value": 0.0,
+                                            "matched": false
+                                        }
+                                    ],
+                                    "passed": true
+                                },
+                                {
+                                    "edge_index": 1,
+                                    "edge_desc": "calls_backward",
+                                    "layer": 2,
+                                    "dst_node_id": 494,
+                                    "edge_admitted": true,
+                                    "features_admitted": true,
+                                    "features_match_band": true,
+                                    "tier_relaxed": false,
+                                    "tier_relax_source": "extension",
+                                    "expected_features": [
+                                        {
+                                            "kind": "span",
+                                            "feature": "error_rate",
+                                            "band": [
+                                                0.05,
+                                                1.0
+                                            ],
+                                            "value": 1.0,
+                                            "matched": true
+                                        }
+                                    ],
+                                    "passed": true
+                                },
+                                {
+                                    "edge_index": 2,
+                                    "edge_desc": "calls_backward",
+                                    "layer": 2,
+                                    "dst_node_id": 544,
+                                    "edge_admitted": true,
+                                    "features_admitted": true,
+                                    "features_match_band": true,
+                                    "tier_relaxed": false,
+                                    "tier_relax_source": "extension",
+                                    "expected_features": [
+                                        {
+                                            "kind": "span",
+                                            "feature": "error_rate",
+                                            "band": [
+                                                0.05,
+                                                1.0
+                                            ],
+                                            "value": 1.0,
+                                            "matched": true
+                                        }
+                                    ],
+                                    "passed": true
+                                }
+                            ]
+                        },
+                        "reason": ""
+                    },
+                    {
+                        "gate_name": "temporal",
+                        "passed": true,
+                        "evidence": {
+                            "edges": [
+                                {
+                                    "edge_index": 0,
+                                    "edge_kind": "calls",
+                                    "src_state": "missing",
+                                    "dst_state": "missing",
+                                    "src_onset": 1756369819,
+                                    "dst_onset": 1756369819,
+                                    "delay": 0,
+                                    "edge_epsilon": 5,
+                                    "reversed_order_tolerance": 1,
+                                    "ok": true
+                                },
+                                {
+                                    "edge_index": 1,
+                                    "edge_kind": "calls",
+                                    "src_state": "missing",
+                                    "dst_state": "missing",
+                                    "src_onset": 1756369819,
+                                    "dst_onset": 1756369819,
+                                    "delay": 0,
+                                    "edge_epsilon": 5,
+                                    "reversed_order_tolerance": 1,
+                                    "ok": true
+                                },
+                                {
+                                    "edge_index": 2,
+                                    "edge_kind": "calls",
+                                    "src_state": "missing",
+                                    "dst_state": "missing",
+                                    "src_onset": 1756369819,
+                                    "dst_onset": 1756369819,
+                                    "delay": 0,
+                                    "edge_epsilon": 5,
+                                    "reversed_order_tolerance": 1,
+                                    "ok": true
+                                }
+                            ]
+                        },
+                        "reason": ""
+                    },
+                    {
+                        "gate_name": "inject_time",
+                        "passed": true,
+                        "evidence": {
+                            "window_start": 1756369819,
+                            "window_end": 1756370117,
+                            "tolerance_seconds": 60,
+                            "nodes": [
+                                {
+                                    "node_index": 0,
+                                    "node_id": 427,
+                                    "onset": 1756369819,
+                                    "is_injection": false,
+                                    "lower_bound": 1756369819,
+                                    "upper_bound": 1756370117,
+                                    "in_window": true
+                                },
+                                {
+                                    "node_index": 1,
+                                    "node_id": 497,
+                                    "onset": 1756369819,
+                                    "is_injection": false,
+                                    "lower_bound": 1756369819,
+                                    "upper_bound": 1756370117,
+                                    "in_window": true
+                                },
+                                {
+                                    "node_index": 2,
+                                    "node_id": 494,
+                                    "onset": 1756369819,
+                                    "is_injection": false,
+                                    "lower_bound": 1756369819,
+                                    "upper_bound": 1756370117,
+                                    "in_window": true
+                                },
+                                {
+                                    "node_index": 3,
+                                    "node_id": 544,
+                                    "onset": 1756369819,
+                                    "is_injection": false,
+                                    "lower_bound": 1756369819,
+                                    "upper_bound": 1756370117,
+                                    "in_window": true
+                                }
+                            ]
+                        },
+                        "reason": ""
+                    }
+                ]
+            }
+        ],
+        "visited_nodes": [
+            275,
+            276,
+            277,
+            543,
+            544,
+            545,
+            425,
+            426,
+            427,
+            428,
+            429,
+            430,
+            431,
+            210,
+            214,
+            493,
+            494,
+            495,
+            496,
+            497,
+            498
+        ],
+        "max_hops_reached": 4,
+        "subgraph_edges": [],
+        "warnings": [],
+        "rejected_paths": [],
+        "label": "attributed",
+        "label_reason": "L=1, E=1, M=path: full causal chain",
+        "decomposition": {
+            "L": {
+                "detected": true,
+                "evidence": {
+                    "impacted_nodes": [
+                        {
+                            "node": "container|ts-route-plan-service",
+                            "states": [
+                                "degraded",
+                                "erroring"
+                            ],
+                            "first_state_at": 1756369819
+                        }
+                    ]
+                }
+            },
+            "E": {
+                "detected": true,
+                "impacted_nodes": [
+                    "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+                    "span|ts-auth-service::SELECT ts.user_roles",
+                    "span|ts-auth-service::UserRepository.findByUsername",
+                    "span|ts-ui-dashboard::GET /api/v1/assuranceservice/assurances/types",
+                    "span|ts-config-service::GET /api/v1/configservice/configs/{configName}",
+                    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+                ],
+                "evidence": {
+                    "alarm_count": 6,
+                    "slo_surface_source": "default_heuristic",
+                    "slo_surface_size": 0
+                }
+            },
+            "M": {
+                "paths": [
+                    {
+                        "nodes": [
+                            427,
+                            497,
+                            494,
+                            544
+                        ],
+                        "states": [
+                            [
+                                "erroring",
+                                "missing",
+                                "slow"
+                            ],
+                            [
+                                "healthy",
+                                "missing",
+                                "slow"
+                            ],
+                            [
+                                "erroring",
+                                "missing",
+                                "slow"
+                            ],
+                            [
+                                "erroring",
+                                "missing",
+                                "slow"
+                            ]
+                        ],
+                        "edges": [
+                            "calls_backward",
+                            "calls_backward",
+                            "calls_backward"
+                        ],
+                        "rules": [
+                            "manifest:JVMException:Lext",
+                            "manifest:JVMException:Lext",
+                            "manifest:JVMException:Lext"
+                        ],
+                        "confidence": 1.0,
+                        "state_start_times": [
+                            1756369819,
+                            1756369819,
+                            1756369819,
+                            1756369819
+                        ],
+                        "propagation_delays": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "gate_results": [
+                            {
+                                "gate_name": "manifest_layer",
+                                "passed": true,
+                                "evidence": {
+                                    "fault_type_name": "JVMException",
+                                    "edges": [
+                                        {
+                                            "edge_index": 0,
+                                            "edge_desc": "calls_backward",
+                                            "layer": 2,
+                                            "dst_node_id": 497,
+                                            "edge_admitted": true,
+                                            "features_admitted": true,
+                                            "features_match_band": false,
+                                            "tier_relaxed": true,
+                                            "tier_relax_source": "extension",
+                                            "expected_features": [
+                                                {
+                                                    "kind": "span",
+                                                    "feature": "error_rate",
+                                                    "band": [
+                                                        0.05,
+                                                        1.0
+                                                    ],
+                                                    "value": 0.0,
+                                                    "matched": false
+                                                }
+                                            ],
+                                            "passed": true
+                                        },
+                                        {
+                                            "edge_index": 1,
+                                            "edge_desc": "calls_backward",
+                                            "layer": 2,
+                                            "dst_node_id": 494,
+                                            "edge_admitted": true,
+                                            "features_admitted": true,
+                                            "features_match_band": true,
+                                            "tier_relaxed": false,
+                                            "tier_relax_source": "extension",
+                                            "expected_features": [
+                                                {
+                                                    "kind": "span",
+                                                    "feature": "error_rate",
+                                                    "band": [
+                                                        0.05,
+                                                        1.0
+                                                    ],
+                                                    "value": 1.0,
+                                                    "matched": true
+                                                }
+                                            ],
+                                            "passed": true
+                                        },
+                                        {
+                                            "edge_index": 2,
+                                            "edge_desc": "calls_backward",
+                                            "layer": 2,
+                                            "dst_node_id": 544,
+                                            "edge_admitted": true,
+                                            "features_admitted": true,
+                                            "features_match_band": true,
+                                            "tier_relaxed": false,
+                                            "tier_relax_source": "extension",
+                                            "expected_features": [
+                                                {
+                                                    "kind": "span",
+                                                    "feature": "error_rate",
+                                                    "band": [
+                                                        0.05,
+                                                        1.0
+                                                    ],
+                                                    "value": 1.0,
+                                                    "matched": true
+                                                }
+                                            ],
+                                            "passed": true
+                                        }
+                                    ]
+                                },
+                                "reason": ""
+                            },
+                            {
+                                "gate_name": "temporal",
+                                "passed": true,
+                                "evidence": {
+                                    "edges": [
+                                        {
+                                            "edge_index": 0,
+                                            "edge_kind": "calls",
+                                            "src_state": "missing",
+                                            "dst_state": "missing",
+                                            "src_onset": 1756369819,
+                                            "dst_onset": 1756369819,
+                                            "delay": 0,
+                                            "edge_epsilon": 5,
+                                            "reversed_order_tolerance": 1,
+                                            "ok": true
+                                        },
+                                        {
+                                            "edge_index": 1,
+                                            "edge_kind": "calls",
+                                            "src_state": "missing",
+                                            "dst_state": "missing",
+                                            "src_onset": 1756369819,
+                                            "dst_onset": 1756369819,
+                                            "delay": 0,
+                                            "edge_epsilon": 5,
+                                            "reversed_order_tolerance": 1,
+                                            "ok": true
+                                        },
+                                        {
+                                            "edge_index": 2,
+                                            "edge_kind": "calls",
+                                            "src_state": "missing",
+                                            "dst_state": "missing",
+                                            "src_onset": 1756369819,
+                                            "dst_onset": 1756369819,
+                                            "delay": 0,
+                                            "edge_epsilon": 5,
+                                            "reversed_order_tolerance": 1,
+                                            "ok": true
+                                        }
+                                    ]
+                                },
+                                "reason": ""
+                            },
+                            {
+                                "gate_name": "inject_time",
+                                "passed": true,
+                                "evidence": {
+                                    "window_start": 1756369819,
+                                    "window_end": 1756370117,
+                                    "tolerance_seconds": 60,
+                                    "nodes": [
+                                        {
+                                            "node_index": 0,
+                                            "node_id": 427,
+                                            "onset": 1756369819,
+                                            "is_injection": false,
+                                            "lower_bound": 1756369819,
+                                            "upper_bound": 1756370117,
+                                            "in_window": true
+                                        },
+                                        {
+                                            "node_index": 1,
+                                            "node_id": 497,
+                                            "onset": 1756369819,
+                                            "is_injection": false,
+                                            "lower_bound": 1756369819,
+                                            "upper_bound": 1756370117,
+                                            "in_window": true
+                                        },
+                                        {
+                                            "node_index": 2,
+                                            "node_id": 494,
+                                            "onset": 1756369819,
+                                            "is_injection": false,
+                                            "lower_bound": 1756369819,
+                                            "upper_bound": 1756370117,
+                                            "in_window": true
+                                        },
+                                        {
+                                            "node_index": 3,
+                                            "node_id": 544,
+                                            "onset": 1756369819,
+                                            "is_injection": false,
+                                            "lower_bound": 1756369819,
+                                            "upper_bound": 1756370117,
+                                            "in_window": true
+                                        }
+                                    ]
+                                },
+                                "reason": ""
+                            }
+                        ]
+                    }
+                ],
+                "n_paths": 1,
+                "confidence": 1.0
+            }
+        }
+    },
+    "visualization_paths": [
+        {
+            "confidence": 1.0,
+            "nodes": [
+                {
+                    "node_id": 427,
+                    "kind": "span",
+                    "name": "ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+                    "uniq_name": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+                    "state": "erroring, missing, slow",
+                    "state_start_time": 1756369819,
+                    "is_alarm": false,
+                    "edge_kind": "calls_backward",
+                    "rule_id": "manifest:JVMException:Lext",
+                    "propagation_delay": 0.0
+                },
+                {
+                    "node_id": 497,
+                    "kind": "span",
+                    "name": "ts-travel-plan-service::TravelPlanController.getByMinStation",
+                    "uniq_name": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+                    "state": "healthy, missing, slow",
+                    "state_start_time": 1756369819,
+                    "is_alarm": false,
+                    "edge_kind": "calls_backward",
+                    "rule_id": "manifest:JVMException:Lext",
+                    "propagation_delay": 0.0
+                },
+                {
+                    "node_id": 494,
+                    "kind": "span",
+                    "name": "ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+                    "uniq_name": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+                    "state": "erroring, missing, slow",
+                    "state_start_time": 1756369819,
+                    "is_alarm": false,
+                    "edge_kind": "calls_backward",
+                    "rule_id": "manifest:JVMException:Lext",
+                    "propagation_delay": 0.0
+                },
+                {
+                    "node_id": 544,
+                    "kind": "span",
+                    "name": "ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+                    "uniq_name": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+                    "state": "erroring, missing, slow",
+                    "state_start_time": 1756369819,
+                    "is_alarm": true,
+                    "edge_kind": null,
+                    "rule_id": null,
+                    "propagation_delay": null
+                }
+            ]
+        }
+    ],
+    "resolution_info": {
+        "resolved_nodes": [
+            "container|ts-route-plan-service"
+        ],
+        "start_kind": "container",
+        "category": "jvm_method",
+        "fault_type": "JVMException",
+        "resolution_method": "jvm_fallback_exact_container_match[ground_truth]"
+    },
+    "label": "attributed",
+    "label_reason": "L=1, E=1, M=path: full causal chain"
+}

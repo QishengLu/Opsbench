@@ -1,0 +1,25 @@
+c OpsBench V2 ts6-ts-security-service-response-replace-code-nj74q4
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 48 11
+c node:ts-order-service
+5 12 21 25 28 46 47 0
+c node:ts-preserve-service
+4 11 15 19 31 35 39 40 0
+c node:ts-security-service
+1 2 5 7 13 14 20 24 33 41 42 45 0
+c node:ts-ui-dashboard
+3 6 8 9 10 16 22 26 27 29 30 32 34 38 43 44 48 0
+c dependency:ts-order-service->ts-security-service
+23 0
+c propagation:ts-order-service->ts-security-service
+37 0
+c dependency:ts-preserve-service->ts-ui-dashboard
+36 0
+c propagation:ts-preserve-service->ts-ui-dashboard
+0
+c dependency:ts-security-service->ts-preserve-service
+18 0
+c propagation:ts-security-service->ts-preserve-service
+17 0
+c root_boundary
+5 0

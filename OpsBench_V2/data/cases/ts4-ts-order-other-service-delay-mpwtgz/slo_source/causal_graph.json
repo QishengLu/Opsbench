@@ -1,0 +1,866 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-order-other-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::OrderOtherController.queryOrdersForRefresh",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/refresh",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-ui-dashboard::POST /api/v1/orderOtherService/orderOther/refresh",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/orderOtherService/orderOther/refresh",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::OrderOtherRepository.findByTravelDateAndTrainNumber",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::OrderOtherController.getTicketListByDateAndTripId",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/tickets",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-seat-service::SeatController.getLeftTicketOfInterval",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|ts-travel-plan-service::TravelPlanController.getByQuickest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/quickest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/quickest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/quickest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel-service::TravelController.getTripAllDetailInfo",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-route-plan-service::RoutePlanController.getMinStopStations",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "healthy",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "healthy",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "healthy",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "healthy",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-preserve-service::PreserveController.preserve",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel-service::TravelController.queryInfo",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel-service::POST /api/v1/travelservice/trips/left",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|ts-route-plan-service::RoutePlanController.getCheapestRoutes",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/cheapestRoute",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|ts-travel-plan-service::TravelPlanController.getByCheapest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/cheapest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/cheapest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/cheapest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|ts-route-plan-service::RoutePlanController.getQuickestRoutes",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/quickestRoute",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel2-service::Travel2Controller.getTripAllDetailInfo",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel2-service::POST /api/v1/travel2service/trip_detail",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel2-service::Travel2Controller.queryInfo",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-travel2-service::POST /api/v1/travel2service/trips/left",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-ui-dashboard::POST /api/v1/travel2service/trips/left",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travel2service/trips/left",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::SELECT Order",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::OrderOtherRepository.findByAccountId",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::OrderOtherController.securityInfoCheck",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "injection_affected",
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::GET /api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId}",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "injection_affected",
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-security-service::SecurityController.check",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|ts-order-other-service::SELECT ts.orders_other",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "injection_affected",
+        "healthy",
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::SELECT ts.orders_other"
+    },
+    {
+      "source": "span|ts-order-other-service::OrderOtherRepository.findByAccountId",
+      "target": "span|ts-order-other-service::OrderOtherController.queryOrdersForRefresh"
+    },
+    {
+      "source": "span|ts-route-plan-service::RoutePlanController.getQuickestRoutes",
+      "target": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/quickestRoute"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::GET /api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId}"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::OrderOtherRepository.findByTravelDateAndTrainNumber"
+    },
+    {
+      "source": "span|ts-security-service::SecurityController.check",
+      "target": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}"
+    },
+    {
+      "source": "span|ts-travel2-service::POST /api/v1/travel2service/trips/left",
+      "target": "span|ts-route-plan-service::RoutePlanController.getCheapestRoutes"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::OrderOtherController.getTicketListByDateAndTripId"
+    },
+    {
+      "source": "span|ts-order-other-service::GET /api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId}",
+      "target": "span|ts-security-service::SecurityController.check"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::OrderOtherController.securityInfoCheck"
+    },
+    {
+      "source": "span|ts-travel2-service::POST /api/v1/travel2service/trips/left",
+      "target": "span|ts-ui-dashboard::POST /api/v1/travel2service/trips/left"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail",
+      "target": "span|ts-route-plan-service::RoutePlanController.getMinStopStations"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/quickest",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/quickest"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::OrderOtherController.queryOrdersForRefresh"
+    },
+    {
+      "source": "span|ts-travel-service::TravelController.queryInfo",
+      "target": "span|ts-travel-service::POST /api/v1/travelservice/trips/left"
+    },
+    {
+      "source": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/cheapestRoute",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByCheapest"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/travel2service/trips/left",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travel2service/trips/left"
+    },
+    {
+      "source": "span|ts-travel-plan-service::TravelPlanController.getByCheapest",
+      "target": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/cheapest"
+    },
+    {
+      "source": "span|ts-travel2-service::POST /api/v1/travel2service/trips/left",
+      "target": "span|ts-route-plan-service::RoutePlanController.getQuickestRoutes"
+    },
+    {
+      "source": "span|ts-travel-plan-service::TravelPlanController.getByQuickest",
+      "target": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/quickest"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel-service::TravelController.getTripAllDetailInfo"
+    },
+    {
+      "source": "span|ts-travel2-service::POST /api/v1/travel2service/trip_detail",
+      "target": "span|ts-route-plan-service::RoutePlanController.getMinStopStations"
+    },
+    {
+      "source": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/tickets",
+      "target": "span|ts-seat-service::SeatController.getLeftTicketOfInterval"
+    },
+    {
+      "source": "span|ts-route-plan-service::RoutePlanController.getCheapestRoutes",
+      "target": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/cheapestRoute"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel-service::TravelController.queryInfo"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/refresh"
+    },
+    {
+      "source": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "target": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "span|ts-travel2-service::Travel2Controller.queryInfo",
+      "target": "span|ts-travel2-service::POST /api/v1/travel2service/trips/left"
+    },
+    {
+      "source": "span|ts-order-other-service::SELECT Order",
+      "target": "span|ts-order-other-service::OrderOtherRepository.findByAccountId"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::SELECT Order"
+    },
+    {
+      "source": "span|ts-order-other-service::OrderOtherRepository.findByTravelDateAndTrainNumber",
+      "target": "span|ts-order-other-service::OrderOtherController.getTicketListByDateAndTripId"
+    },
+    {
+      "source": "span|ts-order-other-service::OrderOtherController.getTicketListByDateAndTripId",
+      "target": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/tickets"
+    },
+    {
+      "source": "span|ts-order-other-service::SELECT Order",
+      "target": "span|ts-order-other-service::OrderOtherRepository.findByTravelDateAndTrainNumber"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByCheapest"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trips/left",
+      "target": "span|ts-route-plan-service::RoutePlanController.getQuickestRoutes"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/orderOtherService/orderOther/refresh",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/orderOtherService/orderOther/refresh"
+    },
+    {
+      "source": "span|ts-seat-service::SeatController.getLeftTicketOfInterval",
+      "target": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets"
+    },
+    {
+      "source": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/refresh",
+      "target": "span|ts-ui-dashboard::POST /api/v1/orderOtherService/orderOther/refresh"
+    },
+    {
+      "source": "span|ts-order-other-service::OrderOtherController.securityInfoCheck",
+      "target": "span|ts-order-other-service::GET /api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId}"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel2-service::Travel2Controller.queryInfo"
+    },
+    {
+      "source": "span|ts-order-other-service::OrderOtherController.queryOrdersForRefresh",
+      "target": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/refresh"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel2-service::Travel2Controller.getTripAllDetailInfo"
+    },
+    {
+      "source": "span|ts-preserve-service::PreserveController.preserve",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-order-other-service::SELECT ts.orders_other",
+      "target": "span|ts-order-other-service::SELECT Order"
+    },
+    {
+      "source": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/quickestRoute",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByQuickest"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/tickets"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByQuickest"
+    },
+    {
+      "source": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/quickest",
+      "target": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/quickest"
+    },
+    {
+      "source": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByMinStation"
+    },
+    {
+      "source": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+      "target": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "span|ts-route-plan-service::RoutePlanController.getMinStopStations",
+      "target": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trips/left",
+      "target": "span|ts-route-plan-service::RoutePlanController.getCheapestRoutes"
+    },
+    {
+      "source": "span|ts-travel-service::TravelController.getTripAllDetailInfo",
+      "target": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail"
+    },
+    {
+      "source": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/cheapest",
+      "target": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/cheapest"
+    },
+    {
+      "source": "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByMinStation"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-travel2-service::Travel2Controller.getTripAllDetailInfo",
+      "target": "span|ts-travel2-service::POST /api/v1/travel2service/trip_detail"
+    },
+    {
+      "source": "span|ts-order-other-service::OrderOtherRepository.findByAccountId",
+      "target": "span|ts-order-other-service::OrderOtherController.securityInfoCheck"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/cheapest",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/cheapest"
+    },
+    {
+      "source": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "target": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "span|ts-order-other-service::OrderOtherRepository.findByAccountId"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-order-other-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/orderOtherService/orderOther/refresh",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272685,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/quickest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "healthy",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753272650,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/cheapest",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753272645,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travel2service/trips/left",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "high_p99_latency",
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-order-other-service": "ts-order-other-service",
+    "span|ts-order-other-service::OrderOtherController.queryOrdersForRefresh": "ts-order-other-service",
+    "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/refresh": "ts-order-other-service",
+    "span|ts-ui-dashboard::POST /api/v1/orderOtherService/orderOther/refresh": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/orderOtherService/orderOther/refresh": "loadgenerator",
+    "span|ts-order-other-service::OrderOtherRepository.findByTravelDateAndTrainNumber": "ts-order-other-service",
+    "span|ts-order-other-service::OrderOtherController.getTicketListByDateAndTripId": "ts-order-other-service",
+    "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/tickets": "ts-order-other-service",
+    "span|ts-seat-service::SeatController.getLeftTicketOfInterval": "ts-seat-service",
+    "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets": "ts-seat-service",
+    "span|ts-travel-plan-service::TravelPlanController.getByQuickest": "ts-travel-plan-service",
+    "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/quickest": "ts-travel-plan-service",
+    "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/quickest": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/quickest": "loadgenerator",
+    "span|ts-travel-service::TravelController.getTripAllDetailInfo": "ts-travel-service",
+    "span|ts-travel-service::POST /api/v1/travelservice/trip_detail": "ts-travel-service",
+    "span|ts-route-plan-service::RoutePlanController.getMinStopStations": "ts-route-plan-service",
+    "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations": "ts-route-plan-service",
+    "span|ts-travel-plan-service::TravelPlanController.getByMinStation": "ts-travel-plan-service",
+    "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation": "ts-travel-plan-service",
+    "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation": "loadgenerator",
+    "span|ts-preserve-service::PreserveController.preserve": "ts-preserve-service",
+    "span|ts-preserve-service::POST /api/v1/preserveservice/preserve": "ts-preserve-service",
+    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve": "loadgenerator",
+    "span|ts-travel-service::TravelController.queryInfo": "ts-travel-service",
+    "span|ts-travel-service::POST /api/v1/travelservice/trips/left": "ts-travel-service",
+    "span|ts-route-plan-service::RoutePlanController.getCheapestRoutes": "ts-route-plan-service",
+    "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/cheapestRoute": "ts-route-plan-service",
+    "span|ts-travel-plan-service::TravelPlanController.getByCheapest": "ts-travel-plan-service",
+    "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/cheapest": "ts-travel-plan-service",
+    "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/cheapest": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/cheapest": "loadgenerator",
+    "span|ts-route-plan-service::RoutePlanController.getQuickestRoutes": "ts-route-plan-service",
+    "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/quickestRoute": "ts-route-plan-service",
+    "span|ts-travel2-service::Travel2Controller.getTripAllDetailInfo": "ts-travel2-service",
+    "span|ts-travel2-service::POST /api/v1/travel2service/trip_detail": "ts-travel2-service",
+    "span|ts-travel2-service::Travel2Controller.queryInfo": "ts-travel2-service",
+    "span|ts-travel2-service::POST /api/v1/travel2service/trips/left": "ts-travel2-service",
+    "span|ts-ui-dashboard::POST /api/v1/travel2service/trips/left": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travel2service/trips/left": "loadgenerator",
+    "span|ts-order-other-service::SELECT Order": "ts-order-other-service",
+    "span|ts-order-other-service::OrderOtherRepository.findByAccountId": "ts-order-other-service",
+    "span|ts-order-other-service::OrderOtherController.securityInfoCheck": "ts-order-other-service",
+    "span|ts-order-other-service::GET /api/v1/orderOtherService/orderOther/security/{checkDate}/{accountId}": "ts-order-other-service",
+    "span|ts-security-service::SecurityController.check": "ts-security-service",
+    "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}": "ts-security-service",
+    "span|ts-order-other-service::SELECT ts.orders_other": "ts-order-other-service"
+  }
+}

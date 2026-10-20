@@ -1,0 +1,42 @@
+{
+    "benchmark": "clickhouse",
+    "created_at": "2025-07-25T12:00:09.043557Z",
+    "description": "Fault for task fac7ae82-baca-4ea2-964e-d0d4f7644dc9",
+    "display_config": "{\"buffer\":122,\"direction\":\"from\",\"duration\":4,\"injection_point\":{\"source_service\":\"ts-user-service\",\"target_service\":\"mysql\"},\"limit\":6517,\"namespace\":\"ts\",\"rate\":579811}",
+    "end_time": "2025-07-25T12:04:09Z",
+    "engine_config": "{\"name\":\"InjectionConf\",\"range\":[0,30],\"children\":{\"21\":{\"name\":\"21\",\"range\":[0,6],\"children\":{\"0\":{\"name\":\"0\",\"range\":[1,60],\"children\":null,\"description\":\"Time Unit Minute\",\"value\":4},\"1\":{\"name\":\"1\",\"range\":[0,0],\"children\":null,\"description\":\"{ts: 0}\",\"value\":0},\"2\":{\"name\":\"2\",\"range\":[0,123],\"children\":null,\"description\":\"Flattened network pair index\",\"value\":120},\"3\":{\"name\":\"3\",\"range\":[1,1000000],\"children\":null,\"description\":\"Bandwidth rate in kbps\",\"value\":579811},\"4\":{\"name\":\"4\",\"range\":[1,10000],\"children\":null,\"description\":\"Number of bytes that can be queued\",\"value\":6517},\"5\":{\"name\":\"5\",\"range\":[1,10000],\"children\":null,\"description\":\"Maximum amount of bytes available instantaneously\",\"value\":122},\"6\":{\"name\":\"6\",\"range\":[1,3],\"children\":null,\"description\":\"Direction (1=to, 2=from, 3=both)\",\"value\":2}},\"description\":\"\",\"value\":0}},\"description\":\"\",\"value\":21}",
+    "fault_type": 21,
+    "ground_truth": {
+        "container": [
+            "mysql",
+            "ts-user-service"
+        ],
+        "function": null,
+        "metric": null,
+        "pod": [
+            "mysql-0",
+            "ts-user-service-74d64f7bf7-r2w7x"
+        ],
+        "service": [
+            "ts-user-service",
+            "mysql"
+        ],
+        "span": [
+            "ts-user-service",
+            "mysql"
+        ],
+        "additional_properties": {}
+    },
+    "id": 2867,
+    "injection_name": "ts4-ts-user-service-bandwidth-gvv8b5",
+    "labels": {
+        "batch": "guided",
+        "env": "prod"
+    },
+    "pre_duration": 4,
+    "start_time": "2025-07-25T12:00:09Z",
+    "status": 2,
+    "task_id": "fac7ae82-baca-4ea2-964e-d0d4f7644dc9",
+    "updated_at": "2025-07-25T12:04:09.391471Z",
+    "additional_properties": {}
+}

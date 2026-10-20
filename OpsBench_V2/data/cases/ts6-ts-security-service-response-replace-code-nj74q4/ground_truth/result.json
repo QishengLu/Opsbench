@@ -1,0 +1,612 @@
+{
+    "case_name": "ts6-ts-security-service-response-replace-code-nj74q4",
+    "injection_nodes": [
+        "service|ts-security-service"
+    ],
+    "alarm_nodes": [
+        419,
+        548,
+        451,
+        483,
+        530,
+        531,
+        533,
+        376,
+        538,
+        541
+    ],
+    "propagation_result": {
+        "injection_node_ids": [
+            238,
+            256
+        ],
+        "injection_states": [
+            "unknown",
+            "unknown"
+        ],
+        "paths": [
+            {
+                "nodes": [
+                    455,
+                    417,
+                    416,
+                    541
+                ],
+                "states": [
+                    [
+                        "erroring",
+                        "missing"
+                    ],
+                    [
+                        "healthy",
+                        "missing"
+                    ],
+                    [
+                        "erroring",
+                        "missing"
+                    ],
+                    [
+                        "erroring",
+                        "missing"
+                    ]
+                ],
+                "edges": [
+                    "calls_backward",
+                    "calls_backward",
+                    "calls_backward"
+                ],
+                "rules": [
+                    "manifest:HTTPResponseReplaceCode:Lext",
+                    "manifest:HTTPResponseReplaceCode:Lext",
+                    "manifest:HTTPResponseReplaceCode:Lext"
+                ],
+                "confidence": 1.0,
+                "state_start_times": [
+                    1753097628,
+                    1753097628,
+                    1753097628,
+                    1753097628
+                ],
+                "propagation_delays": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "gate_results": [
+                    {
+                        "gate_name": "manifest_layer",
+                        "passed": true,
+                        "evidence": {
+                            "fault_type_name": "HTTPResponseReplaceCode",
+                            "edges": [
+                                {
+                                    "edge_index": 0,
+                                    "edge_desc": "calls_backward",
+                                    "layer": 1,
+                                    "dst_node_id": 417,
+                                    "edge_admitted": true,
+                                    "features_admitted": true,
+                                    "features_match_band": false,
+                                    "tier_relaxed": true,
+                                    "tier_relax_source": "extension",
+                                    "expected_features": [
+                                        {
+                                            "kind": "span",
+                                            "feature": "error_rate",
+                                            "band": [
+                                                0.1,
+                                                1.0
+                                            ],
+                                            "value": 0.0,
+                                            "matched": false
+                                        }
+                                    ],
+                                    "passed": true
+                                },
+                                {
+                                    "edge_index": 1,
+                                    "edge_desc": "calls_backward",
+                                    "layer": 1,
+                                    "dst_node_id": 416,
+                                    "edge_admitted": true,
+                                    "features_admitted": true,
+                                    "features_match_band": true,
+                                    "tier_relaxed": false,
+                                    "tier_relax_source": "extension",
+                                    "expected_features": [
+                                        {
+                                            "kind": "span",
+                                            "feature": "error_rate",
+                                            "band": [
+                                                0.1,
+                                                1.0
+                                            ],
+                                            "value": 1.0,
+                                            "matched": true
+                                        }
+                                    ],
+                                    "passed": true
+                                },
+                                {
+                                    "edge_index": 2,
+                                    "edge_desc": "calls_backward",
+                                    "layer": 1,
+                                    "dst_node_id": 541,
+                                    "edge_admitted": true,
+                                    "features_admitted": true,
+                                    "features_match_band": true,
+                                    "tier_relaxed": false,
+                                    "tier_relax_source": "extension",
+                                    "expected_features": [
+                                        {
+                                            "kind": "span",
+                                            "feature": "error_rate",
+                                            "band": [
+                                                0.1,
+                                                1.0
+                                            ],
+                                            "value": 1.0,
+                                            "matched": true
+                                        }
+                                    ],
+                                    "passed": true
+                                }
+                            ]
+                        },
+                        "reason": ""
+                    },
+                    {
+                        "gate_name": "temporal",
+                        "passed": true,
+                        "evidence": {
+                            "edges": [
+                                {
+                                    "edge_index": 0,
+                                    "edge_kind": "calls",
+                                    "src_state": "missing",
+                                    "dst_state": "missing",
+                                    "src_onset": 1753097628,
+                                    "dst_onset": 1753097628,
+                                    "delay": 0,
+                                    "edge_epsilon": 5,
+                                    "reversed_order_tolerance": 1,
+                                    "ok": true
+                                },
+                                {
+                                    "edge_index": 1,
+                                    "edge_kind": "calls",
+                                    "src_state": "missing",
+                                    "dst_state": "missing",
+                                    "src_onset": 1753097628,
+                                    "dst_onset": 1753097628,
+                                    "delay": 0,
+                                    "edge_epsilon": 5,
+                                    "reversed_order_tolerance": 1,
+                                    "ok": true
+                                },
+                                {
+                                    "edge_index": 2,
+                                    "edge_kind": "calls",
+                                    "src_state": "missing",
+                                    "dst_state": "missing",
+                                    "src_onset": 1753097628,
+                                    "dst_onset": 1753097628,
+                                    "delay": 0,
+                                    "edge_epsilon": 5,
+                                    "reversed_order_tolerance": 1,
+                                    "ok": true
+                                }
+                            ]
+                        },
+                        "reason": ""
+                    },
+                    {
+                        "gate_name": "inject_time",
+                        "passed": true,
+                        "evidence": {
+                            "window_start": 1753097628,
+                            "window_end": 1753097927,
+                            "tolerance_seconds": 60,
+                            "nodes": [
+                                {
+                                    "node_index": 0,
+                                    "node_id": 455,
+                                    "onset": 1753097628,
+                                    "is_injection": false,
+                                    "lower_bound": 1753097628,
+                                    "upper_bound": 1753097927,
+                                    "in_window": true
+                                },
+                                {
+                                    "node_index": 1,
+                                    "node_id": 417,
+                                    "onset": 1753097628,
+                                    "is_injection": false,
+                                    "lower_bound": 1753097628,
+                                    "upper_bound": 1753097927,
+                                    "in_window": true
+                                },
+                                {
+                                    "node_index": 2,
+                                    "node_id": 416,
+                                    "onset": 1753097628,
+                                    "is_injection": false,
+                                    "lower_bound": 1753097628,
+                                    "upper_bound": 1753097927,
+                                    "in_window": true
+                                },
+                                {
+                                    "node_index": 3,
+                                    "node_id": 541,
+                                    "onset": 1753097628,
+                                    "is_injection": false,
+                                    "lower_bound": 1753097628,
+                                    "upper_bound": 1753097927,
+                                    "in_window": true
+                                }
+                            ]
+                        },
+                        "reason": ""
+                    }
+                ]
+            }
+        ],
+        "visited_nodes": [
+            416,
+            417,
+            454,
+            455,
+            456,
+            457,
+            458,
+            459,
+            238,
+            273,
+            541
+        ],
+        "max_hops_reached": 4,
+        "subgraph_edges": [],
+        "warnings": [],
+        "rejected_paths": [],
+        "label": "attributed",
+        "label_reason": "L=1, E=1, M=path: full causal chain",
+        "decomposition": {
+            "L": {
+                "detected": true,
+                "evidence": {
+                    "impacted_nodes": [
+                        {
+                            "node": "service|ts-security-service",
+                            "states": [
+                                "degraded",
+                                "erroring"
+                            ],
+                            "first_state_at": 1753097628
+                        }
+                    ]
+                }
+            },
+            "E": {
+                "detected": true,
+                "impacted_nodes": [
+                    "span|ts-price-service::POST /api/v1/priceservice/prices/byRouteIdsAndTrainTypes",
+                    "span|ts-ui-dashboard::PUT /api/v1/consignservice/consigns",
+                    "span|ts-seat-service::POST /api/v1/seatservice/seats/left_tickets",
+                    "span|ts-train-service::POST /api/v1/trainservice/trains/byNames",
+                    "span|ts-ui-dashboard::GET /api/v1/cancelservice/cancel/refound/{orderId}",
+                    "span|ts-ui-dashboard::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}",
+                    "span|ts-ui-dashboard::GET /api/v1/consignservice/consigns/order/{id}",
+                    "span|ts-order-other-service::POST /api/v1/orderOtherService/orderOther/refresh",
+                    "span|ts-ui-dashboard::POST /api/v1/inside_pay_service/inside_payment",
+                    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+                ],
+                "evidence": {
+                    "alarm_count": 10,
+                    "slo_surface_source": "default_heuristic",
+                    "slo_surface_size": 0
+                }
+            },
+            "M": {
+                "paths": [
+                    {
+                        "nodes": [
+                            455,
+                            417,
+                            416,
+                            541
+                        ],
+                        "states": [
+                            [
+                                "erroring",
+                                "missing"
+                            ],
+                            [
+                                "healthy",
+                                "missing"
+                            ],
+                            [
+                                "erroring",
+                                "missing"
+                            ],
+                            [
+                                "erroring",
+                                "missing"
+                            ]
+                        ],
+                        "edges": [
+                            "calls_backward",
+                            "calls_backward",
+                            "calls_backward"
+                        ],
+                        "rules": [
+                            "manifest:HTTPResponseReplaceCode:Lext",
+                            "manifest:HTTPResponseReplaceCode:Lext",
+                            "manifest:HTTPResponseReplaceCode:Lext"
+                        ],
+                        "confidence": 1.0,
+                        "state_start_times": [
+                            1753097628,
+                            1753097628,
+                            1753097628,
+                            1753097628
+                        ],
+                        "propagation_delays": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "gate_results": [
+                            {
+                                "gate_name": "manifest_layer",
+                                "passed": true,
+                                "evidence": {
+                                    "fault_type_name": "HTTPResponseReplaceCode",
+                                    "edges": [
+                                        {
+                                            "edge_index": 0,
+                                            "edge_desc": "calls_backward",
+                                            "layer": 1,
+                                            "dst_node_id": 417,
+                                            "edge_admitted": true,
+                                            "features_admitted": true,
+                                            "features_match_band": false,
+                                            "tier_relaxed": true,
+                                            "tier_relax_source": "extension",
+                                            "expected_features": [
+                                                {
+                                                    "kind": "span",
+                                                    "feature": "error_rate",
+                                                    "band": [
+                                                        0.1,
+                                                        1.0
+                                                    ],
+                                                    "value": 0.0,
+                                                    "matched": false
+                                                }
+                                            ],
+                                            "passed": true
+                                        },
+                                        {
+                                            "edge_index": 1,
+                                            "edge_desc": "calls_backward",
+                                            "layer": 1,
+                                            "dst_node_id": 416,
+                                            "edge_admitted": true,
+                                            "features_admitted": true,
+                                            "features_match_band": true,
+                                            "tier_relaxed": false,
+                                            "tier_relax_source": "extension",
+                                            "expected_features": [
+                                                {
+                                                    "kind": "span",
+                                                    "feature": "error_rate",
+                                                    "band": [
+                                                        0.1,
+                                                        1.0
+                                                    ],
+                                                    "value": 1.0,
+                                                    "matched": true
+                                                }
+                                            ],
+                                            "passed": true
+                                        },
+                                        {
+                                            "edge_index": 2,
+                                            "edge_desc": "calls_backward",
+                                            "layer": 1,
+                                            "dst_node_id": 541,
+                                            "edge_admitted": true,
+                                            "features_admitted": true,
+                                            "features_match_band": true,
+                                            "tier_relaxed": false,
+                                            "tier_relax_source": "extension",
+                                            "expected_features": [
+                                                {
+                                                    "kind": "span",
+                                                    "feature": "error_rate",
+                                                    "band": [
+                                                        0.1,
+                                                        1.0
+                                                    ],
+                                                    "value": 1.0,
+                                                    "matched": true
+                                                }
+                                            ],
+                                            "passed": true
+                                        }
+                                    ]
+                                },
+                                "reason": ""
+                            },
+                            {
+                                "gate_name": "temporal",
+                                "passed": true,
+                                "evidence": {
+                                    "edges": [
+                                        {
+                                            "edge_index": 0,
+                                            "edge_kind": "calls",
+                                            "src_state": "missing",
+                                            "dst_state": "missing",
+                                            "src_onset": 1753097628,
+                                            "dst_onset": 1753097628,
+                                            "delay": 0,
+                                            "edge_epsilon": 5,
+                                            "reversed_order_tolerance": 1,
+                                            "ok": true
+                                        },
+                                        {
+                                            "edge_index": 1,
+                                            "edge_kind": "calls",
+                                            "src_state": "missing",
+                                            "dst_state": "missing",
+                                            "src_onset": 1753097628,
+                                            "dst_onset": 1753097628,
+                                            "delay": 0,
+                                            "edge_epsilon": 5,
+                                            "reversed_order_tolerance": 1,
+                                            "ok": true
+                                        },
+                                        {
+                                            "edge_index": 2,
+                                            "edge_kind": "calls",
+                                            "src_state": "missing",
+                                            "dst_state": "missing",
+                                            "src_onset": 1753097628,
+                                            "dst_onset": 1753097628,
+                                            "delay": 0,
+                                            "edge_epsilon": 5,
+                                            "reversed_order_tolerance": 1,
+                                            "ok": true
+                                        }
+                                    ]
+                                },
+                                "reason": ""
+                            },
+                            {
+                                "gate_name": "inject_time",
+                                "passed": true,
+                                "evidence": {
+                                    "window_start": 1753097628,
+                                    "window_end": 1753097927,
+                                    "tolerance_seconds": 60,
+                                    "nodes": [
+                                        {
+                                            "node_index": 0,
+                                            "node_id": 455,
+                                            "onset": 1753097628,
+                                            "is_injection": false,
+                                            "lower_bound": 1753097628,
+                                            "upper_bound": 1753097927,
+                                            "in_window": true
+                                        },
+                                        {
+                                            "node_index": 1,
+                                            "node_id": 417,
+                                            "onset": 1753097628,
+                                            "is_injection": false,
+                                            "lower_bound": 1753097628,
+                                            "upper_bound": 1753097927,
+                                            "in_window": true
+                                        },
+                                        {
+                                            "node_index": 2,
+                                            "node_id": 416,
+                                            "onset": 1753097628,
+                                            "is_injection": false,
+                                            "lower_bound": 1753097628,
+                                            "upper_bound": 1753097927,
+                                            "in_window": true
+                                        },
+                                        {
+                                            "node_index": 3,
+                                            "node_id": 541,
+                                            "onset": 1753097628,
+                                            "is_injection": false,
+                                            "lower_bound": 1753097628,
+                                            "upper_bound": 1753097927,
+                                            "in_window": true
+                                        }
+                                    ]
+                                },
+                                "reason": ""
+                            }
+                        ]
+                    }
+                ],
+                "n_paths": 1,
+                "confidence": 1.0
+            }
+        }
+    },
+    "visualization_paths": [
+        {
+            "confidence": 1.0,
+            "nodes": [
+                {
+                    "node_id": 455,
+                    "kind": "span",
+                    "name": "ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}",
+                    "uniq_name": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}",
+                    "state": "erroring, missing",
+                    "state_start_time": 1753097628,
+                    "is_alarm": false,
+                    "edge_kind": "calls_backward",
+                    "rule_id": "manifest:HTTPResponseReplaceCode:Lext",
+                    "propagation_delay": 0.0
+                },
+                {
+                    "node_id": 417,
+                    "kind": "span",
+                    "name": "ts-preserve-service::PreserveController.preserve",
+                    "uniq_name": "span|ts-preserve-service::PreserveController.preserve",
+                    "state": "healthy, missing",
+                    "state_start_time": 1753097628,
+                    "is_alarm": false,
+                    "edge_kind": "calls_backward",
+                    "rule_id": "manifest:HTTPResponseReplaceCode:Lext",
+                    "propagation_delay": 0.0
+                },
+                {
+                    "node_id": 416,
+                    "kind": "span",
+                    "name": "ts-preserve-service::POST /api/v1/preserveservice/preserve",
+                    "uniq_name": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+                    "state": "erroring, missing",
+                    "state_start_time": 1753097628,
+                    "is_alarm": false,
+                    "edge_kind": "calls_backward",
+                    "rule_id": "manifest:HTTPResponseReplaceCode:Lext",
+                    "propagation_delay": 0.0
+                },
+                {
+                    "node_id": 541,
+                    "kind": "span",
+                    "name": "ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+                    "uniq_name": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+                    "state": "erroring, missing",
+                    "state_start_time": 1753097628,
+                    "is_alarm": true,
+                    "edge_kind": null,
+                    "rule_id": null,
+                    "propagation_delay": null
+                }
+            ]
+        }
+    ],
+    "resolution_info": {
+        "resolved_nodes": [
+            "service|ts-security-service"
+        ],
+        "start_kind": "service",
+        "category": "http_span",
+        "fault_type": "HTTPResponseReplaceCode",
+        "resolution_method": "http_span_fallback_to_service",
+        "starting_points": [
+            "service|ts-security-service",
+            "service|ts-preserve-service"
+        ]
+    },
+    "label": "attributed",
+    "label_reason": "L=1, E=1, M=path: full causal chain"
+}

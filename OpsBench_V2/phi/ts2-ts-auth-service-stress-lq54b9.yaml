@@ -1,0 +1,759 @@
+schema_version: '2.0'
+case: ts2-ts-auth-service-stress-lq54b9
+status: needs_review
+construction: deterministic_rule_enumeration
+privileged_offline_artifact: true
+rule_contract:
+  version: 1.0.0
+  min_samples: 5
+  min_events: 3
+  latency_ratio: 3.0
+  latency_delta_ms: 20.0
+  error_rate_delta: 0.05
+  error_rate_ratio: 2.0
+  log_rate_delta: 0.01
+  log_rate_ratio: 3.0
+  metric_ratio: 3.0
+  cpu_delta: 0.5
+  nested_min_ms: 20.0
+  nested_min_fraction_of_caller: 0.5
+  nested_min_fraction_of_pairs: 0.5
+  lifecycle_restart_delta: 1
+  lifecycle_ready_ratio: 0.5
+  semantics: Exploratory fixed heuristics; not calibrated detection guarantees.
+reference_path:
+  nodes:
+  - timestamp: null
+    component: service|ts-auth-service
+    state:
+    - unknown
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - unknown
+  edges:
+  - source: service|ts-auth-service
+    target: service|ts-ui-dashboard
+  root_causes:
+  - timestamp: null
+    component: service|ts-auth-service
+    state:
+    - unknown
+  alarm_nodes:
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - unknown
+  component_to_service:
+    service|ts-auth-service: ts-auth-service
+    service|ts-ui-dashboard: ts-ui-dashboard
+summary:
+  n_clauses: 4
+  covered: 3
+  open: 1
+  n_candidates: 23777
+  n_literals: 15
+  n_queries: 56
+  coverage_all: 0.75
+semantics: AND of obligation clauses; OR of complete composite witnesses within each clause. Empty clause remains false/unresolved;
+  never dropped. Coverage is operational evidence coverage, not proof of injected root cause.
+clauses:
+- id: node:ts-auth-service
+  kind: node_anomaly
+  subject:
+    service: ts-auth-service
+  meaning: local anomalous telemetry
+  literals:
+  - e_638366e7a39cdfaf6e015ddc
+  - e_f729ced432bf8049e9fe3bf2
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-ui-dashboard
+  kind: node_anomaly
+  subject:
+    service: ts-ui-dashboard
+  meaning: local anomalous telemetry
+  literals:
+  - e_42701b741011df81192c29e4
+  - e_4a8b635cb48b4f214a7f0dd4
+  - e_54c2ecab6c7a6e9c5c947a3d
+  - e_6fc0ded930951e3fbad731a5
+  - e_97d233e5d99a3f2bc4441f6a
+  - e_bef7edfc02bf223961700adc
+  - e_cafd15933ded24ee8e0c2391
+  - e_d0cdd9c273a44b199813c2ce
+  - e_e050f72aaf6107dce317ff2f
+  - e_ecc8f54f7b443a767dc6a32c
+  - e_f0e2f382f5d80e5baf8243d2
+  - e_f10d33369b914832750ddc12
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-auth-service->ts-ui-dashboard
+  kind: dependency
+  subject: &id001
+    source: ts-auth-service
+    target: ts-ui-dashboard
+    caller: ts-ui-dashboard
+    callee: ts-auth-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_6104c068091606a755303662
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-auth-service->ts-ui-dashboard
+  kind: propagation_observation
+  subject: *id001
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+literals:
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    n: 21
+    median_ms: 17.174681
+    p95_ms: 78.186371
+    p99_ms: 222.77534860000014
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:50.476569+00:00'
+    last_time: '2025-08-18 20:24:35.163248+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    n: 30
+    median_ms: 13.8140295
+    p95_ms: 15.2910667
+    p99_ms: 734.528463520001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:26:20.890910+00:00'
+    last_time: '2025-08-18 20:28:35.861090+00:00'
+  query_refs:
+  - q_01efbd983de5d14febd5
+  - q_823a862f4afc38d7ece7
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_42701b741011df81192c29e4
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id002
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+  baseline: &id003
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    n: 576
+    median_ms: 100.228726
+    p95_ms: 159.7133305
+    p99_ms: 815.57338425
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:40.087769+00:00'
+    last_time: '2025-08-18 20:24:39.992919+00:00'
+  incident: &id004
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    n: 675
+    median_ms: 98.807073
+    p95_ms: 2694.00117019995
+    p99_ms: 3637.83607262
+    errors: 31
+    http4xx: 0
+    first_time: '2025-08-18 20:24:40.005966+00:00'
+    last_time: '2025-08-18 20:28:36.927648+00:00'
+  query_refs:
+  - q_01efbd983de5d14febd5
+  - q_823a862f4afc38d7ece7
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4a8b635cb48b4f214a7f0dd4
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 78
+    median_ms: 7.850642
+    p95_ms: 12.522403899999999
+    p99_ms: 17.11191110000004
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:42.793688+00:00'
+    last_time: '2025-08-18 20:24:37.035424+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 78
+    median_ms: 6.443206
+    p95_ms: 8.884918349999989
+    p99_ms: 243.539723790004
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:24:42.314756+00:00'
+    last_time: '2025-08-18 20:28:35.284585+00:00'
+  query_refs:
+  - q_48cb6576c7235a247974
+  - q_4bbe3c4221b64ddeab45
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_54c2ecab6c7a6e9c5c947a3d
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-ui-dashboard
+    callee: ts-auth-service
+    caller_operation: POST /api/v1/users/login
+    callee_operation: POST /api/v1/users/login
+  baseline:
+    caller_operation: POST /api/v1/users/login
+    callee_operation: POST /api/v1/users/login
+    n: 576
+    median_ms: 97.3520425
+    caller_ms: 100.228726
+    linked_errors: 0
+    dominant_calls: 31
+    first_time: '2025-08-18 20:20:40.081000+00:00'
+    last_time: '2025-08-18 20:24:39.985000+00:00'
+  incident:
+    caller_operation: POST /api/v1/users/login
+    callee_operation: POST /api/v1/users/login
+    n: 634
+    median_ms: 96.060965
+    caller_ms: 98.523155
+    linked_errors: 0
+    dominant_calls: 2
+    first_time: '2025-08-18 20:24:41.208000+00:00'
+    last_time: '2025-08-18 20:28:36.916000+00:00'
+  query_refs:
+  - q_b061f6b7c5328def52fc
+  - q_e561b600f6e5e9b3ef90
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-auth-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_6104c068091606a755303662
+- rule_id: metric_series_summary
+  rule_version: 1.0.0
+  subject:
+    modality: metrics
+    attr.destination: null
+    attr.destination_workload: null
+    attr.k8s.container.name: ts-auth-service
+    attr.k8s.deployment.name: ts-auth-service
+    attr.k8s.namespace.name: ts2
+    attr.k8s.node.name: worker3
+    attr.k8s.pod.name: ts-auth-service-6f5b7d4d64-xrp2m
+    attr.k8s.replicaset.name: null
+    attr.k8s.statefulset.name: null
+    attr.source: null
+    attr.source_workload: null
+    metric: container.cpu.usage
+    service_name: ts-auth-service
+  baseline:
+    attr.destination: null
+    attr.destination_workload: null
+    attr.k8s.container.name: ts-auth-service
+    attr.k8s.deployment.name: ts-auth-service
+    attr.k8s.namespace.name: ts2
+    attr.k8s.node.name: worker3
+    attr.k8s.pod.name: ts-auth-service-6f5b7d4d64-xrp2m
+    attr.k8s.replicaset.name: null
+    attr.k8s.statefulset.name: null
+    attr.source: null
+    attr.source_workload: null
+    metric: container.cpu.usage
+    service_name: ts-auth-service
+    n: 48
+    mean: 0.35816332666666667
+    minimum: 0.11252363
+    maximum: 0.831694368
+    first_time: '2025-08-18 20:20:42.372768+00:00'
+    last_time: '2025-08-18 20:24:37.382554+00:00'
+  incident:
+    attr.destination: null
+    attr.destination_workload: null
+    attr.k8s.container.name: ts-auth-service
+    attr.k8s.deployment.name: ts-auth-service
+    attr.k8s.namespace.name: ts2
+    attr.k8s.node.name: worker3
+    attr.k8s.pod.name: ts-auth-service-6f5b7d4d64-xrp2m
+    attr.k8s.replicaset.name: null
+    attr.k8s.statefulset.name: null
+    attr.source: null
+    attr.source_workload: null
+    metric: container.cpu.usage
+    service_name: ts-auth-service
+    n: 47
+    mean: 1.4805140882553192
+    minimum: 0.0
+    maximum: 4.578294794
+    first_time: '2025-08-18 20:24:42.423096+00:00'
+    last_time: '2025-08-18 20:28:32.366417+00:00'
+  query_refs:
+  - q_02edbdf7e026a3ad8be5
+  - q_fc2d353eef1b4ceff52e
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Numeric mean increase; not necessarily harmful. Only registered CPU metrics support node anomaly.
+  units: source_native
+  id: e_638366e7a39cdfaf6e015ddc
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    n: 78
+    median_ms: 7.850642
+    p95_ms: 12.522403899999999
+    p99_ms: 17.11191110000004
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:42.793688+00:00'
+    last_time: '2025-08-18 20:24:37.035424+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    n: 78
+    median_ms: 6.443206
+    p95_ms: 8.884918349999989
+    p99_ms: 243.539723790004
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:24:42.314756+00:00'
+    last_time: '2025-08-18 20:28:35.284585+00:00'
+  query_refs:
+  - q_01efbd983de5d14febd5
+  - q_823a862f4afc38d7ece7
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_6fc0ded930951e3fbad731a5
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: &id005
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+  baseline: &id006
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 576
+    median_ms: 100.228726
+    p95_ms: 159.7133305
+    p99_ms: 815.57338425
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:40.087769+00:00'
+    last_time: '2025-08-18 20:24:39.992919+00:00'
+  incident: &id007
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 675
+    median_ms: 98.807073
+    p95_ms: 2694.00117019995
+    p99_ms: 3637.83607262
+    errors: 31
+    http4xx: 0
+    first_time: '2025-08-18 20:24:40.005966+00:00'
+    last_time: '2025-08-18 20:28:36.927648+00:00'
+  query_refs:
+  - q_48cb6576c7235a247974
+  - q_4bbe3c4221b64ddeab45
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_97d233e5d99a3f2bc4441f6a
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id002
+  baseline: *id003
+  incident: *id004
+  query_refs:
+  - q_01efbd983de5d14febd5
+  - q_823a862f4afc38d7ece7
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_bef7edfc02bf223961700adc
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id005
+  baseline: *id006
+  incident: *id007
+  query_refs:
+  - q_48cb6576c7235a247974
+  - q_4bbe3c4221b64ddeab45
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_cafd15933ded24ee8e0c2391
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 21
+    median_ms: 17.174681
+    p95_ms: 78.186371
+    p99_ms: 222.77534860000014
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:50.476569+00:00'
+    last_time: '2025-08-18 20:24:35.163248+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 30
+    median_ms: 13.8140295
+    p95_ms: 15.2910667
+    p99_ms: 734.528463520001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:26:20.890910+00:00'
+    last_time: '2025-08-18 20:28:35.861090+00:00'
+  query_refs:
+  - q_48cb6576c7235a247974
+  - q_4bbe3c4221b64ddeab45
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_d0cdd9c273a44b199813c2ce
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    n: 34
+    median_ms: 17.7582395
+    p95_ms: 48.831585
+    p99_ms: 53.90883166000001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:40.184379+00:00'
+    last_time: '2025-08-18 20:24:39.439638+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    n: 27
+    median_ms: 13.809333
+    p95_ms: 23.0842696
+    p99_ms: 770.2536661399985
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:24:41.777355+00:00'
+    last_time: '2025-08-18 20:28:29.860513+00:00'
+  query_refs:
+  - q_01efbd983de5d14febd5
+  - q_823a862f4afc38d7ece7
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e050f72aaf6107dce317ff2f
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 34
+    median_ms: 17.7582395
+    p95_ms: 48.831585
+    p99_ms: 53.90883166000001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:40.184379+00:00'
+    last_time: '2025-08-18 20:24:39.439638+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 27
+    median_ms: 13.809333
+    p95_ms: 23.0842696
+    p99_ms: 770.2536661399985
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:24:41.777355+00:00'
+    last_time: '2025-08-18 20:28:29.860513+00:00'
+  query_refs:
+  - q_48cb6576c7235a247974
+  - q_4bbe3c4221b64ddeab45
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_ecc8f54f7b443a767dc6a32c
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 13
+    median_ms: 70.890918
+    p95_ms: 182.79448839999995
+    p99_ms: 204.60331047999995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:54.258426+00:00'
+    last_time: '2025-08-18 20:24:11.928375+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 20
+    median_ms: 49.2430405
+    p95_ms: 139.37132425000112
+    p99_ms: 1329.919292849998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:25:04.097861+00:00'
+    last_time: '2025-08-18 20:28:35.228088+00:00'
+  query_refs:
+  - q_01efbd983de5d14febd5
+  - q_823a862f4afc38d7ece7
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_f0e2f382f5d80e5baf8243d2
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 13
+    median_ms: 70.890918
+    p95_ms: 182.79448839999995
+    p99_ms: 204.60331047999995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:20:54.258426+00:00'
+    last_time: '2025-08-18 20:24:11.928375+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-18/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-cdd95b86c-q2fdc
+    n: 20
+    median_ms: 49.2430405
+    p95_ms: 139.37132425000112
+    p99_ms: 1329.919292849998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-18 20:25:04.097861+00:00'
+    last_time: '2025-08-18 20:28:35.228088+00:00'
+  query_refs:
+  - q_48cb6576c7235a247974
+  - q_4bbe3c4221b64ddeab45
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_f10d33369b914832750ddc12
+- rule_id: metric_series_summary
+  rule_version: 1.0.0
+  subject:
+    modality: metrics
+    attr.destination: null
+    attr.destination_workload: null
+    attr.k8s.container.name: null
+    attr.k8s.deployment.name: ts-auth-service
+    attr.k8s.namespace.name: ts2
+    attr.k8s.node.name: worker3
+    attr.k8s.pod.name: ts-auth-service-6f5b7d4d64-xrp2m
+    attr.k8s.replicaset.name: null
+    attr.k8s.statefulset.name: null
+    attr.source: null
+    attr.source_workload: null
+    metric: k8s.pod.cpu.usage
+    service_name: ts-auth-service
+  baseline:
+    attr.destination: null
+    attr.destination_workload: null
+    attr.k8s.container.name: null
+    attr.k8s.deployment.name: ts-auth-service
+    attr.k8s.namespace.name: ts2
+    attr.k8s.node.name: worker3
+    attr.k8s.pod.name: ts-auth-service-6f5b7d4d64-xrp2m
+    attr.k8s.replicaset.name: null
+    attr.k8s.statefulset.name: null
+    attr.source: null
+    attr.source_workload: null
+    metric: k8s.pod.cpu.usage
+    service_name: ts-auth-service
+    n: 48
+    mean: 0.41377172375
+    minimum: 0.107630031
+    maximum: 1.281631202
+    first_time: '2025-08-18 20:20:42.372768+00:00'
+    last_time: '2025-08-18 20:24:37.382554+00:00'
+  incident:
+    attr.destination: null
+    attr.destination_workload: null
+    attr.k8s.container.name: null
+    attr.k8s.deployment.name: ts-auth-service
+    attr.k8s.namespace.name: ts2
+    attr.k8s.node.name: worker3
+    attr.k8s.pod.name: ts-auth-service-6f5b7d4d64-xrp2m
+    attr.k8s.replicaset.name: null
+    attr.k8s.statefulset.name: null
+    attr.source: null
+    attr.source_workload: null
+    metric: k8s.pod.cpu.usage
+    service_name: ts-auth-service
+    n: 47
+    mean: 1.6060334235106382
+    minimum: 0.292942729
+    maximum: 4.903322678
+    first_time: '2025-08-18 20:24:42.423096+00:00'
+    last_time: '2025-08-18 20:28:32.366417+00:00'
+  query_refs:
+  - q_02edbdf7e026a3ad8be5
+  - q_fc2d353eef1b4ceff52e
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Numeric mean increase; not necessarily harmful. Only registered CPU metrics support node anomaly.
+  units: source_native
+  id: e_f729ced432bf8049e9fe3bf2

@@ -1,0 +1,11 @@
+# pilot 10: stratified by fault family (see design.md §13)
+ts2-ts-auth-service-loss-5k6gqr
+ts2-ts-auth-service-stress-lq54b9
+ts4-ts-order-other-service-delay-mpwtgz
+ts2-ts-order-other-service-container-kill-48rlds
+ts5-ts-travel-service-partition-9pdvpn
+ts4-ts-route-plan-service-exception-ztg25x
+ts6-ts-security-service-response-replace-code-nj74q4
+ts4-ts-food-service-request-abort-gzrt8n
+ts4-ts-user-service-bandwidth-gvv8b5
+ts2-ts-travel2-service-response-delay-mxrns5

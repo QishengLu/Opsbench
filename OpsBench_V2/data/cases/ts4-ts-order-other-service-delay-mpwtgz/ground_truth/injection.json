@@ -1,0 +1,44 @@
+{
+    "benchmark": "clickhouse",
+    "created_at": "2025-07-23T12:10:48.038891Z",
+    "description": "Fault for task b81e7eee-25c8-4e1c-86c0-a39875af72df",
+    "display_config": "{\"correlation\":60,\"direction\":\"both\",\"duration\":4,\"injection_point\":{\"source_service\":\"ts-order-other-service\",\"target_service\":\"mysql\"},\"jitter\":57,\"latency\":1373,\"namespace\":\"ts\"}",
+    "end_time": "2025-07-23T12:14:48Z",
+    "engine_config": "{\"name\":\"InjectionConf\",\"range\":[0,30],\"children\":{\"17\":{\"name\":\"17\",\"range\":[0,6],\"children\":{\"0\":{\"name\":\"0\",\"range\":[1,60],\"children\":null,\"description\":\"Time Unit Minute\",\"value\":4},\"1\":{\"name\":\"1\",\"range\":[0,0],\"children\":null,\"description\":\"{ts: 0}\",\"value\":0},\"2\":{\"name\":\"2\",\"range\":[0,123],\"children\":null,\"description\":\"Flattened network pair index\",\"value\":38},\"3\":{\"name\":\"3\",\"range\":[1,2000],\"children\":null,\"description\":\"Latency in milliseconds\",\"value\":1373},\"4\":{\"name\":\"4\",\"range\":[0,100],\"children\":null,\"description\":\"Correlation percentage\",\"value\":60},\"5\":{\"name\":\"5\",\"range\":[0,1000],\"children\":null,\"description\":\"Jitter in milliseconds\",\"value\":57},\"6\":{\"name\":\"6\",\"range\":[1,3],\"children\":null,\"description\":\"Direction (1=to, 2=from, 3=both)\",\"value\":3}},\"description\":\"\",\"value\":0}},\"description\":\"\",\"value\":17}",
+    "fault_type": 17,
+    "ground_truth": {
+        "container": [
+            "mysql",
+            "ts-order-other-service"
+        ],
+        "function": null,
+        "metric": [
+            "network_latency"
+        ],
+        "pod": [
+            "mysql-0",
+            "ts-order-other-service-54467c8fd5-klhjp"
+        ],
+        "service": [
+            "ts-order-other-service",
+            "mysql"
+        ],
+        "span": [
+            "ts-order-other-service",
+            "mysql"
+        ],
+        "additional_properties": {}
+    },
+    "id": 1774,
+    "injection_name": "ts4-ts-order-other-service-delay-mpwtgz",
+    "labels": {
+        "batch": "bootstrap",
+        "env": "prod"
+    },
+    "pre_duration": 4,
+    "start_time": "2025-07-23T12:10:48Z",
+    "status": 2,
+    "task_id": "b81e7eee-25c8-4e1c-86c0-a39875af72df",
+    "updated_at": "2025-07-23T12:14:48.533191Z",
+    "additional_properties": {}
+}

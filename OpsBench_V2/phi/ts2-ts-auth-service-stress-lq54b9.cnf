@@ -1,0 +1,11 @@
+c OpsBench V2 ts2-ts-auth-service-stress-lq54b9
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 15 4
+c node:ts-auth-service
+5 15 0
+c node:ts-ui-dashboard
+1 2 3 6 7 8 9 10 11 12 13 14 0
+c dependency:ts-auth-service->ts-ui-dashboard
+4 0
+c propagation:ts-auth-service->ts-ui-dashboard
+0

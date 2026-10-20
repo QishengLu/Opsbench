@@ -1,0 +1,102 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "degraded",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-route-plan-service",
+      "state": [
+        "healthy",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-plan-service",
+      "state": [
+        "healthy",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-service",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-route-plan-service",
+      "target": "service|ts-travel-plan-service"
+    },
+    {
+      "source": "service|ts-travel-plan-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "service|ts-preserve-service"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "service|ts-route-plan-service"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-preserve-service": "ts-preserve-service",
+    "service|ts-route-plan-service": "ts-route-plan-service",
+    "service|ts-travel-plan-service": "ts-travel-plan-service",
+    "service|ts-travel-service": "ts-travel-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-food-service",
+      "state": [
+        "erroring",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "missing"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "erroring",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-train-food-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-food-service",
+      "target": "service|ts-preserve-service"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-preserve-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-train-food-service",
+      "target": "service|ts-food-service"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-food-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-train-food-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-food-service": "ts-food-service",
+    "service|ts-preserve-service": "ts-preserve-service",
+    "service|ts-train-food-service": "ts-train-food-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

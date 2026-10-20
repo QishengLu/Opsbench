@@ -1,0 +1,87 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "missing",
+        "silent"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-user-service",
+      "state": [
+        "degraded",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|mysql",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-preserve-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "service|ts-preserve-service"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|mysql",
+      "target": "service|ts-user-service"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-user-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|mysql",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|mysql": "mysql",
+    "service|ts-preserve-service": "ts-preserve-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard",
+    "service|ts-user-service": "ts-user-service"
+  }
+}

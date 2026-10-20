@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__/
+.pytest_cache/
+.venv/
+*.egg-info/
+Processing/outputs/
+OpsBench_V2/data/raw/

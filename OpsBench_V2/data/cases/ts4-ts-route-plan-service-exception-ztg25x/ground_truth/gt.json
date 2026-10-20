@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-route-plan-service",
+      "state": [
+        "erroring",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-plan-service",
+      "state": [
+        "erroring",
+        "healthy",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "erroring",
+        "missing",
+        "slow"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-route-plan-service",
+      "target": "service|ts-travel-plan-service"
+    },
+    {
+      "source": "service|ts-travel-plan-service",
+      "target": "service|ts-ui-dashboard"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-route-plan-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-route-plan-service": "ts-route-plan-service",
+    "service|ts-travel-plan-service": "ts-travel-plan-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

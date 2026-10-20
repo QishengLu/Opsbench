@@ -1,0 +1,174 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-order-other-service",
+      "state": [
+        "degraded",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-seat-service",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-security-service",
+      "state": [
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-plan-service",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-service",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel2-service",
+      "state": [
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|mysql",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-order-other-service",
+      "target": "service|ts-seat-service"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "service|ts-security-service"
+    },
+    {
+      "source": "service|ts-order-other-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-preserve-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-seat-service",
+      "target": "service|ts-travel-plan-service"
+    },
+    {
+      "source": "service|ts-seat-service",
+      "target": "service|ts-travel-service"
+    },
+    {
+      "source": "service|ts-seat-service",
+      "target": "service|ts-travel2-service"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "service|ts-preserve-service"
+    },
+    {
+      "source": "service|ts-travel-plan-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "service|ts-preserve-service"
+    },
+    {
+      "source": "service|ts-travel2-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|mysql",
+      "target": "service|ts-order-other-service"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-order-other-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|mysql",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|mysql": "mysql",
+    "service|ts-order-other-service": "ts-order-other-service",
+    "service|ts-preserve-service": "ts-preserve-service",
+    "service|ts-seat-service": "ts-seat-service",
+    "service|ts-security-service": "ts-security-service",
+    "service|ts-travel-plan-service": "ts-travel-plan-service",
+    "service|ts-travel-service": "ts-travel-service",
+    "service|ts-travel2-service": "ts-travel2-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

@@ -1,0 +1,17 @@
+c OpsBench V2 ts4-ts-route-plan-service-exception-ztg25x
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 40 7
+c node:ts-route-plan-service
+2 10 16 24 25 34 0
+c node:ts-travel-plan-service
+3 18 27 29 32 33 37 39 0
+c node:ts-ui-dashboard
+1 6 7 8 9 13 14 15 19 20 21 23 26 30 31 36 38 40 0
+c dependency:ts-route-plan-service->ts-travel-plan-service
+5 12 35 0
+c propagation:ts-route-plan-service->ts-travel-plan-service
+11 0
+c dependency:ts-travel-plan-service->ts-ui-dashboard
+4 22 28 0
+c propagation:ts-travel-plan-service->ts-ui-dashboard
+17 0

@@ -1,0 +1,1010 @@
+schema_version: '2.0'
+case: ts4-ts-food-service-request-abort-gzrt8n
+status: needs_review
+construction: deterministic_rule_enumeration
+privileged_offline_artifact: true
+rule_contract:
+  version: 1.0.0
+  min_samples: 5
+  min_events: 3
+  latency_ratio: 3.0
+  latency_delta_ms: 20.0
+  error_rate_delta: 0.05
+  error_rate_ratio: 2.0
+  log_rate_delta: 0.01
+  log_rate_ratio: 3.0
+  metric_ratio: 3.0
+  cpu_delta: 0.5
+  nested_min_ms: 20.0
+  nested_min_fraction_of_caller: 0.5
+  nested_min_fraction_of_pairs: 0.5
+  lifecycle_restart_delta: 1
+  lifecycle_ready_ratio: 0.5
+  semantics: Exploratory fixed heuristics; not calibrated detection guarantees.
+reference_path:
+  nodes:
+  - timestamp: null
+    component: service|ts-food-service
+    state:
+    - erroring
+    - missing
+    - slow
+  - timestamp: null
+    component: service|ts-preserve-service
+    state:
+    - missing
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - erroring
+    - missing
+    - slow
+  - timestamp: null
+    component: service|ts-train-food-service
+    state:
+    - unknown
+  edges:
+  - source: service|ts-food-service
+    target: service|ts-preserve-service
+  - source: service|ts-food-service
+    target: service|ts-ui-dashboard
+  - source: service|ts-preserve-service
+    target: service|ts-ui-dashboard
+  - source: service|ts-train-food-service
+    target: service|ts-food-service
+  root_causes:
+  - timestamp: null
+    component: service|ts-food-service
+    state:
+    - unknown
+  - timestamp: null
+    component: service|ts-train-food-service
+    state:
+    - unknown
+  alarm_nodes:
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - unknown
+  component_to_service:
+    service|ts-food-service: ts-food-service
+    service|ts-preserve-service: ts-preserve-service
+    service|ts-train-food-service: ts-train-food-service
+    service|ts-ui-dashboard: ts-ui-dashboard
+summary:
+  n_clauses: 13
+  covered: 7
+  open: 6
+  n_candidates: 864
+  n_literals: 19
+  n_queries: 74
+  coverage_all: 0.5384615384615384
+semantics: AND of obligation clauses; OR of complete composite witnesses within each clause. Empty clause remains false/unresolved;
+  never dropped. Coverage is operational evidence coverage, not proof of injected root cause.
+clauses:
+- id: node:ts-food-service
+  kind: node_involvement
+  subject:
+    service: ts-food-service
+  meaning: local anomaly OR incident call on annotated root boundary
+  literals:
+  - e_260a759962601c08648a506d
+  - e_3337d8cdef8c8e6ffc97f519
+  - e_43b73521c90fc63e718115cc
+  - e_58f2b29bb610aadf4f55312d
+  - e_95501945be0049a607b65011
+  - e_d6d39cb6904c962f37bd4751
+  - e_ed37b32eaa212d6a1083dd14
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-preserve-service
+  kind: node_anomaly
+  subject:
+    service: ts-preserve-service
+  meaning: local anomalous telemetry
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-train-food-service
+  kind: node_involvement
+  subject:
+    service: ts-train-food-service
+  meaning: local anomaly OR incident call on annotated root boundary
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-ui-dashboard
+  kind: node_anomaly
+  subject:
+    service: ts-ui-dashboard
+  meaning: local anomalous telemetry
+  literals:
+  - e_1cf4feb43e483e3916743572
+  - e_27be5d90f670404f1325c35a
+  - e_3ac9199c308027932967b569
+  - e_ac9499b507f160a80819affe
+  - e_b113e945b9780dc831551e92
+  - e_c8200fa50e3b279adad14cf4
+  - e_eb037b7837653805630a777f
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-food-service->ts-preserve-service
+  kind: dependency
+  subject: &id001
+    source: ts-food-service
+    target: ts-preserve-service
+    caller: ts-preserve-service
+    callee: ts-food-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_49cc527030864bab13152be9
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-food-service->ts-preserve-service
+  kind: propagation_observation
+  subject: *id001
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-food-service->ts-ui-dashboard
+  kind: dependency
+  subject: &id002
+    source: ts-food-service
+    target: ts-ui-dashboard
+    caller: ts-ui-dashboard
+    callee: ts-food-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_183fe8a1e7a1daf07003a8a9
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-food-service->ts-ui-dashboard
+  kind: propagation_observation
+  subject: *id002
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals:
+  - e_008099f9595ee71f4e4a80c6
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-preserve-service->ts-ui-dashboard
+  kind: dependency
+  subject: &id003
+    source: ts-preserve-service
+    target: ts-ui-dashboard
+    caller: ts-ui-dashboard
+    callee: ts-preserve-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_d57e157278a48504bd6d45a1
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-preserve-service->ts-ui-dashboard
+  kind: propagation_observation
+  subject: *id003
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-train-food-service->ts-food-service
+  kind: dependency
+  subject: &id004
+    source: ts-train-food-service
+    target: ts-food-service
+    caller: ts-food-service
+    callee: ts-train-food-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_e8ee9f7b16b65994991a20db
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-train-food-service->ts-food-service
+  kind: propagation_observation
+  subject: *id004
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: root_boundary
+  kind: boundary_anomaly
+  subject:
+    ends:
+    - ts-food-service
+    - ts-train-food-service
+  meaning: anomalous call on this boundary; does not identify injection mechanism or side
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+literals:
+- rule_id: server_parent_linked_errors
+  rule_version: 1.0.0
+  subject: &id005
+    caller: ts-ui-dashboard
+    callee: ts-food-service
+    caller_operation: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    callee_operation: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+  baseline: &id006
+    caller_operation: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    callee_operation: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    n: 359
+    median_ms: 14.907732
+    caller_ms: 16.845033
+    linked_errors: 0
+    dominant_calls: 0
+    first_time: '2025-09-04 02:54:54.675000+00:00'
+    last_time: '2025-09-04 02:58:53.679000+00:00'
+  incident: &id007
+    caller_operation: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    callee_operation: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    n: 396
+    median_ms: 5.9301075
+    caller_ms: 9.33428
+    linked_errors: 47
+    dominant_calls: 5
+    first_time: '2025-09-04 02:58:54.014000+00:00'
+    last_time: '2025-09-04 03:02:53.390000+00:00'
+  query_refs:
+  - q_875fdfc79d7ce902630e
+  - q_e6a56668d53b8389459b
+  verdict: supports
+  obligation_ids:
+  - propagation:ts-food-service->ts-ui-dashboard
+  note: Increased fraction of nested parent and child SERVER errors; propagation-compatible.
+  units: null
+  id: e_008099f9595ee71f4e4a80c6
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject: *id005
+  baseline: *id006
+  incident: *id007
+  query_refs:
+  - q_875fdfc79d7ce902630e
+  - q_e6a56668d53b8389459b
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-food-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_183fe8a1e7a1daf07003a8a9
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: service
+    service_name: ts-ui-dashboard
+  baseline:
+    service_name: ts-ui-dashboard
+    n: 5632
+    median_ms: 6.898545
+    p95_ms: 199.15577545
+    p99_ms: 896.464615689989
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.027357+00:00'
+    last_time: '2025-09-04 02:58:53.944423+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    n: 6439
+    median_ms: 6.006171
+    p95_ms: 143.57193429999987
+    p99_ms: 802.1692669799974
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.020963+00:00'
+    last_time: '2025-09-04 03:02:53.949090+00:00'
+  query_refs:
+  - q_e795ac07460b6cf2e092
+  - q_f222d34d147e6b54fd19
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_1cf4feb43e483e3916743572
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-food-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+  baseline:
+    service_name: ts-food-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    n: 518
+    median_ms: 6.2943555
+    p95_ms: 32.4469158
+    p99_ms: 382.6235713899969
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.676961+00:00'
+    last_time: '2025-09-04 02:58:53.687834+00:00'
+  incident:
+    service_name: ts-food-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    n: 396
+    median_ms: 1.287428
+    p95_ms: 7.04180025
+    p99_ms: 20.142336000000057
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.015811+00:00'
+    last_time: '2025-09-04 03:02:53.392043+00:00'
+  query_refs:
+  - q_ad24b953dc4e5d46175e
+  - q_b9efb7fc2a8cd18bba53
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_260a759962601c08648a506d
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelservice/trips/left
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelservice/trips/left
+    span_kind: Server
+    http_method: POST
+    n: 131
+    median_ms: 116.000394
+    p95_ms: 342.175652
+    p99_ms: 3242.0108391999756
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:56.401745+00:00'
+    last_time: '2025-09-04 02:58:52.996363+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelservice/trips/left
+    span_kind: Server
+    http_method: POST
+    n: 143
+    median_ms: 102.589485
+    p95_ms: 1583.6928614000021
+    p99_ms: 3227.7069917800027
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.459602+00:00'
+    last_time: '2025-09-04 03:02:53.609484+00:00'
+  query_refs:
+  - q_ad24b953dc4e5d46175e
+  - q_b9efb7fc2a8cd18bba53
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_27be5d90f670404f1325c35a
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-food-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-food-service-64d454885b-vnzkg
+  baseline:
+    service_name: ts-food-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-food-service-64d454885b-vnzkg
+    n: 518
+    median_ms: 6.2943555
+    p95_ms: 32.4469158
+    p99_ms: 382.6235713899969
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.676961+00:00'
+    last_time: '2025-09-04 02:58:53.687834+00:00'
+  incident:
+    service_name: ts-food-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-food-service-64d454885b-vnzkg
+    n: 396
+    median_ms: 1.287428
+    p95_ms: 7.04180025
+    p99_ms: 20.142336000000057
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.015811+00:00'
+    last_time: '2025-09-04 03:02:53.392043+00:00'
+  query_refs:
+  - q_80cc6785f1b26ec8d34b
+  - q_c567fb843d38e0c651aa
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_3337d8cdef8c8e6ffc97f519
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelservice/trips/left
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelservice/trips/left
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+    n: 131
+    median_ms: 116.000394
+    p95_ms: 342.175652
+    p99_ms: 3242.0108391999756
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:56.401745+00:00'
+    last_time: '2025-09-04 02:58:52.996363+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelservice/trips/left
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+    n: 143
+    median_ms: 102.589485
+    p95_ms: 1583.6928614000021
+    p99_ms: 3227.7069917800027
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.459602+00:00'
+    last_time: '2025-09-04 03:02:53.609484+00:00'
+  query_refs:
+  - q_80cc6785f1b26ec8d34b
+  - q_c567fb843d38e0c651aa
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_3ac9199c308027932967b569
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-food-service
+    span_name: FoodController.getAllFood
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-food-service
+    span_name: FoodController.getAllFood
+    span_kind: Internal
+    http_method: null
+    n: 359
+    median_ms: 12.74237
+    p95_ms: 109.66723769999997
+    p99_ms: 636.9370186400037
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.676048+00:00'
+    last_time: '2025-09-04 02:58:53.680013+00:00'
+  incident:
+    service_name: ts-food-service
+    span_name: FoodController.getAllFood
+    span_kind: Internal
+    http_method: null
+    n: 396
+    median_ms: 2.7371035
+    p95_ms: 11.60339075
+    p99_ms: 43.43515115000182
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.014902+00:00'
+    last_time: '2025-09-04 03:02:53.391122+00:00'
+  query_refs:
+  - q_ad24b953dc4e5d46175e
+  - q_b9efb7fc2a8cd18bba53
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_43b73521c90fc63e718115cc
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-preserve-service
+    callee: ts-food-service
+    client_operation: POST
+    server_operation: POST /api/v1/foodservice/orders
+  baseline:
+    client_operation: POST
+    server_operation: POST /api/v1/foodservice/orders
+    n: 37
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 12.945455
+    p95_ms: 24.65170499999998
+    server_ms: 11.615198
+    wait_ms: 1.431529
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-09-04 02:54:58.888797+00:00'
+    last_time: '2025-09-04 02:58:51.982676+00:00'
+  incident: null
+  query_refs:
+  - q_5bacf2ec39ee44771338
+  - q_f185bd7b5a05a034f93b
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-food-service->ts-preserve-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_49cc527030864bab13152be9
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-food-service
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-food-service-64d454885b-vnzkg
+  baseline:
+    service_name: ts-food-service
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-food-service-64d454885b-vnzkg
+    n: 359
+    median_ms: 14.907732
+    p95_ms: 112.72001299999998
+    p99_ms: 970.6544047800074
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.675000+00:00'
+    last_time: '2025-09-04 02:58:53.679000+00:00'
+  incident:
+    service_name: ts-food-service
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-food-service-64d454885b-vnzkg
+    n: 396
+    median_ms: 5.9301075
+    p95_ms: 19.63681525
+    p99_ms: 307.61111655
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.014000+00:00'
+    last_time: '2025-09-04 03:02:53.390000+00:00'
+  query_refs:
+  - q_80cc6785f1b26ec8d34b
+  - q_c567fb843d38e0c651aa
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_58f2b29bb610aadf4f55312d
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: service
+    service_name: ts-food-service
+  baseline:
+    service_name: ts-food-service
+    n: 1765
+    median_ms: 8.49271
+    p95_ms: 48.93626979999999
+    p99_ms: 428.1679494799964
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.675000+00:00'
+    last_time: '2025-09-04 02:58:53.698242+00:00'
+  incident:
+    service_name: ts-food-service
+    n: 1583
+    median_ms: 2.243288
+    p95_ms: 10.706246499999985
+    p99_ms: 32.449217780000126
+    errors: 1185
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.014000+00:00'
+    last_time: '2025-09-04 03:02:53.394593+00:00'
+  query_refs:
+  - q_e795ac07460b6cf2e092
+  - q_f222d34d147e6b54fd19
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_95501945be0049a607b65011
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+    n: 359
+    median_ms: 16.845033
+    p95_ms: 117.95123899999997
+    p99_ms: 971.4773864400073
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.701301+00:00'
+    last_time: '2025-09-04 02:58:53.706880+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+    n: 398
+    median_ms: 9.314531
+    p95_ms: 41.13029599999998
+    p99_ms: 590.9390978299771
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.041835+00:00'
+    last_time: '2025-09-04 03:02:53.392338+00:00'
+  query_refs:
+  - q_80cc6785f1b26ec8d34b
+  - q_c567fb843d38e0c651aa
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_ac9499b507f160a80819affe
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    n: 359
+    median_ms: 16.845033
+    p95_ms: 117.95123899999997
+    p99_ms: 971.4773864400073
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.701301+00:00'
+    last_time: '2025-09-04 02:58:53.706880+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    n: 398
+    median_ms: 9.314531
+    p95_ms: 41.13029599999998
+    p99_ms: 590.9390978299771
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.041835+00:00'
+    last_time: '2025-09-04 03:02:53.392338+00:00'
+  query_refs:
+  - q_ad24b953dc4e5d46175e
+  - q_b9efb7fc2a8cd18bba53
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_b113e945b9780dc831551e92
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/{id}
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/{id}
+    span_kind: Server
+    http_method: GET
+    n: 53
+    median_ms: 9.473336
+    p95_ms: 22.649166399999995
+    p99_ms: 39.37915731999998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:55:03.721201+00:00'
+    last_time: '2025-09-04 02:58:53.817700+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/{id}
+    span_kind: Server
+    http_method: GET
+    n: 90
+    median_ms: 8.033599
+    p95_ms: 26.758791099999968
+    p99_ms: 263.39354894999934
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:58:57.188507+00:00'
+    last_time: '2025-09-04 03:02:52.504086+00:00'
+  query_refs:
+  - q_ad24b953dc4e5d46175e
+  - q_b9efb7fc2a8cd18bba53
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_c8200fa50e3b279adad14cf4
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-ui-dashboard
+    callee: ts-preserve-service
+    caller_operation: POST /api/v1/preserveservice/preserve
+    callee_operation: POST /api/v1/preserveservice/preserve
+  baseline:
+    caller_operation: POST /api/v1/preserveservice/preserve
+    callee_operation: POST /api/v1/preserveservice/preserve
+    n: 125
+    median_ms: 181.666152
+    caller_ms: 183.883166
+    linked_errors: 0
+    dominant_calls: 3
+    first_time: '2025-09-04 02:54:55.324000+00:00'
+    last_time: '2025-09-04 02:58:53.136000+00:00'
+  incident: null
+  query_refs:
+  - q_44d9084d369555ea00e7
+  - q_fe37fb155f1e74fa6c40
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-preserve-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_d57e157278a48504bd6d45a1
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-food-service
+    span_name: FoodController.getAllFood
+    span_kind: Internal
+    http_method: null
+    pod: ts-food-service-64d454885b-vnzkg
+  baseline:
+    service_name: ts-food-service
+    span_name: FoodController.getAllFood
+    span_kind: Internal
+    http_method: null
+    pod: ts-food-service-64d454885b-vnzkg
+    n: 359
+    median_ms: 12.74237
+    p95_ms: 109.66723769999997
+    p99_ms: 636.9370186400037
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.676048+00:00'
+    last_time: '2025-09-04 02:58:53.680013+00:00'
+  incident:
+    service_name: ts-food-service
+    span_name: FoodController.getAllFood
+    span_kind: Internal
+    http_method: null
+    pod: ts-food-service-64d454885b-vnzkg
+    n: 396
+    median_ms: 2.7371035
+    p95_ms: 11.60339075
+    p99_ms: 43.43515115000182
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.014902+00:00'
+    last_time: '2025-09-04 03:02:53.391122+00:00'
+  query_refs:
+  - q_80cc6785f1b26ec8d34b
+  - q_c567fb843d38e0c651aa
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_d6d39cb6904c962f37bd4751
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-food-service
+    callee: ts-train-food-service
+    client_operation: GET
+    server_operation: GET /api/v1/trainfoodservice/trainfoods/{tripId}
+  baseline:
+    client_operation: GET
+    server_operation: GET /api/v1/trainfoodservice/trainfoods/{tripId}
+    n: 359
+    client_methods:
+    - GET
+    server_methods:
+    - GET
+    median_ms: 5.436852
+    p95_ms: 17.927857399999972
+    server_ms: 4.768099
+    wait_ms: 0.559563
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-09-04 02:54:54.676961+00:00'
+    last_time: '2025-09-04 02:58:53.681026+00:00'
+  incident:
+    client_operation: GET
+    server_operation: GET /api/v1/trainfoodservice/trainfoods/{tripId}
+    n: 1
+    client_methods:
+    - GET
+    server_methods:
+    - GET
+    median_ms: 4.591784
+    p95_ms: 4.591784
+    server_ms: 4.133043
+    wait_ms: 0.458741
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-09-04 02:58:54.015811+00:00'
+    last_time: '2025-09-04 02:58:54.015811+00:00'
+  query_refs:
+  - q_7905d11d49d943c22f3d
+  - q_a4e3fac0013cae64e4ce
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-train-food-service->ts-food-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_e8ee9f7b16b65994991a20db
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/{id}
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/{id}
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+    n: 53
+    median_ms: 9.473336
+    p95_ms: 22.649166399999995
+    p99_ms: 39.37915731999998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:55:03.721201+00:00'
+    last_time: '2025-09-04 02:58:53.817700+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/{id}
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-rqw5n
+    n: 90
+    median_ms: 8.033599
+    p95_ms: 26.758791099999968
+    p99_ms: 263.39354894999934
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:58:57.188507+00:00'
+    last_time: '2025-09-04 03:02:52.504086+00:00'
+  query_refs:
+  - q_80cc6785f1b26ec8d34b
+  - q_c567fb843d38e0c651aa
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_eb037b7837653805630a777f
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-food-service
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-food-service
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    n: 359
+    median_ms: 14.907732
+    p95_ms: 112.72001299999998
+    p99_ms: 970.6544047800074
+    errors: 0
+    http4xx: 0
+    first_time: '2025-09-04 02:54:54.675000+00:00'
+    last_time: '2025-09-04 02:58:53.679000+00:00'
+  incident:
+    service_name: ts-food-service
+    span_name: GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}
+    span_kind: Server
+    http_method: GET
+    n: 396
+    median_ms: 5.9301075
+    p95_ms: 19.63681525
+    p99_ms: 307.61111655
+    errors: 395
+    http4xx: 0
+    first_time: '2025-09-04 02:58:54.014000+00:00'
+    last_time: '2025-09-04 03:02:53.390000+00:00'
+  query_refs:
+  - q_ad24b953dc4e5d46175e
+  - q_b9efb7fc2a8cd18bba53
+  verdict: supports
+  obligation_ids:
+  - node:ts-food-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_ed37b32eaa212d6a1083dd14

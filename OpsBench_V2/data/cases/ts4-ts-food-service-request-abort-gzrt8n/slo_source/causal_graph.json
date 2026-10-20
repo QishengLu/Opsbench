@@ -1,0 +1,314 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-food-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::BasicErrorController.error",
+      "state": [
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-ui-dashboard::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::FoodOrderRepository.findByOrderId",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::FoodController.createFoodOrder",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::POST /api/v1/foodservice/orders",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-preserve-service::PreserveController.preserve",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::SELECT ts.food_order",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::Session.merge foodsearch.entity.FoodOrder",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::FoodOrderRepository.save",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::SELECT FoodOrder",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::INSERT ts.food_order",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::Transaction.commit",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|ts-food-service::FoodController.getAllFood",
+      "state": [
+        "unknown",
+        "healthy"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "span|ts-food-service::SELECT ts.food_order",
+      "target": "span|ts-food-service::Session.merge foodsearch.entity.FoodOrder"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}"
+    },
+    {
+      "source": "span|ts-food-service::POST /api/v1/foodservice/orders",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-food-service::FoodOrderRepository.findByOrderId",
+      "target": "span|ts-food-service::FoodController.createFoodOrder"
+    },
+    {
+      "source": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "target": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-food-service::FoodOrderRepository.save",
+      "target": "span|ts-food-service::FoodController.createFoodOrder"
+    },
+    {
+      "source": "span|ts-food-service::BasicErrorController.error",
+      "target": "span|ts-food-service::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}"
+    },
+    {
+      "source": "span|ts-food-service::FoodController.createFoodOrder",
+      "target": "span|ts-food-service::POST /api/v1/foodservice/orders"
+    },
+    {
+      "source": "span|ts-food-service::SELECT ts.food_order",
+      "target": "span|ts-food-service::SELECT FoodOrder"
+    },
+    {
+      "source": "span|ts-food-service::Transaction.commit",
+      "target": "span|ts-food-service::FoodOrderRepository.save"
+    },
+    {
+      "source": "span|ts-food-service::SELECT FoodOrder",
+      "target": "span|ts-food-service::FoodOrderRepository.findByOrderId"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-food-service::INSERT ts.food_order",
+      "target": "span|ts-food-service::Transaction.commit"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::Transaction.commit"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::SELECT ts.food_order"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::BasicErrorController.error"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::FoodOrderRepository.findByOrderId"
+    },
+    {
+      "source": "span|ts-food-service::FoodController.getAllFood",
+      "target": "span|ts-food-service::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::FoodController.getAllFood"
+    },
+    {
+      "source": "span|ts-preserve-service::PreserveController.preserve",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::Session.merge foodsearch.entity.FoodOrder"
+    },
+    {
+      "source": "span|ts-food-service::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}",
+      "target": "span|ts-ui-dashboard::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::INSERT ts.food_order"
+    },
+    {
+      "source": "span|ts-food-service::Session.merge foodsearch.entity.FoodOrder",
+      "target": "span|ts-food-service::FoodOrderRepository.save"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::POST /api/v1/foodservice/orders"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::SELECT FoodOrder"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::FoodOrderRepository.save"
+    },
+    {
+      "source": "service|ts-food-service",
+      "target": "span|ts-food-service::FoodController.createFoodOrder"
+    },
+    {
+      "source": "span|ts-ui-dashboard::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}",
+      "target": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-food-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1756954730,
+      "component": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}",
+      "state": [
+        "high_avg_latency",
+        "high_p99_latency",
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756954730,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "missing_span"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-food-service": "ts-food-service",
+    "span|ts-food-service::BasicErrorController.error": "ts-food-service",
+    "span|ts-food-service::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}": "ts-food-service",
+    "span|ts-ui-dashboard::GET /api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/foodservice/foods/{date}/{startStation}/{endStation}/{tripId}": "loadgenerator",
+    "span|ts-food-service::FoodOrderRepository.findByOrderId": "ts-food-service",
+    "span|ts-food-service::FoodController.createFoodOrder": "ts-food-service",
+    "span|ts-food-service::POST /api/v1/foodservice/orders": "ts-food-service",
+    "span|ts-preserve-service::PreserveController.preserve": "ts-preserve-service",
+    "span|ts-preserve-service::POST /api/v1/preserveservice/preserve": "ts-preserve-service",
+    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve": "loadgenerator",
+    "span|ts-food-service::SELECT ts.food_order": "ts-food-service",
+    "span|ts-food-service::Session.merge foodsearch.entity.FoodOrder": "ts-food-service",
+    "span|ts-food-service::FoodOrderRepository.save": "ts-food-service",
+    "span|ts-food-service::SELECT FoodOrder": "ts-food-service",
+    "span|ts-food-service::INSERT ts.food_order": "ts-food-service",
+    "span|ts-food-service::Transaction.commit": "ts-food-service",
+    "span|ts-food-service::FoodController.getAllFood": "ts-food-service"
+  }
+}

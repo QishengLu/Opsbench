@@ -1,0 +1,355 @@
+{
+  "case": "ts4-ts-route-plan-service-exception-ztg25x",
+  "gt_sha256": "93f91afbab4908c6141b7156e22990acdd1b26b3accc79b3feae1e0ac75a954b",
+  "sources": {
+    "normal_traces": {
+      "status": "available",
+      "path": "telemetry/normal_traces.parquet",
+      "sha256": "3cea82b68415f8d9251ff9e9d33e880801a7973317f23d1dc9424658bfc25f7a",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "parent_span_id": "VARCHAR",
+        "span_name": "VARCHAR",
+        "attr.span_kind": "VARCHAR",
+        "service_name": "VARCHAR",
+        "duration": "UBIGINT",
+        "attr.status_code": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.http.request.content_length": "UBIGINT",
+        "attr.http.response.content_length": "UBIGINT",
+        "attr.http.request.method": "VARCHAR",
+        "attr.http.response.status_code": "USMALLINT"
+      }
+    },
+    "normal_logs": {
+      "status": "available",
+      "path": "telemetry/normal_logs.parquet",
+      "sha256": "88d2360a3eeb6f9ca7ffb4c96a846244aff745b9e268e9ce158f8bf1a8f5755a",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "level": "VARCHAR",
+        "service_name": "VARCHAR",
+        "message": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR"
+      }
+    },
+    "normal_metrics": {
+      "status": "available",
+      "path": "telemetry/normal_metrics.parquet",
+      "sha256": "cd8033373bed99dde7b94c1c0143fe9daa033784802fb8a6a12d45353f01ad1c",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "normal_metrics_sum": {
+      "status": "available",
+      "path": "telemetry/normal_metrics_sum.parquet",
+      "sha256": "0d051938dc34778f268abbccec2ef5ae2fcea62888372c7c81eb805fd39731eb",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "normal_metrics_histogram": {
+      "status": "available",
+      "path": "telemetry/normal_metrics_histogram.parquet",
+      "sha256": "c735a13467d92d46290f095cb33147dbaed92e3186ac62a31786f91a9227e853",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "service_name": "VARCHAR",
+        "count": "DOUBLE",
+        "sum": "DOUBLE",
+        "min": "DOUBLE",
+        "max": "DOUBLE",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.jvm.gc.action": "VARCHAR",
+        "attr.jvm.gc.name": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_traces": {
+      "status": "available",
+      "path": "telemetry/abnormal_traces.parquet",
+      "sha256": "44fb35fcf90b529ced2f1967f7c92fc5e01881d2db2155d0fd9fcd1f3d0fda9b",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "parent_span_id": "VARCHAR",
+        "span_name": "VARCHAR",
+        "attr.span_kind": "VARCHAR",
+        "service_name": "VARCHAR",
+        "duration": "UBIGINT",
+        "attr.status_code": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.http.request.content_length": "UBIGINT",
+        "attr.http.response.content_length": "UBIGINT",
+        "attr.http.request.method": "VARCHAR",
+        "attr.http.response.status_code": "USMALLINT"
+      }
+    },
+    "abnormal_logs": {
+      "status": "available",
+      "path": "telemetry/abnormal_logs.parquet",
+      "sha256": "295a85f56cf4c4699d1e1839fef4b193d6c801d2e1aa0ecba6ec137cb43604f0",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "level": "VARCHAR",
+        "service_name": "VARCHAR",
+        "message": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR"
+      }
+    },
+    "abnormal_metrics": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics.parquet",
+      "sha256": "50e0d6e4cae533d91b528f637c44a018fc5b54557f532844c83ec35f6104c82b",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_metrics_sum": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics_sum.parquet",
+      "sha256": "a5313a37fd0baabf4229f088561a9099ebb3dfed509a1aff50b02f4d9aca3521",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_metrics_histogram": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics_histogram.parquet",
+      "sha256": "4d12b4fd63f6dc3f038ad032abcdc400e6a807e1622d267ffc2904318653861d",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "service_name": "VARCHAR",
+        "count": "DOUBLE",
+        "sum": "DOUBLE",
+        "min": "DOUBLE",
+        "max": "DOUBLE",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.jvm.gc.action": "VARCHAR",
+        "attr.jvm.gc.name": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    }
+  },
+  "rule_contract_sha256": "28f3593aed5355a258608a3dac7c12e07508acb22ee89f70285847a8e4346b35",
+  "engine_sha256": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enumerate.py": "93bc08e49144ce7e8bd3f3c95eaabeae57d633836d5348db04fc079a3714f2a1",
+    "pipeline.py": "6cb42efab816d34d6eee4746a081f838a8b288464fa4e274d28aae027affb0a1",
+    "prepare_cases.py": "c8595d22c582e9233a796318285e131aedb83c49e85303a7ef91d90f638ba9b6",
+    "render.py": "d6ffc10d9bdfb58e7577148f9bdc1cdbc0b53aac8612f9c87370f72117a6c3f2",
+    "rules.py": "5218cf46aca66115bb2d8c0af7c942b447e63e7466eaf9c08303536b9cbd921f",
+    "storage.py": "739e4b462801c778503326055b9aa36a43f02c4c46b471c0270f77caa6489133",
+    "verify.py": "14d0b0ae824681069d6656165f701696270df959222f32c3f84c24d3beee7c04"
+  },
+  "inventory": {
+    "normal_traces": {
+      "n": 151929,
+      "first_time": "2025-08-28 08:26:19.035927+00:00",
+      "last_time": "2025-08-28 08:30:18.999660+00:00",
+      "observed_extent_seconds": 239.963733,
+      "status": "available",
+      "query_ref": "q_65c876bc4f0cd2b52954",
+      "scope_rows": 8931,
+      "scope_count_query_ref": "q_1c29bc615fab1a285d3a",
+      "full_row_selector_sql": "SELECT * FROM normal_traces WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_logs": {
+      "n": 80417,
+      "first_time": "2025-08-28 08:26:19.037000+00:00",
+      "last_time": "2025-08-28 08:30:19+00:00",
+      "observed_extent_seconds": 239.963,
+      "status": "available",
+      "query_ref": "q_86c381a8425afc848680",
+      "scope_rows": 7747,
+      "scope_count_query_ref": "q_3d4e94f77bbc919d515f",
+      "full_row_selector_sql": "SELECT * FROM normal_logs WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics": {
+      "n": 69940,
+      "first_time": "2025-08-28 08:26:19.321952+00:00",
+      "last_time": "2025-08-28 08:30:18.819751+00:00",
+      "observed_extent_seconds": 239.497799,
+      "status": "available",
+      "query_ref": "q_204d140ca35c257f01f7",
+      "scope_rows": 3640,
+      "scope_count_query_ref": "q_c85ad2a876623f534e23",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics_sum": {
+      "n": 41835,
+      "first_time": "2025-08-28 08:26:19.321952+00:00",
+      "last_time": "2025-08-28 08:30:18.819751+00:00",
+      "observed_extent_seconds": 239.497799,
+      "status": "available",
+      "query_ref": "q_30def8febead625210eb",
+      "scope_rows": 1240,
+      "scope_count_query_ref": "q_f7a6866893ff5c838ce8",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics_sum WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics_histogram": {
+      "n": 665,
+      "first_time": "2025-08-28 08:26:46.886000+00:00",
+      "last_time": "2025-08-28 08:29:58.312000+00:00",
+      "observed_extent_seconds": 191.426,
+      "status": "available",
+      "query_ref": "q_f51a62e6f60ff9214d12",
+      "scope_rows": 63,
+      "scope_count_query_ref": "q_1f619b10c01785fddf60",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics_histogram WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_traces": {
+      "n": 141576,
+      "first_time": "2025-08-28 08:30:19.000235+00:00",
+      "last_time": "2025-08-28 08:34:17.913371+00:00",
+      "observed_extent_seconds": 238.913136,
+      "status": "available",
+      "query_ref": "q_0eac2427bbb350ed29b7",
+      "scope_rows": 8940,
+      "scope_count_query_ref": "q_5e85b1cb18896e2de359",
+      "full_row_selector_sql": "SELECT * FROM abnormal_traces WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_logs": {
+      "n": 74306,
+      "first_time": "2025-08-28 08:30:19+00:00",
+      "last_time": "2025-08-28 08:34:17.915000+00:00",
+      "observed_extent_seconds": 238.915,
+      "status": "available",
+      "query_ref": "q_c852b84142c09957632f",
+      "scope_rows": 7868,
+      "scope_count_query_ref": "q_1c0c49e9be6aa43eea39",
+      "full_row_selector_sql": "SELECT * FROM abnormal_logs WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics": {
+      "n": 69536,
+      "first_time": "2025-08-28 08:30:19.308190+00:00",
+      "last_time": "2025-08-28 08:34:17.314647+00:00",
+      "observed_extent_seconds": 238.006457,
+      "status": "available",
+      "query_ref": "q_cfa2361ca6a83e2d1852",
+      "scope_rows": 3616,
+      "scope_count_query_ref": "q_57856ef48d30df515ed5",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics_sum": {
+      "n": 44805,
+      "first_time": "2025-08-28 08:30:19.308190+00:00",
+      "last_time": "2025-08-28 08:34:17.314647+00:00",
+      "observed_extent_seconds": 238.006457,
+      "status": "available",
+      "query_ref": "q_e5459c3a6bab4ab065fa",
+      "scope_rows": 1234,
+      "scope_count_query_ref": "q_e7572ebfc0a3dab51da6",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics_sum WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics_histogram": {
+      "n": 660,
+      "first_time": "2025-08-28 08:30:46.886000+00:00",
+      "last_time": "2025-08-28 08:33:58.312000+00:00",
+      "observed_extent_seconds": 191.426,
+      "status": "available",
+      "query_ref": "q_47cde07fb8454be3acbf",
+      "scope_rows": 69,
+      "scope_count_query_ref": "q_f9fd6452de29b79264bc",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics_histogram WHERE service_name IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.source\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.destination\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('ts-route-plan-service','ts-travel-plan-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    }
+  },
+  "enumeration_complete_under_contract": true,
+  "limitations": [
+    "Not all possible fault mechanisms; only registered rules and observed groups.",
+    "No counter rates or histogram quantiles without temporality metadata.",
+    "No exact injection-mechanism labels inferred from GT.",
+    "Propagation predicates establish request-linked compatibility, not causality.",
+    "Missing tables retained as unavailable; unseen groups cannot be enumerated."
+  ]
+}

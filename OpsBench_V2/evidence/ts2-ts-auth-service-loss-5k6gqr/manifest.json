@@ -1,0 +1,355 @@
+{
+  "case": "ts2-ts-auth-service-loss-5k6gqr",
+  "gt_sha256": "91a0b7c1e1eeb582fbc1334f31a69642c98d42d7b0160a0ad4dc8c26d46a8272",
+  "sources": {
+    "normal_traces": {
+      "status": "available",
+      "path": "telemetry/normal_traces.parquet",
+      "sha256": "a880ed32d51ce676bf4e9981ed2f5a2fb229ff29ddc5519b6577e5f82dfb1a8f",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "parent_span_id": "VARCHAR",
+        "span_name": "VARCHAR",
+        "attr.span_kind": "VARCHAR",
+        "service_name": "VARCHAR",
+        "duration": "UBIGINT",
+        "attr.status_code": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.http.request.content_length": "UBIGINT",
+        "attr.http.response.content_length": "UBIGINT",
+        "attr.http.request.method": "VARCHAR",
+        "attr.http.response.status_code": "USMALLINT"
+      }
+    },
+    "normal_logs": {
+      "status": "available",
+      "path": "telemetry/normal_logs.parquet",
+      "sha256": "fde54b4441eb6a8907811360ff9cab02a554439f88159a0ec0f591a73eec6b2d",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "level": "VARCHAR",
+        "service_name": "VARCHAR",
+        "message": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR"
+      }
+    },
+    "normal_metrics": {
+      "status": "available",
+      "path": "telemetry/normal_metrics.parquet",
+      "sha256": "068b203fd328e883fbaf9f81e3647f34dadd61c5005ea89a2f1a28828b9ccee5",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "normal_metrics_sum": {
+      "status": "available",
+      "path": "telemetry/normal_metrics_sum.parquet",
+      "sha256": "6e243af4cbde95ba2badd4025dabfb75cb10eff36590d823d4093fb639bc814a",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "normal_metrics_histogram": {
+      "status": "available",
+      "path": "telemetry/normal_metrics_histogram.parquet",
+      "sha256": "4536e99d2121156796e0d81bb933f4aa58f5536e2694b1e8c1650f3f0e02e0f3",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "service_name": "VARCHAR",
+        "count": "DOUBLE",
+        "sum": "DOUBLE",
+        "min": "DOUBLE",
+        "max": "DOUBLE",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.jvm.gc.action": "VARCHAR",
+        "attr.jvm.gc.name": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_traces": {
+      "status": "available",
+      "path": "telemetry/abnormal_traces.parquet",
+      "sha256": "463b9cbad203089d3c5f59b11aa26d7bf5ac01bd52b891a9119b635108f031f8",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "parent_span_id": "VARCHAR",
+        "span_name": "VARCHAR",
+        "attr.span_kind": "VARCHAR",
+        "service_name": "VARCHAR",
+        "duration": "UBIGINT",
+        "attr.status_code": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.http.request.content_length": "UBIGINT",
+        "attr.http.response.content_length": "UBIGINT",
+        "attr.http.request.method": "VARCHAR",
+        "attr.http.response.status_code": "USMALLINT"
+      }
+    },
+    "abnormal_logs": {
+      "status": "available",
+      "path": "telemetry/abnormal_logs.parquet",
+      "sha256": "b4225d54e66b7151b117411581e353ecbc4f57def6255e306dfa3de89ae9b3a2",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "trace_id": "VARCHAR",
+        "span_id": "VARCHAR",
+        "level": "VARCHAR",
+        "service_name": "VARCHAR",
+        "message": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR"
+      }
+    },
+    "abnormal_metrics": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics.parquet",
+      "sha256": "9a331e722bbf096cd485baf5b5d29026f4be75c8335a7a9d2bf4ecd84518a7eb",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_metrics_sum": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics_sum.parquet",
+      "sha256": "944d314fc6afc96cfd59bc0dac1afc4184215cba530130a9451c0f9772925040",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "value": "DOUBLE",
+        "service_name": "VARCHAR",
+        "attr.k8s.node.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.k8s.statefulset.name": "VARCHAR",
+        "attr.k8s.deployment.name": "VARCHAR",
+        "attr.k8s.replicaset.name": "VARCHAR",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.container.name": "VARCHAR",
+        "attr.destination_workload": "VARCHAR",
+        "attr.source_workload": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    },
+    "abnormal_metrics_histogram": {
+      "status": "available",
+      "path": "telemetry/abnormal_metrics_histogram.parquet",
+      "sha256": "0c4bb713d0c9f5562999a0871c999e63685cc210069920cb3dbba85be1b4c8f8",
+      "schema": {
+        "time": "TIMESTAMP WITH TIME ZONE",
+        "metric": "VARCHAR",
+        "service_name": "VARCHAR",
+        "count": "DOUBLE",
+        "sum": "DOUBLE",
+        "min": "DOUBLE",
+        "max": "DOUBLE",
+        "attr.k8s.pod.name": "VARCHAR",
+        "attr.k8s.service.name": "VARCHAR",
+        "attr.k8s.namespace.name": "VARCHAR",
+        "attr.jvm.gc.action": "VARCHAR",
+        "attr.jvm.gc.name": "VARCHAR",
+        "attr.destination": "VARCHAR",
+        "attr.source": "VARCHAR"
+      }
+    }
+  },
+  "rule_contract_sha256": "28f3593aed5355a258608a3dac7c12e07508acb22ee89f70285847a8e4346b35",
+  "engine_sha256": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enumerate.py": "93bc08e49144ce7e8bd3f3c95eaabeae57d633836d5348db04fc079a3714f2a1",
+    "pipeline.py": "6cb42efab816d34d6eee4746a081f838a8b288464fa4e274d28aae027affb0a1",
+    "prepare_cases.py": "c8595d22c582e9233a796318285e131aedb83c49e85303a7ef91d90f638ba9b6",
+    "render.py": "d6ffc10d9bdfb58e7577148f9bdc1cdbc0b53aac8612f9c87370f72117a6c3f2",
+    "rules.py": "5218cf46aca66115bb2d8c0af7c942b447e63e7466eaf9c08303536b9cbd921f",
+    "storage.py": "739e4b462801c778503326055b9aa36a43f02c4c46b471c0270f77caa6489133",
+    "verify.py": "14d0b0ae824681069d6656165f701696270df959222f32c3f84c24d3beee7c04"
+  },
+  "inventory": {
+    "normal_traces": {
+      "n": 83540,
+      "first_time": "2025-07-18 13:53:25.146411+00:00",
+      "last_time": "2025-07-18 13:57:24.869848+00:00",
+      "observed_extent_seconds": 239.723437,
+      "status": "available",
+      "query_ref": "q_65c876bc4f0cd2b52954",
+      "scope_rows": 7880,
+      "scope_count_query_ref": "q_4ed5698277390beada10",
+      "full_row_selector_sql": "SELECT * FROM normal_traces WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_logs": {
+      "n": 42443,
+      "first_time": "2025-07-18 13:53:25.156427+00:00",
+      "last_time": "2025-07-18 13:57:24.877648+00:00",
+      "observed_extent_seconds": 239.721221,
+      "status": "available",
+      "query_ref": "q_86c381a8425afc848680",
+      "scope_rows": 4520,
+      "scope_count_query_ref": "q_773bf607455926820cf6",
+      "full_row_selector_sql": "SELECT * FROM normal_logs WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics": {
+      "n": 72254,
+      "first_time": "2025-07-18 13:53:25.132000+00:00",
+      "last_time": "2025-07-18 13:57:24.291726+00:00",
+      "observed_extent_seconds": 239.159726,
+      "status": "available",
+      "query_ref": "q_204d140ca35c257f01f7",
+      "scope_rows": 3636,
+      "scope_count_query_ref": "q_ade67e944521fe09945e",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics_sum": {
+      "n": 92996,
+      "first_time": "2025-07-18 13:53:26.966395+00:00",
+      "last_time": "2025-07-18 13:57:24.674000+00:00",
+      "observed_extent_seconds": 237.707605,
+      "status": "available",
+      "query_ref": "q_30def8febead625210eb",
+      "scope_rows": 1450,
+      "scope_count_query_ref": "q_6aa5c2a86d7900a798d0",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics_sum WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "normal_metrics_histogram": {
+      "n": 4200,
+      "first_time": "2025-07-18 13:53:27.505000+00:00",
+      "last_time": "2025-07-18 13:57:24.674000+00:00",
+      "observed_extent_seconds": 237.169,
+      "status": "available",
+      "query_ref": "q_f51a62e6f60ff9214d12",
+      "scope_rows": 374,
+      "scope_count_query_ref": "q_ca297be96ad29cbc0725",
+      "full_row_selector_sql": "SELECT * FROM normal_metrics_histogram WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_traces": {
+      "n": 360,
+      "first_time": "2025-07-18 13:57:25.075894+00:00",
+      "last_time": "2025-07-18 14:01:08.184144+00:00",
+      "observed_extent_seconds": 223.10825,
+      "status": "available",
+      "query_ref": "q_0eac2427bbb350ed29b7",
+      "scope_rows": 104,
+      "scope_count_query_ref": "q_d841ea22c7bfb0bf290d",
+      "full_row_selector_sql": "SELECT * FROM abnormal_traces WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_logs": {
+      "n": 665,
+      "first_time": "2025-07-18 13:57:25.085399+00:00",
+      "last_time": "2025-07-18 14:01:24.118000+00:00",
+      "observed_extent_seconds": 239.032601,
+      "status": "available",
+      "query_ref": "q_c852b84142c09957632f",
+      "scope_rows": 108,
+      "scope_count_query_ref": "q_45ab0750d49961714773",
+      "full_row_selector_sql": "SELECT * FROM abnormal_logs WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics": {
+      "n": 72284,
+      "first_time": "2025-07-18 13:57:25.132000+00:00",
+      "last_time": "2025-07-18 14:01:24.301679+00:00",
+      "observed_extent_seconds": 239.169679,
+      "status": "available",
+      "query_ref": "q_cfa2361ca6a83e2d1852",
+      "scope_rows": 3636,
+      "scope_count_query_ref": "q_8ab59e83849499f39d22",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics_sum": {
+      "n": 89364,
+      "first_time": "2025-07-18 13:57:25.768000+00:00",
+      "last_time": "2025-07-18 14:01:24.674000+00:00",
+      "observed_extent_seconds": 238.906,
+      "status": "available",
+      "query_ref": "q_e5459c3a6bab4ab065fa",
+      "scope_rows": 1396,
+      "scope_count_query_ref": "q_ad9afc698e03b76e61b9",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics_sum WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination_workload\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    },
+    "abnormal_metrics_histogram": {
+      "n": 3507,
+      "first_time": "2025-07-18 13:57:25.768000+00:00",
+      "last_time": "2025-07-18 14:01:24.674000+00:00",
+      "observed_extent_seconds": 238.906,
+      "status": "available",
+      "query_ref": "q_47cde07fb8454be3acbf",
+      "scope_rows": 319,
+      "scope_count_query_ref": "q_848aa92514804b7c1238",
+      "full_row_selector_sql": "SELECT * FROM abnormal_metrics_histogram WHERE service_name IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.source\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.destination\" IN ('mysql','ts-auth-service','ts-ui-dashboard') OR \"attr.k8s.service.name\" IN ('mysql','ts-auth-service','ts-ui-dashboard')",
+      "window_contract": "entire supplied normal/abnormal file; observed extent is NOT exposure"
+    }
+  },
+  "enumeration_complete_under_contract": true,
+  "limitations": [
+    "Not all possible fault mechanisms; only registered rules and observed groups.",
+    "No counter rates or histogram quantiles without temporality metadata.",
+    "No exact injection-mechanism labels inferred from GT.",
+    "Propagation predicates establish request-linked compatibility, not causality.",
+    "Missing tables retained as unavailable; unseen groups cannot be enumerated."
+  ]
+}

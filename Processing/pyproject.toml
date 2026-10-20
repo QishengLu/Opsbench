@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rca-evidence-processing"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.24", "pandas>=2", "pyarrow>=14", "scikit-learn>=1.3",
+                "drain3==0.9.11", "duckdb>=1.1,<2", "PyYAML>=6"]
+
+[project.optional-dependencies]
+shape = ["torch>=2.2,<3"]
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["rca_processing*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

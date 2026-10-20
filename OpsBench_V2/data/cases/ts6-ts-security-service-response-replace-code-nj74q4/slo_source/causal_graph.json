@@ -1,0 +1,213 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-security-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-security-service::SecurityController.check",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}",
+      "state": [
+        "high_error_rate",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-preserve-service::PreserveController.preserve",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "high_error_rate",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "high_error_rate",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "high_error_rate",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-security-service::BasicErrorController.error",
+      "state": [
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1753097625,
+      "component": "span|ts-security-service::SELECT ts.security_config",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1753097625,
+      "component": "span|ts-security-service::SELECT SecurityConfig",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1753097625,
+      "component": "span|ts-security-service::SecurityRepository.findByName",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753097630,
+      "component": "span|ts-preserve-service::BasicErrorController.error",
+      "state": [
+        "high_error_rate"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-preserve-service",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-preserve-service::BasicErrorController.error",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "span|ts-security-service::SecurityRepository.findByName"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "span|ts-security-service::SELECT ts.security_config"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "span|ts-security-service::BasicErrorController.error"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "span|ts-security-service::SecurityController.check"
+    },
+    {
+      "source": "span|ts-security-service::SELECT ts.security_config",
+      "target": "span|ts-security-service::SELECT SecurityConfig"
+    },
+    {
+      "source": "service|ts-preserve-service",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-security-service::BasicErrorController.error",
+      "target": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}"
+    },
+    {
+      "source": "span|ts-security-service::SecurityRepository.findByName",
+      "target": "span|ts-security-service::SecurityController.check"
+    },
+    {
+      "source": "span|ts-preserve-service::PreserveController.preserve",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "span|ts-security-service::SELECT SecurityConfig"
+    },
+    {
+      "source": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-security-service::SecurityController.check",
+      "target": "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}"
+    },
+    {
+      "source": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "target": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-preserve-service",
+      "target": "span|ts-preserve-service::BasicErrorController.error"
+    },
+    {
+      "source": "span|ts-security-service::SELECT SecurityConfig",
+      "target": "span|ts-security-service::SecurityRepository.findByName"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-security-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1753097630,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "high_error_rate",
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-security-service": "ts-security-service",
+    "span|ts-security-service::SecurityController.check": "ts-security-service",
+    "span|ts-security-service::GET /api/v1/securityservice/securityConfigs/{accountId}": "ts-security-service",
+    "span|ts-preserve-service::PreserveController.preserve": "ts-preserve-service",
+    "span|ts-preserve-service::POST /api/v1/preserveservice/preserve": "ts-preserve-service",
+    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve": "loadgenerator",
+    "span|ts-security-service::BasicErrorController.error": "ts-security-service",
+    "span|ts-security-service::SELECT ts.security_config": "ts-security-service",
+    "span|ts-security-service::SELECT SecurityConfig": "ts-security-service",
+    "span|ts-security-service::SecurityRepository.findByName": "ts-security-service",
+    "service|ts-preserve-service": "ts-preserve-service",
+    "span|ts-preserve-service::BasicErrorController.error": "ts-preserve-service"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-preserve-service",
+      "state": [
+        "erroring",
+        "healthy",
+        "missing"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-security-service",
+      "state": [
+        "erroring",
+        "missing"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "erroring",
+        "missing"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-order-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-preserve-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-security-service",
+      "target": "service|ts-preserve-service"
+    },
+    {
+      "source": "service|ts-order-service",
+      "target": "service|ts-security-service"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-security-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-order-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-order-service": "ts-order-service",
+    "service|ts-preserve-service": "ts-preserve-service",
+    "service|ts-security-service": "ts-security-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

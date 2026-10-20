@@ -1,0 +1,63 @@
+c OpsBench V2 ts2-ts-order-other-service-container-kill-48rlds
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 87 30
+c node:ts-order-other-service
+23 38 53 54 71 80 84 85 0
+c node:ts-preserve-service
+14 72 0
+c node:ts-seat-service
+5 13 17 21 22 25 27 29 36 37 39 42 50 52 55 56 65 66 69 79 81 86 0
+c node:ts-security-service
+16 51 57 62 0
+c node:ts-travel-plan-service
+3 15 45 49 58 63 74 83 0
+c node:ts-travel-service
+0
+c node:ts-travel2-service
+2 7 8 41 68 78 0
+c node:ts-ui-dashboard
+1 4 6 9 10 11 12 19 20 24 26 30 31 34 35 40 43 46 60 70 73 76 82 0
+c dependency:ts-order-other-service->ts-seat-service
+64 0
+c propagation:ts-order-other-service->ts-seat-service
+0
+c dependency:ts-order-other-service->ts-security-service
+67 0
+c propagation:ts-order-other-service->ts-security-service
+0
+c dependency:ts-order-other-service->ts-ui-dashboard
+32 0
+c propagation:ts-order-other-service->ts-ui-dashboard
+0
+c dependency:ts-preserve-service->ts-ui-dashboard
+77 0
+c propagation:ts-preserve-service->ts-ui-dashboard
+0
+c dependency:ts-seat-service->ts-travel-plan-service
+75 0
+c propagation:ts-seat-service->ts-travel-plan-service
+0
+c dependency:ts-seat-service->ts-travel-service
+28 0
+c propagation:ts-seat-service->ts-travel-service
+0
+c dependency:ts-seat-service->ts-travel2-service
+59 0
+c propagation:ts-seat-service->ts-travel2-service
+47 0
+c dependency:ts-security-service->ts-preserve-service
+33 0
+c propagation:ts-security-service->ts-preserve-service
+0
+c dependency:ts-travel-plan-service->ts-ui-dashboard
+18 48 61 0
+c propagation:ts-travel-plan-service->ts-ui-dashboard
+0
+c dependency:ts-travel-service->ts-preserve-service
+87 0
+c propagation:ts-travel-service->ts-preserve-service
+0
+c dependency:ts-travel2-service->ts-ui-dashboard
+44 0
+c propagation:ts-travel2-service->ts-ui-dashboard
+0

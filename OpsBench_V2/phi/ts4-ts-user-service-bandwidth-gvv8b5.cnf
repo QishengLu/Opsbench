@@ -1,0 +1,29 @@
+c OpsBench V2 ts4-ts-user-service-bandwidth-gvv8b5
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 60 13
+c node:mysql
+0
+c node:ts-preserve-service
+12 0
+c node:ts-ui-dashboard
+11 15 23 29 38 39 41 43 56 0
+c node:ts-user-service
+1 2 3 4 5 6 7 8 9 10 13 14 16 17 18 19 20 21 22 24 25 27 28 30 31 32 33 34 35 36 37 40 42 44 45 46 47 49 50 52 53 54 55 57 58 59 60 0
+c dependency:mysql->ts-user-service
+0
+c propagation:mysql->ts-user-service
+0
+c dependency:ts-preserve-service->ts-ui-dashboard
+51 0
+c propagation:ts-preserve-service->ts-ui-dashboard
+0
+c dependency:ts-user-service->ts-preserve-service
+48 0
+c propagation:ts-user-service->ts-preserve-service
+0
+c dependency:ts-user-service->ts-ui-dashboard
+26 0
+c propagation:ts-user-service->ts-ui-dashboard
+0
+c root_boundary
+0

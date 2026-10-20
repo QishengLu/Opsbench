@@ -1,0 +1,23 @@
+c OpsBench V2 ts2-ts-auth-service-loss-5k6gqr
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 48 10
+c node:mysql
+0
+c node:ts-auth-service
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 16 17 18 19 20 21 23 26 27 28 29 30 32 33 34 35 37 40 42 43 44 45 46 47 48 0
+c node:ts-ui-dashboard
+15 24 25 31 36 38 39 41 0
+c dependency:mysql->ts-auth-service
+0
+c propagation:mysql->ts-auth-service
+0
+c dependency:ts-auth-service->mysql
+0
+c propagation:ts-auth-service->mysql
+0
+c dependency:ts-auth-service->ts-ui-dashboard
+22 0
+c propagation:ts-auth-service->ts-ui-dashboard
+0
+c root_boundary
+0

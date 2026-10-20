@@ -1,0 +1,1952 @@
+schema_version: '2.0'
+case: ts6-ts-security-service-response-replace-code-nj74q4
+status: needs_review
+construction: deterministic_rule_enumeration
+privileged_offline_artifact: true
+rule_contract:
+  version: 1.0.0
+  min_samples: 5
+  min_events: 3
+  latency_ratio: 3.0
+  latency_delta_ms: 20.0
+  error_rate_delta: 0.05
+  error_rate_ratio: 2.0
+  log_rate_delta: 0.01
+  log_rate_ratio: 3.0
+  metric_ratio: 3.0
+  cpu_delta: 0.5
+  nested_min_ms: 20.0
+  nested_min_fraction_of_caller: 0.5
+  nested_min_fraction_of_pairs: 0.5
+  lifecycle_restart_delta: 1
+  lifecycle_ready_ratio: 0.5
+  semantics: Exploratory fixed heuristics; not calibrated detection guarantees.
+reference_path:
+  nodes:
+  - timestamp: null
+    component: service|ts-preserve-service
+    state:
+    - erroring
+    - healthy
+    - missing
+  - timestamp: null
+    component: service|ts-security-service
+    state:
+    - erroring
+    - missing
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - erroring
+    - missing
+  - timestamp: null
+    component: service|ts-order-service
+    state:
+    - unknown
+  edges:
+  - source: service|ts-preserve-service
+    target: service|ts-ui-dashboard
+  - source: service|ts-security-service
+    target: service|ts-preserve-service
+  - source: service|ts-order-service
+    target: service|ts-security-service
+  root_causes:
+  - timestamp: null
+    component: service|ts-security-service
+    state:
+    - unknown
+  - timestamp: null
+    component: service|ts-order-service
+    state:
+    - unknown
+  alarm_nodes:
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - unknown
+  component_to_service:
+    service|ts-order-service: ts-order-service
+    service|ts-preserve-service: ts-preserve-service
+    service|ts-security-service: ts-security-service
+    service|ts-ui-dashboard: ts-ui-dashboard
+summary:
+  n_clauses: 11
+  covered: 10
+  open: 1
+  n_candidates: 48964
+  n_literals: 48
+  n_queries: 68
+  coverage_all: 0.9090909090909091
+semantics: AND of obligation clauses; OR of complete composite witnesses within each clause. Empty clause remains false/unresolved;
+  never dropped. Coverage is operational evidence coverage, not proof of injected root cause.
+clauses:
+- id: node:ts-order-service
+  kind: node_involvement
+  subject:
+    service: ts-order-service
+  meaning: local anomaly OR incident call on annotated root boundary
+  literals:
+  - e_1cac087cbf12dcce22fe3988
+  - e_4c2b47180eed6a7bee849660
+  - e_672a4339759b4e70e4ec1bd5
+  - e_797d6608a4851469c1c21aab
+  - e_945aa1d674f091e6a1fccbe7
+  - e_ef995781d93e3e0880e53461
+  - e_eff6bdbfb257cc66b578e683
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-preserve-service
+  kind: node_anomaly
+  subject:
+    service: ts-preserve-service
+  meaning: local anomalous telemetry
+  literals:
+  - e_1abe824623c5e7acf72fdbba
+  - e_4beff39260097cfd397f02a2
+  - e_5056d89866345e3ca0457518
+  - e_5d4b8bee98184795200a84c0
+  - e_bc44e686c8f224e06a5bc213
+  - e_d04875d36c7c40ab44343aeb
+  - e_d8fb9d1dbdf4e0020b436990
+  - e_db2da5fb8fb329ba9c442b39
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-security-service
+  kind: node_involvement
+  subject:
+    service: ts-security-service
+  meaning: local anomaly OR incident call on annotated root boundary
+  literals:
+  - e_09df51019cb604ec3953975a
+  - e_10e1e00c997edd2bbd1c4daa
+  - e_1cac087cbf12dcce22fe3988
+  - e_361c21ef48ef38cd603047bf
+  - e_4deb309e8b78f1a1b07f3832
+  - e_4fae842585bc07a323d71ee4
+  - e_6097af79f1145f42e5c7ae8f
+  - e_788a5daf642befde4c80e804
+  - e_c2d2a5a58da527fcb4f32134
+  - e_e0f0e978096b6b89dd33d6fb
+  - e_e3805d0ffd99c8401a421d1b
+  - e_ebfc10449a057dae763c5dae
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-ui-dashboard
+  kind: node_anomaly
+  subject:
+    service: ts-ui-dashboard
+  meaning: local anomalous telemetry
+  literals:
+  - e_14ad5b2f8b215d07ba925ae3
+  - e_25f5d01668b2adc2ab1d2be9
+  - e_372b3f018942a73daf649073
+  - e_4001f8004c98dab6447e4ef8
+  - e_482a646f480e6b5c1842b8ec
+  - e_575326537ecaf2b6b871b0fd
+  - e_6c0c68f24e3e56c932c567bd
+  - e_89d3127c4885e0e6a83bd3d2
+  - e_91a4ab768b2d5049b197a03d
+  - e_9616d322a098a0cd8e9609a3
+  - e_a149cae301c69f625f4524aa
+  - e_bdf93c27472a0c609a5efadf
+  - e_c7c335e5b6a192ba14906407
+  - e_d7f38f4c8636bce6d25c1054
+  - e_e71913f43aec524535660bce
+  - e_ea6d1cd0215ef4860d077f4c
+  - e_f0b3aa07336349c8cc28af18
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-order-service->ts-security-service
+  kind: dependency
+  subject: &id001
+    source: ts-order-service
+    target: ts-security-service
+    caller: ts-security-service
+    callee: ts-order-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_6d73b1ce85f0aa4761240aa5
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-order-service->ts-security-service
+  kind: propagation_observation
+  subject: *id001
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals:
+  - e_d6cee1667280045a28e3f86c
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-preserve-service->ts-ui-dashboard
+  kind: dependency
+  subject: &id002
+    source: ts-preserve-service
+    target: ts-ui-dashboard
+    caller: ts-ui-dashboard
+    callee: ts-preserve-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_d57e157278a48504bd6d45a1
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-preserve-service->ts-ui-dashboard
+  kind: propagation_observation
+  subject: *id002
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-security-service->ts-preserve-service
+  kind: dependency
+  subject: &id003
+    source: ts-security-service
+    target: ts-preserve-service
+    caller: ts-preserve-service
+    callee: ts-security-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_5c3bc4ba11e14e75361dc41b
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-security-service->ts-preserve-service
+  kind: propagation_observation
+  subject: *id003
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals:
+  - e_5a877869ab63b2ab5a5edb70
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: root_boundary
+  kind: boundary_anomaly
+  subject:
+    ends:
+    - ts-order-service
+    - ts-security-service
+  meaning: anomalous call on this boundary; does not identify injection mechanism or side
+  literals:
+  - e_1cac087cbf12dcce22fe3988
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+literals:
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-security-service
+    span_name: SecurityController.check
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-security-service
+    span_name: SecurityController.check
+    span_kind: Internal
+    http_method: null
+    n: 153
+    median_ms: 18.731992
+    p95_ms: 27.173438599999997
+    p99_ms: 418.40884703999865
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.302449+00:00'
+    last_time: '2025-07-21 11:33:47.600977+00:00'
+  incident:
+    service_name: ts-security-service
+    span_name: SecurityController.check
+    span_kind: Internal
+    http_method: null
+    n: 170
+    median_ms: 9.2683445
+    p95_ms: 13.09001439999999
+    p99_ms: 327.61536094
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.575683+00:00'
+    last_time: '2025-07-21 11:37:45.448308+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_09df51019cb604ec3953975a
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-security-service
+    span_name: GET /api/v1/securityservice/securityConfigs/{accountId}
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-security-service
+    span_name: GET /api/v1/securityservice/securityConfigs/{accountId}
+    span_kind: Server
+    http_method: GET
+    n: 153
+    median_ms: 22.334612
+    p95_ms: 33.08138960000001
+    p99_ms: 465.5225987199995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.300000+00:00'
+    last_time: '2025-07-21 11:33:47.599000+00:00'
+  incident:
+    service_name: ts-security-service
+    span_name: GET /api/v1/securityservice/securityConfigs/{accountId}
+    span_kind: Server
+    http_method: GET
+    n: 170
+    median_ms: 14.231091
+    p95_ms: 27.527078749999905
+    p99_ms: 336.78236933000005
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.574000+00:00'
+    last_time: '2025-07-21 11:37:45.447000+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_10e1e00c997edd2bbd1c4daa
+- rule_id: log_error_message
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-ui-dashboard
+  baseline:
+    service_name: ts-ui-dashboard
+    n: 7469
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-ui-dashboard
+    n: 8513
+    events: 170
+    first_event: '2025-07-21 11:33:52.641039+00:00'
+    last_event: '2025-07-21 11:37:45.797151+00:00'
+  query_refs:
+  - q_a522b899683ddef77bbe
+  - q_fb964b6928490e33b68d
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_14ad5b2f8b215d07ba925ae3
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-preserve-service
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-preserve-service
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    n: 153
+    median_ms: 202.692709
+    p95_ms: 719.0550610000003
+    p99_ms: 968.6112479999985
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.294000+00:00'
+    last_time: '2025-07-21 11:33:47.595000+00:00'
+  incident:
+    service_name: ts-preserve-service
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    n: 170
+    median_ms: 23.212625
+    p95_ms: 91.35931259999909
+    p99_ms: 382.4752116500002
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.568000+00:00'
+    last_time: '2025-07-21 11:37:45.444000+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_1abe824623c5e7acf72fdbba
+- rule_id: edge_error_rate
+  rule_version: 1.0.0
+  subject: &id007
+    caller: ts-security-service
+    callee: ts-order-service
+    client_operation: GET
+    server_operation: GET /api/v1/orderservice/order/security/{checkDate}/{accountId}
+  baseline: &id008
+    client_operation: GET
+    server_operation: GET /api/v1/orderservice/order/security/{checkDate}/{accountId}
+    n: 153
+    client_methods:
+    - GET
+    server_methods:
+    - GET
+    median_ms: 5.93431
+    p95_ms: 8.5517848
+    server_ms: 5.298602
+    wait_ms: 0.606918
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-07-21 11:29:49.303598+00:00'
+    last_time: '2025-07-21 11:33:47.602039+00:00'
+  incident: &id009
+    client_operation: GET
+    server_operation: GET /api/v1/orderservice/order/security/{checkDate}/{accountId}
+    n: 170
+    client_methods:
+    - GET
+    server_methods:
+    - GET
+    median_ms: 6.9124680000000005
+    p95_ms: 9.406454599999998
+    server_ms: 5.105116
+    wait_ms: 1.698956
+    errors: 170
+    linked_errors: 170
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-07-21 11:33:52.576532+00:00'
+    last_time: '2025-07-21 11:37:45.449128+00:00'
+  query_refs:
+  - q_6be6c634a937f6721796
+  - q_eaa5325adfb0de14a0ba
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  - node:ts-security-service
+  - root_boundary
+  note: Only matched target-specific calls.
+  units: fraction
+  id: e_1cac087cbf12dcce22fe3988
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: &id013
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+  baseline: &id014
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 34
+    median_ms: 11.803216
+    p95_ms: 15.8639763
+    p99_ms: 17.418171190000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:52.927849+00:00'
+    last_time: '2025-07-21 11:33:44.364582+00:00'
+  incident: &id015
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 34
+    median_ms: 9.0765095
+    p95_ms: 89.97721874999955
+    p99_ms: 285.13082179000014
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:59.909975+00:00'
+    last_time: '2025-07-21 11:37:40.486922+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_25f5d01668b2adc2ab1d2be9
+- rule_id: log_error_message
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-security-service
+  baseline:
+    service_name: ts-security-service
+    n: 613
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-security-service
+    n: 340
+    events: 170
+    first_event: '2025-07-21 11:33:52.596000+00:00'
+    last_event: '2025-07-21 11:37:45.778000+00:00'
+  query_refs:
+  - q_a522b899683ddef77bbe
+  - q_fb964b6928490e33b68d
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_361c21ef48ef38cd603047bf
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id016
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+  baseline: &id017
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 19
+    median_ms: 34.756237
+    p95_ms: 39.34406299999999
+    p99_ms: 42.7773686
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:50.484119+00:00'
+    last_time: '2025-07-21 11:33:45.982999+00:00'
+  incident: &id018
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 15
+    median_ms: 30.757427
+    p95_ms: 408.0913372999999
+    p99_ms: 481.0346866599999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:34:00.634551+00:00'
+    last_time: '2025-07-21 11:37:17.905137+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_372b3f018942a73daf649073
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/userservice/users/id/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/userservice/users/id/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    n: 1159
+    median_ms: 4.479576
+    p95_ms: 7.135983599999999
+    p99_ms: 9.474095700000028
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.670256+00:00'
+    last_time: '2025-07-21 11:33:47.973520+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/userservice/users/id/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    n: 1371
+    median_ms: 3.961268
+    p95_ms: 6.17975
+    p99_ms: 58.99555029999995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.185217+00:00'
+    last_time: '2025-07-21 11:37:47.951088+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4001f8004c98dab6447e4ef8
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id010
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+  baseline: &id011
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    n: 34
+    median_ms: 11.803216
+    p95_ms: 15.8639763
+    p99_ms: 17.418171190000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:52.927849+00:00'
+    last_time: '2025-07-21 11:33:44.364582+00:00'
+  incident: &id012
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/taiyuan/shanghai/Z1236
+    span_kind: Server
+    http_method: GET
+    n: 34
+    median_ms: 9.0765095
+    p95_ms: 89.97721874999955
+    p99_ms: 285.13082179000014
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:59.909975+00:00'
+    last_time: '2025-07-21 11:37:40.486922+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_482a646f480e6b5c1842b8ec
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: service
+    service_name: ts-preserve-service
+  baseline:
+    service_name: ts-preserve-service
+    n: 1416
+    median_ms: 22.0912265
+    p95_ms: 475.18751475
+    p99_ms: 750.9248432999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.294000+00:00'
+    last_time: '2025-07-21 11:33:47.745718+00:00'
+  incident:
+    service_name: ts-preserve-service
+    n: 680
+    median_ms: 17.251145
+    p95_ms: 30.744650099999916
+    p99_ms: 353.5452238300001
+    errors: 510
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.568000+00:00'
+    last_time: '2025-07-21 11:37:45.782577+00:00'
+  query_refs:
+  - q_5e169a4d38b441fa2361
+  - q_853f21818a134700c066
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_4beff39260097cfd397f02a2
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-order-service
+    span_name: OrderController.queryOrdersForRefresh
+    span_kind: Internal
+    http_method: null
+    pod: ts-order-service-754957c888-rgscp
+  baseline:
+    service_name: ts-order-service
+    span_name: OrderController.queryOrdersForRefresh
+    span_kind: Internal
+    http_method: null
+    pod: ts-order-service-754957c888-rgscp
+    n: 473
+    median_ms: 3.493162
+    p95_ms: 4.9413952
+    p99_ms: 14.971692639999176
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.798231+00:00'
+    last_time: '2025-07-21 11:33:47.761868+00:00'
+  incident:
+    service_name: ts-order-service
+    span_name: OrderController.queryOrdersForRefresh
+    span_kind: Internal
+    http_method: null
+    pod: ts-order-service-754957c888-rgscp
+    n: 596
+    median_ms: 3.3099215
+    p95_ms: 4.59517725
+    p99_ms: 393.24874414999795
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.651826+00:00'
+    last_time: '2025-07-21 11:37:47.958684+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4c2b47180eed6a7bee849660
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: &id025
+    scope: operation
+    service_name: ts-security-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+  baseline: &id026
+    service_name: ts-security-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    n: 306
+    median_ms: 5.3931015
+    p95_ms: 7.99349275
+    p99_ms: 104.98665084999887
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.303598+00:00'
+    last_time: '2025-07-21 11:33:47.609713+00:00'
+  incident: &id027
+    service_name: ts-security-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    n: 170
+    median_ms: 6.912468
+    p95_ms: 9.4064546
+    p99_ms: 325.50333306
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.576532+00:00'
+    last_time: '2025-07-21 11:37:45.449128+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_4deb309e8b78f1a1b07f3832
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id019
+    scope: service
+    service_name: ts-security-service
+  baseline: &id020
+    service_name: ts-security-service
+    n: 1530
+    median_ms: 1.7788455
+    p95_ms: 23.703095599999997
+    p99_ms: 40.50867284000033
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.300000+00:00'
+    last_time: '2025-07-21 11:33:47.616519+00:00'
+  incident: &id021
+    service_name: ts-security-service
+    n: 680
+    median_ms: 8.2038165
+    p95_ms: 16.804237199999996
+    p99_ms: 327.54719354
+    errors: 510
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.574000+00:00'
+    last_time: '2025-07-21 11:37:45.778051+00:00'
+  query_refs:
+  - q_5e169a4d38b441fa2361
+  - q_853f21818a134700c066
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4fae842585bc07a323d71ee4
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-preserve-service
+    span_name: PreserveController.preserve
+    span_kind: Internal
+    http_method: null
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+  baseline:
+    service_name: ts-preserve-service
+    span_name: PreserveController.preserve
+    span_kind: Internal
+    http_method: null
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+    n: 153
+    median_ms: 198.787616
+    p95_ms: 715.3695184000002
+    p99_ms: 965.9868275599983
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.296156+00:00'
+    last_time: '2025-07-21 11:33:47.596615+00:00'
+  incident:
+    service_name: ts-preserve-service
+    span_name: PreserveController.preserve
+    span_kind: Internal
+    http_method: null
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+    n: 170
+    median_ms: 18.6559535
+    p95_ms: 87.17520374999907
+    p99_ms: 378.2941093400002
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.570407+00:00'
+    last_time: '2025-07-21 11:37:45.445282+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_5056d89866345e3ca0457518
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id028
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+  baseline: &id029
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    n: 19
+    median_ms: 34.756237
+    p95_ms: 39.34406299999999
+    p99_ms: 42.7773686
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:50.484119+00:00'
+    last_time: '2025-07-21 11:33:45.982999+00:00'
+  incident: &id030
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    n: 15
+    median_ms: 30.757427
+    p95_ms: 408.0913372999999
+    p99_ms: 481.0346866599999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:34:00.634551+00:00'
+    last_time: '2025-07-21 11:37:17.905137+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_575326537ecaf2b6b871b0fd
+- rule_id: edge_linked_error_increase
+  rule_version: 1.0.0
+  subject: &id004
+    caller: ts-preserve-service
+    callee: ts-security-service
+    client_operation: GET
+    server_operation: GET /api/v1/securityservice/securityConfigs/{accountId}
+  baseline: &id005
+    client_operation: GET
+    server_operation: GET /api/v1/securityservice/securityConfigs/{accountId}
+    n: 153
+    client_methods:
+    - GET
+    server_methods:
+    - GET
+    median_ms: 22.456495
+    p95_ms: 32.989264000000006
+    server_ms: 22.334612
+    wait_ms: 0.196696
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-07-21 11:29:49.297615+00:00'
+    last_time: '2025-07-21 11:33:47.597884+00:00'
+  incident: &id006
+    client_operation: GET
+    server_operation: GET /api/v1/securityservice/securityConfigs/{accountId}
+    n: 170
+    client_methods:
+    - GET
+    server_methods:
+    - GET
+    median_ms: 15.6795995
+    p95_ms: 30.213412149999876
+    server_ms: 14.231091
+    wait_ms: 1.523132
+    errors: 170
+    linked_errors: 170
+    dominant_calls: 8
+    method_mismatch: 0
+    first_time: '2025-07-21 11:33:52.572183+00:00'
+    last_time: '2025-07-21 11:37:45.446343+00:00'
+  query_refs:
+  - q_3d73e28604d2af216246
+  - q_c58bce3491eb2251908a
+  verdict: supports
+  obligation_ids:
+  - propagation:ts-security-service->ts-preserve-service
+  note: 'Composite witness: exact dependency AND increased calls with errors at CLIENT and containing caller SERVER; compatible
+    with propagation, not proof of causal direction.'
+  units: fraction
+  id: e_5a877869ab63b2ab5a5edb70
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject: *id004
+  baseline: *id005
+  incident: *id006
+  query_refs:
+  - q_3d73e28604d2af216246
+  - q_c58bce3491eb2251908a
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-security-service->ts-preserve-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_5c3bc4ba11e14e75361dc41b
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-preserve-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+  baseline:
+    service_name: ts-preserve-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+    n: 434
+    median_ms: 10.9902195
+    p95_ms: 29.124472999999977
+    p99_ms: 355.5037911900001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.297615+00:00'
+    last_time: '2025-07-21 11:33:47.619656+00:00'
+  incident:
+    service_name: ts-preserve-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+    n: 170
+    median_ms: 15.6795995
+    p95_ms: 30.213412149999876
+    p99_ms: 349.41681388
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.572183+00:00'
+    last_time: '2025-07-21 11:37:45.446343+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_5d4b8bee98184795200a84c0
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-security-service
+    span_name: SecurityController.check
+    span_kind: Internal
+    http_method: null
+    pod: ts-security-service-5895b7b4f8-268vb
+  baseline:
+    service_name: ts-security-service
+    span_name: SecurityController.check
+    span_kind: Internal
+    http_method: null
+    pod: ts-security-service-5895b7b4f8-268vb
+    n: 153
+    median_ms: 18.731992
+    p95_ms: 27.173438599999997
+    p99_ms: 418.40884703999865
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.302449+00:00'
+    last_time: '2025-07-21 11:33:47.600977+00:00'
+  incident:
+    service_name: ts-security-service
+    span_name: SecurityController.check
+    span_kind: Internal
+    http_method: null
+    pod: ts-security-service-5895b7b4f8-268vb
+    n: 170
+    median_ms: 9.2683445
+    p95_ms: 13.09001439999999
+    p99_ms: 327.61536094
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.575683+00:00'
+    last_time: '2025-07-21 11:37:45.448308+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_6097af79f1145f42e5c7ae8f
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-order-service
+    span_name: OrderController.queryOrdersForRefresh
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-order-service
+    span_name: OrderController.queryOrdersForRefresh
+    span_kind: Internal
+    http_method: null
+    n: 473
+    median_ms: 3.493162
+    p95_ms: 4.9413952
+    p99_ms: 14.971692639999176
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.798231+00:00'
+    last_time: '2025-07-21 11:33:47.761868+00:00'
+  incident:
+    service_name: ts-order-service
+    span_name: OrderController.queryOrdersForRefresh
+    span_kind: Internal
+    http_method: null
+    n: 596
+    median_ms: 3.3099215
+    p95_ms: 4.59517725
+    p99_ms: 393.24874414999795
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.651826+00:00'
+    last_time: '2025-07-21 11:37:47.958684+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_672a4339759b4e70e4ec1bd5
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    n: 153
+    median_ms: 203.505661
+    p95_ms: 720.2535540000002
+    p99_ms: 969.8000729599984
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.304204+00:00'
+    last_time: '2025-07-21 11:33:47.606194+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    n: 170
+    median_ms: 25.9220535
+    p95_ms: 93.74798639999909
+    p99_ms: 384.5402582500002
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.578807+00:00'
+    last_time: '2025-07-21 11:37:45.455915+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_6c0c68f24e3e56c932c567bd
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject: *id007
+  baseline: *id008
+  incident: *id009
+  query_refs:
+  - q_6be6c634a937f6721796
+  - q_eaa5325adfb0de14a0ba
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-order-service->ts-security-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_6d73b1ce85f0aa4761240aa5
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-security-service
+    span_name: GET /api/v1/securityservice/securityConfigs/{accountId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-security-service-5895b7b4f8-268vb
+  baseline:
+    service_name: ts-security-service
+    span_name: GET /api/v1/securityservice/securityConfigs/{accountId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-security-service-5895b7b4f8-268vb
+    n: 153
+    median_ms: 22.334612
+    p95_ms: 33.08138960000001
+    p99_ms: 465.5225987199995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.300000+00:00'
+    last_time: '2025-07-21 11:33:47.599000+00:00'
+  incident:
+    service_name: ts-security-service
+    span_name: GET /api/v1/securityservice/securityConfigs/{accountId}
+    span_kind: Server
+    http_method: GET
+    pod: ts-security-service-5895b7b4f8-268vb
+    n: 170
+    median_ms: 14.231091
+    p95_ms: 27.527078749999905
+    p99_ms: 336.78236933000005
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.574000+00:00'
+    last_time: '2025-07-21 11:37:45.447000+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_788a5daf642befde4c80e804
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-order-service
+    span_name: POST /api/v1/orderservice/order/refresh
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-order-service
+    span_name: POST /api/v1/orderservice/order/refresh
+    span_kind: Server
+    http_method: POST
+    n: 473
+    median_ms: 4.895093
+    p95_ms: 7.1542918
+    p99_ms: 17.317626399999206
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.797000+00:00'
+    last_time: '2025-07-21 11:33:47.761000+00:00'
+  incident:
+    service_name: ts-order-service
+    span_name: POST /api/v1/orderservice/order/refresh
+    span_kind: Server
+    http_method: POST
+    n: 596
+    median_ms: 4.465978
+    p95_ms: 6.45139225
+    p99_ms: 395.14679289999793
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.651000+00:00'
+    last_time: '2025-07-21 11:37:47.958000+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_797d6608a4851469c1c21aab
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id022
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+  baseline: &id023
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 18
+    median_ms: 36.5169395
+    p95_ms: 40.40146065
+    p99_ms: 40.861433729999995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:59.928028+00:00'
+    last_time: '2025-07-21 11:33:46.065960+00:00'
+  incident: &id024
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 15
+    median_ms: 28.588194
+    p95_ms: 131.53399719999965
+    p99_ms: 308.5524242399998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:34:04.467576+00:00'
+    last_time: '2025-07-21 11:37:26.221742+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_89d3127c4885e0e6a83bd3d2
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 153
+    median_ms: 203.505661
+    p95_ms: 720.2535540000002
+    p99_ms: 969.8000729599984
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.304204+00:00'
+    last_time: '2025-07-21 11:33:47.606194+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 170
+    median_ms: 25.9220535
+    p95_ms: 93.74798639999909
+    p99_ms: 384.5402582500002
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.578807+00:00'
+    last_time: '2025-07-21 11:37:45.455915+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_91a4ab768b2d5049b197a03d
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-order-service
+    span_name: OrderRepository.findByAccountId
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-order-service
+    span_name: OrderRepository.findByAccountId
+    span_kind: Internal
+    http_method: null
+    n: 779
+    median_ms: 1.864668
+    p95_ms: 2.5812214
+    p99_ms: 4.836084420000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.798960+00:00'
+    last_time: '2025-07-21 11:33:47.762511+00:00'
+  incident:
+    service_name: ts-order-service
+    span_name: OrderRepository.findByAccountId
+    span_kind: Internal
+    http_method: null
+    n: 936
+    median_ms: 1.8663075
+    p95_ms: 2.54570025
+    p99_ms: 27.745415549999148
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.652466+00:00'
+    last_time: '2025-07-21 11:37:47.959236+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_945aa1d674f091e6a1fccbe7
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id010
+  baseline: *id011
+  incident: *id012
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_9616d322a098a0cd8e9609a3
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id013
+  baseline: *id014
+  incident: *id015
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_a149cae301c69f625f4524aa
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-preserve-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+  baseline:
+    service_name: ts-preserve-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    n: 434
+    median_ms: 10.9902195
+    p95_ms: 29.124472999999977
+    p99_ms: 355.5037911900001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.297615+00:00'
+    last_time: '2025-07-21 11:33:47.619656+00:00'
+  incident:
+    service_name: ts-preserve-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    n: 170
+    median_ms: 15.6795995
+    p95_ms: 30.213412149999876
+    p99_ms: 349.41681388
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.572183+00:00'
+    last_time: '2025-07-21 11:37:45.446343+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_bc44e686c8f224e06a5bc213
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id016
+  baseline: *id017
+  incident: *id018
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_bdf93c27472a0c609a5efadf
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: *id019
+  baseline: *id020
+  incident: *id021
+  query_refs:
+  - q_5e169a4d38b441fa2361
+  - q_853f21818a134700c066
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_c2d2a5a58da527fcb4f32134
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id022
+  baseline: *id023
+  incident: *id024
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_c7c335e5b6a192ba14906407
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-preserve-service
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+  baseline:
+    service_name: ts-preserve-service
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+    n: 153
+    median_ms: 202.692709
+    p95_ms: 719.0550610000003
+    p99_ms: 968.6112479999985
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.294000+00:00'
+    last_time: '2025-07-21 11:33:47.595000+00:00'
+  incident:
+    service_name: ts-preserve-service
+    span_name: POST /api/v1/preserveservice/preserve
+    span_kind: Server
+    http_method: POST
+    pod: ts-preserve-service-748b7d8b6d-zdxk5
+    n: 170
+    median_ms: 23.212625
+    p95_ms: 91.35931259999909
+    p99_ms: 382.4752116500002
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.568000+00:00'
+    last_time: '2025-07-21 11:37:45.444000+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_d04875d36c7c40ab44343aeb
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-ui-dashboard
+    callee: ts-preserve-service
+    caller_operation: POST /api/v1/preserveservice/preserve
+    callee_operation: POST /api/v1/preserveservice/preserve
+  baseline:
+    caller_operation: POST /api/v1/preserveservice/preserve
+    callee_operation: POST /api/v1/preserveservice/preserve
+    n: 153
+    median_ms: 202.692709
+    caller_ms: 203.505661
+    linked_errors: 0
+    dominant_calls: 0
+    first_time: '2025-07-21 11:29:49.294000+00:00'
+    last_time: '2025-07-21 11:33:47.595000+00:00'
+  incident:
+    caller_operation: POST /api/v1/preserveservice/preserve
+    callee_operation: POST /api/v1/preserveservice/preserve
+    n: 170
+    median_ms: 23.212625
+    caller_ms: 25.9220535
+    linked_errors: 0
+    dominant_calls: 0
+    first_time: '2025-07-21 11:33:52.568000+00:00'
+    last_time: '2025-07-21 11:37:45.444000+00:00'
+  query_refs:
+  - q_44d9084d369555ea00e7
+  - q_fe37fb155f1e74fa6c40
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-preserve-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_d57e157278a48504bd6d45a1
+- rule_id: edge_linked_error_increase
+  rule_version: 1.0.0
+  subject: *id007
+  baseline: *id008
+  incident: *id009
+  query_refs:
+  - q_6be6c634a937f6721796
+  - q_eaa5325adfb0de14a0ba
+  verdict: supports
+  obligation_ids:
+  - propagation:ts-order-service->ts-security-service
+  note: 'Composite witness: exact dependency AND increased calls with errors at CLIENT and containing caller SERVER; compatible
+    with propagation, not proof of causal direction.'
+  units: fraction
+  id: e_d6cee1667280045a28e3f86c
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id034
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+  baseline: &id035
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 18
+    median_ms: 36.5169395
+    p95_ms: 40.40146065
+    p99_ms: 40.861433729999995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:59.928028+00:00'
+    last_time: '2025-07-21 11:33:46.065960+00:00'
+  incident: &id036
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-07-21/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 15
+    median_ms: 28.588194
+    p95_ms: 131.53399719999965
+    p99_ms: 308.5524242399998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:34:04.467576+00:00'
+    last_time: '2025-07-21 11:37:26.221742+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_d7f38f4c8636bce6d25c1054
+- rule_id: log_error_message
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-preserve-service
+  baseline:
+    service_name: ts-preserve-service
+    n: 2221
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-preserve-service
+    n: 510
+    events: 170
+    first_event: '2025-07-21 11:33:52.620000+00:00'
+    last_event: '2025-07-21 11:37:45.782000+00:00'
+  query_refs:
+  - q_a522b899683ddef77bbe
+  - q_fb964b6928490e33b68d
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_d8fb9d1dbdf4e0020b436990
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-preserve-service
+    span_name: PreserveController.preserve
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-preserve-service
+    span_name: PreserveController.preserve
+    span_kind: Internal
+    http_method: null
+    n: 153
+    median_ms: 198.787616
+    p95_ms: 715.3695184000002
+    p99_ms: 965.9868275599983
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.296156+00:00'
+    last_time: '2025-07-21 11:33:47.596615+00:00'
+  incident:
+    service_name: ts-preserve-service
+    span_name: PreserveController.preserve
+    span_kind: Internal
+    http_method: null
+    n: 170
+    median_ms: 18.6559535
+    p95_ms: 87.17520374999907
+    p99_ms: 378.2941093400002
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.570407+00:00'
+    last_time: '2025-07-21 11:37:45.445282+00:00'
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-preserve-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_db2da5fb8fb329ba9c442b39
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id025
+  baseline: *id026
+  incident: *id027
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e0f0e978096b6b89dd33d6fb
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: &id031
+    scope: pod_operation
+    service_name: ts-security-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-security-service-5895b7b4f8-268vb
+  baseline: &id032
+    service_name: ts-security-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-security-service-5895b7b4f8-268vb
+    n: 306
+    median_ms: 5.3931015
+    p95_ms: 7.99349275
+    p99_ms: 104.98665084999887
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:49.303598+00:00'
+    last_time: '2025-07-21 11:33:47.609713+00:00'
+  incident: &id033
+    service_name: ts-security-service
+    span_name: GET
+    span_kind: Client
+    http_method: GET
+    pod: ts-security-service-5895b7b4f8-268vb
+    n: 170
+    median_ms: 6.912468
+    p95_ms: 9.4064546
+    p99_ms: 325.50333306
+    errors: 170
+    http4xx: 0
+    first_time: '2025-07-21 11:33:52.576532+00:00'
+    last_time: '2025-07-21 11:37:45.449128+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_e3805d0ffd99c8401a421d1b
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id028
+  baseline: *id029
+  incident: *id030
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e71913f43aec524535660bce
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/userservice/users/id/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/userservice/users/id/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 1159
+    median_ms: 4.479576
+    p95_ms: 7.135983599999999
+    p99_ms: 9.474095700000028
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.670256+00:00'
+    last_time: '2025-07-21 11:33:47.973520+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/userservice/users/id/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-5c4477bcbf-nwchl
+    n: 1371
+    median_ms: 3.961268
+    p95_ms: 6.17975
+    p99_ms: 58.99555029999995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.185217+00:00'
+    last_time: '2025-07-21 11:37:47.951088+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_ea6d1cd0215ef4860d077f4c
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id031
+  baseline: *id032
+  incident: *id033
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-security-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_ebfc10449a057dae763c5dae
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-order-service
+    span_name: POST /api/v1/orderservice/order/refresh
+    span_kind: Server
+    http_method: POST
+    pod: ts-order-service-754957c888-rgscp
+  baseline:
+    service_name: ts-order-service
+    span_name: POST /api/v1/orderservice/order/refresh
+    span_kind: Server
+    http_method: POST
+    pod: ts-order-service-754957c888-rgscp
+    n: 473
+    median_ms: 4.895093
+    p95_ms: 7.1542918
+    p99_ms: 17.317626399999206
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.797000+00:00'
+    last_time: '2025-07-21 11:33:47.761000+00:00'
+  incident:
+    service_name: ts-order-service
+    span_name: POST /api/v1/orderservice/order/refresh
+    span_kind: Server
+    http_method: POST
+    pod: ts-order-service-754957c888-rgscp
+    n: 596
+    median_ms: 4.465978
+    p95_ms: 6.45139225
+    p99_ms: 395.14679289999793
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.651000+00:00'
+    last_time: '2025-07-21 11:37:47.958000+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_ef995781d93e3e0880e53461
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-order-service
+    span_name: OrderRepository.findByAccountId
+    span_kind: Internal
+    http_method: null
+    pod: ts-order-service-754957c888-rgscp
+  baseline:
+    service_name: ts-order-service
+    span_name: OrderRepository.findByAccountId
+    span_kind: Internal
+    http_method: null
+    pod: ts-order-service-754957c888-rgscp
+    n: 779
+    median_ms: 1.864668
+    p95_ms: 2.5812214
+    p99_ms: 4.836084420000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:29:48.798960+00:00'
+    last_time: '2025-07-21 11:33:47.762511+00:00'
+  incident:
+    service_name: ts-order-service
+    span_name: OrderRepository.findByAccountId
+    span_kind: Internal
+    http_method: null
+    pod: ts-order-service-754957c888-rgscp
+    n: 936
+    median_ms: 1.8663075
+    p95_ms: 2.54570025
+    p99_ms: 27.745415549999148
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-21 11:33:48.652466+00:00'
+    last_time: '2025-07-21 11:37:47.959236+00:00'
+  query_refs:
+  - q_885425533e4cf659edb7
+  - q_906af4d548bec1acdb61
+  verdict: supports
+  obligation_ids:
+  - node:ts-order-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_eff6bdbfb257cc66b578e683
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id034
+  baseline: *id035
+  incident: *id036
+  query_refs:
+  - q_4229812b1e9d91a41922
+  - q_e0c24a125019085e3508
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_f0b3aa07336349c8cc28af18

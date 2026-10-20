@@ -1,0 +1,285 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-user-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}",
+      "state": [
+        "injection_affected",
+        "healthy",
+        "unknown",
+        "timeout",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-preserve-service::PreserveController.preserve",
+      "state": [
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-ui-dashboard::GET /api/v1/userservice/users/id/{userId}",
+      "state": [
+        "healthy",
+        "high_avg_latency",
+        "unknown",
+        "high_p99_latency",
+        "timeout"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/userservice/users/id/{userId}",
+      "state": [
+        "timeout",
+        "unknown",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444735,
+      "component": "span|ts-cancel-service::CancelController.cancelTicket",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1753444735,
+      "component": "span|ts-cancel-service::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1753444735,
+      "component": "span|ts-ui-dashboard::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1753444735,
+      "component": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/cancelservice/cancel/{orderId}/{loginId}",
+      "state": [
+        "missing_span"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-user-service::UserController.getUserByUserId",
+      "state": [
+        "unknown",
+        "timeout",
+        "injection_affected",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444835,
+      "component": "span|ts-user-service::BasicErrorController.error",
+      "state": [
+        "injection_affected",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-user-service::SELECT ts.user",
+      "state": [
+        "unknown",
+        "timeout",
+        "injection_affected",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-user-service::SELECT User",
+      "state": [
+        "unknown",
+        "timeout",
+        "injection_affected",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|ts-user-service::UserRepository.findByUserId",
+      "state": [
+        "unknown",
+        "timeout",
+        "injection_affected",
+        "healthy"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}",
+      "target": "span|ts-ui-dashboard::GET /api/v1/userservice/users/id/{userId}"
+    },
+    {
+      "source": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "target": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-ui-dashboard::GET /api/v1/userservice/users/id/{userId}",
+      "target": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/userservice/users/id/{userId}"
+    },
+    {
+      "source": "span|ts-user-service::UserRepository.findByUserId",
+      "target": "span|ts-user-service::UserController.getUserByUserId"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "span|ts-user-service::UserRepository.findByUserId"
+    },
+    {
+      "source": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}",
+      "target": "span|ts-cancel-service::CancelController.cancelTicket"
+    },
+    {
+      "source": "span|ts-ui-dashboard::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}",
+      "target": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/cancelservice/cancel/{orderId}/{loginId}"
+    },
+    {
+      "source": "span|ts-user-service::UserController.getUserByUserId",
+      "target": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-cancel-service::CancelController.cancelTicket",
+      "target": "span|ts-cancel-service::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}"
+    },
+    {
+      "source": "span|ts-user-service::BasicErrorController.error",
+      "target": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "span|ts-user-service::UserController.getUserByUserId"
+    },
+    {
+      "source": "span|ts-preserve-service::PreserveController.preserve",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "span|ts-user-service::BasicErrorController.error"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "span|ts-user-service::SELECT User"
+    },
+    {
+      "source": "service|ts-user-service",
+      "target": "span|ts-user-service::SELECT ts.user"
+    },
+    {
+      "source": "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-cancel-service::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}",
+      "target": "span|ts-ui-dashboard::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}"
+    },
+    {
+      "source": "span|ts-user-service::SELECT User",
+      "target": "span|ts-user-service::UserRepository.findByUserId"
+    },
+    {
+      "source": "span|ts-user-service::SELECT ts.user",
+      "target": "span|ts-user-service::SELECT User"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-user-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1753444805,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444805,
+      "component": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/userservice/users/id/{userId}",
+      "state": [
+        "timeout",
+        "unknown",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1753444735,
+      "component": "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/cancelservice/cancel/{orderId}/{loginId}",
+      "state": [
+        "missing_span"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-user-service": "ts-user-service",
+    "span|ts-user-service::GET /api/v1/userservice/users/id/{userId}": "ts-user-service",
+    "span|ts-preserve-service::PreserveController.preserve": "ts-preserve-service",
+    "span|ts-preserve-service::POST /api/v1/preserveservice/preserve": "ts-preserve-service",
+    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve": "loadgenerator",
+    "span|ts-ui-dashboard::GET /api/v1/userservice/users/id/{userId}": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/userservice/users/id/{userId}": "loadgenerator",
+    "span|ts-cancel-service::CancelController.cancelTicket": "ts-cancel-service",
+    "span|ts-cancel-service::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}": "ts-cancel-service",
+    "span|ts-ui-dashboard::GET /api/v1/cancelservice/cancel/{orderId}/{loginId}": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP GET http://ts-ui-dashboard:8080/api/v1/cancelservice/cancel/{orderId}/{loginId}": "loadgenerator",
+    "span|ts-user-service::UserController.getUserByUserId": "ts-user-service",
+    "span|ts-user-service::BasicErrorController.error": "ts-user-service",
+    "span|ts-user-service::SELECT ts.user": "ts-user-service",
+    "span|ts-user-service::SELECT User": "ts-user-service",
+    "span|ts-user-service::UserRepository.findByUserId": "ts-user-service"
+  }
+}

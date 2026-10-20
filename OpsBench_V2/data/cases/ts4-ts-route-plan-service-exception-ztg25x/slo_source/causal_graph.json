@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "timestamp": 1756369838,
+      "component": "container|ts-route-plan-service",
+      "state": [
+        "high_memory"
+      ]
+    },
+    {
+      "timestamp": 1756369828,
+      "component": "pod|ts-route-plan-service-556cddc5c9-5b82k",
+      "state": [
+        "high_cpu",
+        "high_memory",
+        "high_gc_pressure"
+      ]
+    },
+    {
+      "timestamp": 1756369828,
+      "component": "service|ts-route-plan-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1756369825,
+      "component": "span|ts-route-plan-service::BasicErrorController.error",
+      "state": [
+        "injection_affected",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756369825,
+      "component": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+      "state": [
+        "injection_affected",
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756369825,
+      "component": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+      "state": [
+        "unknown",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1756369825,
+      "component": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756369825,
+      "component": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "unknown",
+        "high_error_rate"
+      ]
+    },
+    {
+      "timestamp": 1756369825,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "unknown",
+        "high_error_rate"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "container|ts-route-plan-service",
+      "target": "pod|ts-route-plan-service-556cddc5c9-5b82k"
+    },
+    {
+      "source": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByMinStation"
+    },
+    {
+      "source": "span|ts-route-plan-service::BasicErrorController.error",
+      "target": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations"
+    },
+    {
+      "source": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+      "target": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "target": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "pod|ts-route-plan-service-556cddc5c9-5b82k",
+      "target": "service|ts-route-plan-service"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "service|ts-route-plan-service",
+      "target": "span|ts-route-plan-service::BasicErrorController.error"
+    },
+    {
+      "source": "service|ts-route-plan-service",
+      "target": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "container|ts-route-plan-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1756369825,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "unknown",
+        "high_error_rate"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "pod|ts-route-plan-service-556cddc5c9-5b82k": "ts-route-plan-service",
+    "service|ts-route-plan-service": "ts-route-plan-service",
+    "span|ts-route-plan-service::BasicErrorController.error": "ts-route-plan-service",
+    "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations": "ts-route-plan-service",
+    "span|ts-travel-plan-service::TravelPlanController.getByMinStation": "ts-travel-plan-service",
+    "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation": "ts-travel-plan-service",
+    "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation": "loadgenerator"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-auth-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-auth-service",
+      "target": "service|ts-ui-dashboard"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-auth-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-auth-service": "ts-auth-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

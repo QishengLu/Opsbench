@@ -1,0 +1,177 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-auth-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-auth-service::SELECT ts.auth_user",
+      "state": [
+        "healthy",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected",
+        "high_avg_latency"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-auth-service::SELECT User",
+      "state": [
+        "healthy",
+        "timeout",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected",
+        "high_avg_latency"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-auth-service::UserRepository.findByUsername",
+      "state": [
+        "healthy",
+        "timeout",
+        "high_p99_latency",
+        "unknown",
+        "injection_affected",
+        "high_avg_latency"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-auth-service::UserController.getToken",
+      "state": [
+        "unknown",
+        "injection_affected",
+        "timeout",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-auth-service::POST /api/v1/users/login",
+      "state": [
+        "unknown",
+        "injection_affected",
+        "timeout",
+        "healthy"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-ui-dashboard::POST /api/v1/users/login",
+      "state": [
+        "unknown",
+        "timeout",
+        "high_avg_latency"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/users/login",
+      "state": [
+        "unknown",
+        "timeout",
+        "high_avg_latency"
+      ]
+    },
+    {
+      "timestamp": 1752847045,
+      "component": "span|ts-auth-service::SELECT ts.user_roles",
+      "state": [
+        "injection_affected",
+        "healthy"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-auth-service",
+      "target": "span|ts-auth-service::SELECT ts.user_roles"
+    },
+    {
+      "source": "span|ts-auth-service::SELECT ts.user_roles",
+      "target": "span|ts-auth-service::UserController.getToken"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "span|ts-auth-service::UserRepository.findByUsername"
+    },
+    {
+      "source": "span|ts-auth-service::POST /api/v1/users/login",
+      "target": "span|ts-ui-dashboard::POST /api/v1/users/login"
+    },
+    {
+      "source": "span|ts-auth-service::SELECT ts.auth_user",
+      "target": "span|ts-auth-service::SELECT User"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "span|ts-auth-service::UserController.getToken"
+    },
+    {
+      "source": "span|ts-auth-service::SELECT User",
+      "target": "span|ts-auth-service::UserRepository.findByUsername"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "span|ts-auth-service::SELECT User"
+    },
+    {
+      "source": "span|ts-auth-service::UserController.getToken",
+      "target": "span|ts-auth-service::POST /api/v1/users/login"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "span|ts-auth-service::POST /api/v1/users/login"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "span|ts-auth-service::SELECT ts.auth_user"
+    },
+    {
+      "source": "span|ts-auth-service::UserRepository.findByUsername",
+      "target": "span|ts-auth-service::UserController.getToken"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/users/login",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/users/login"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-auth-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1752847045,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/users/login",
+      "state": [
+        "unknown",
+        "timeout",
+        "high_avg_latency"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-auth-service": "ts-auth-service",
+    "span|ts-auth-service::SELECT ts.auth_user": "ts-auth-service",
+    "span|ts-auth-service::SELECT User": "ts-auth-service",
+    "span|ts-auth-service::UserRepository.findByUsername": "ts-auth-service",
+    "span|ts-auth-service::UserController.getToken": "ts-auth-service",
+    "span|ts-auth-service::POST /api/v1/users/login": "ts-auth-service",
+    "span|ts-ui-dashboard::POST /api/v1/users/login": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/users/login": "loadgenerator",
+    "span|ts-auth-service::SELECT ts.user_roles": "ts-auth-service"
+  }
+}

@@ -1,0 +1,1785 @@
+schema_version: '2.0'
+case: ts4-ts-route-plan-service-exception-ztg25x
+status: complete
+construction: deterministic_rule_enumeration
+privileged_offline_artifact: true
+rule_contract:
+  version: 1.0.0
+  min_samples: 5
+  min_events: 3
+  latency_ratio: 3.0
+  latency_delta_ms: 20.0
+  error_rate_delta: 0.05
+  error_rate_ratio: 2.0
+  log_rate_delta: 0.01
+  log_rate_ratio: 3.0
+  metric_ratio: 3.0
+  cpu_delta: 0.5
+  nested_min_ms: 20.0
+  nested_min_fraction_of_caller: 0.5
+  nested_min_fraction_of_pairs: 0.5
+  lifecycle_restart_delta: 1
+  lifecycle_ready_ratio: 0.5
+  semantics: Exploratory fixed heuristics; not calibrated detection guarantees.
+reference_path:
+  nodes:
+  - timestamp: null
+    component: service|ts-route-plan-service
+    state:
+    - erroring
+    - missing
+    - slow
+  - timestamp: null
+    component: service|ts-travel-plan-service
+    state:
+    - erroring
+    - healthy
+    - missing
+    - slow
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - erroring
+    - missing
+    - slow
+  edges:
+  - source: service|ts-route-plan-service
+    target: service|ts-travel-plan-service
+  - source: service|ts-travel-plan-service
+    target: service|ts-ui-dashboard
+  root_causes:
+  - timestamp: null
+    component: service|ts-route-plan-service
+    state:
+    - unknown
+  alarm_nodes:
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - unknown
+  component_to_service:
+    service|ts-route-plan-service: ts-route-plan-service
+    service|ts-travel-plan-service: ts-travel-plan-service
+    service|ts-ui-dashboard: ts-ui-dashboard
+summary:
+  n_clauses: 7
+  covered: 7
+  open: 0
+  n_candidates: 37981
+  n_literals: 40
+  n_queries: 62
+  coverage_all: 1.0
+semantics: AND of obligation clauses; OR of complete composite witnesses within each clause. Empty clause remains false/unresolved;
+  never dropped. Coverage is operational evidence coverage, not proof of injected root cause.
+clauses:
+- id: node:ts-route-plan-service
+  kind: node_anomaly
+  subject:
+    service: ts-route-plan-service
+  meaning: local anomalous telemetry
+  literals:
+  - e_01e7628a9525888a7c2bf2da
+  - e_4b19ef0fa5f34c3db5856767
+  - e_7597c0176e12d2c41842db3b
+  - e_9a33fbbf82bbd34a9ef5ada6
+  - e_9bc67b3b0be064455a3a28a3
+  - e_d72c4193ddb69dae2b83025c
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-travel-plan-service
+  kind: node_anomaly
+  subject:
+    service: ts-travel-plan-service
+  meaning: local anomalous telemetry
+  literals:
+  - e_35debae0d870aee0e3c7a8ed
+  - e_793a56106357ff8a96301f2a
+  - e_a737ace283451e03bacb0aca
+  - e_be002882fd01c23f31a110b9
+  - e_d10b4f8866ad707f893e3f79
+  - e_d34cedd5c0b9629f37df9431
+  - e_e61ff7de1c54456f82b575c6
+  - e_f6080478bf9d88f912945b21
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-ui-dashboard
+  kind: node_anomaly
+  subject:
+    service: ts-ui-dashboard
+  meaning: local anomalous telemetry
+  literals:
+  - e_00bf9b0d54b4a73c1573706b
+  - e_3cc4c8dd2788325b432ac3bb
+  - e_473bfe28fa3281bdfe13e6a5
+  - e_47d53612b3a1e31d0c6b7305
+  - e_4819846acd611b6d9aaa111f
+  - e_6213435425d08dfa2424e22d
+  - e_66c84a37c956c41928999e81
+  - e_6fc0ded930951e3fbad731a5
+  - e_79f3d1c15e2d681c9c73cd36
+  - e_7ade17cf9a310bf897b13d64
+  - e_7c20e8e3c9ce35801c900bcf
+  - e_95fb6aa5721a7ff161add30c
+  - e_9fc0b4eecf8394ccc32b0fd7
+  - e_c18f3226b8e1591069da53e6
+  - e_cd6310a2db8d2cbf1b45b937
+  - e_db40066b6b619648eba82db4
+  - e_f1045c3e48edea6a5035aa4d
+  - e_fc616e01eae60e15f131a477
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-route-plan-service->ts-travel-plan-service
+  kind: dependency
+  subject: &id001
+    source: ts-route-plan-service
+    target: ts-travel-plan-service
+    caller: ts-travel-plan-service
+    callee: ts-route-plan-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_3af176005e1a1cc7822c4c82
+  - e_52587bffb078527628a52769
+  - e_db32063e20206e51b2099fe3
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-route-plan-service->ts-travel-plan-service
+  kind: propagation_observation
+  subject: *id001
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals:
+  - e_4dd4085007e2e5cb08d9ce75
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-travel-plan-service->ts-ui-dashboard
+  kind: dependency
+  subject: &id002
+    source: ts-travel-plan-service
+    target: ts-ui-dashboard
+    caller: ts-ui-dashboard
+    callee: ts-travel-plan-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_36fe07887519e0d904c55f70
+  - e_8988e0b94877db86ec9cfaca
+  - e_ba98abd9f435a58417d7c691
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-travel-plan-service->ts-ui-dashboard
+  kind: propagation_observation
+  subject: *id002
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals:
+  - e_77abc8010c1f55cda7dcda72
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+literals:
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 132
+    median_ms: 5.1212385
+    p95_ms: 9.14359635
+    p99_ms: 12.278616749999994
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:20.931155+00:00'
+    last_time: '2025-08-28 08:30:17.194530+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 108
+    median_ms: 4.6761655
+    p95_ms: 7.542546249999996
+    p99_ms: 1617.116671729987
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:21.572007+00:00'
+    last_time: '2025-08-28 08:34:16.652341+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_00bf9b0d54b4a73c1573706b
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: service
+    service_name: ts-route-plan-service
+  baseline:
+    service_name: ts-route-plan-service
+    n: 1297
+    median_ms: 62.817574
+    p95_ms: 620.7128036
+    p99_ms: 2874.1346558799933
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.067000+00:00'
+    last_time: '2025-08-28 08:30:18.966017+00:00'
+  incident:
+    service_name: ts-route-plan-service
+    n: 1220
+    median_ms: 59.6358435
+    p95_ms: 464.07669345
+    p99_ms: 1278.4222474299963
+    errors: 116
+    http4xx: 0
+    first_time: '2025-08-28 08:30:19.027408+00:00'
+    last_time: '2025-08-28 08:34:17.579717+00:00'
+  query_refs:
+  - q_0cb6af7b8ed2ec740c2e
+  - q_c82f89036714099996f1
+  verdict: supports
+  obligation_ids:
+  - node:ts-route-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_01e7628a9525888a7c2bf2da
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-travel-plan-service
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-travel-plan-service
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    n: 53
+    median_ms: 485.064825
+    p95_ms: 2111.1642889999994
+    p99_ms: 3729.3751717599926
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.754000+00:00'
+    last_time: '2025-08-28 08:30:18.931000+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    n: 58
+    median_ms: 117.760227
+    p95_ms: 779.0838544999999
+    p99_ms: 2639.75631196
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.270000+00:00'
+    last_time: '2025-08-28 08:34:15.448000+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_35debae0d870aee0e3c7a8ed
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-ui-dashboard
+    callee: ts-travel-plan-service
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/cheapest
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/cheapest
+  baseline:
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/cheapest
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/cheapest
+    n: 61
+    median_ms: 346.330097
+    caller_ms: 347.200424
+    linked_errors: 0
+    dominant_calls: 0
+    first_time: '2025-08-28 08:26:30+00:00'
+    last_time: '2025-08-28 08:30:13.341000+00:00'
+  incident:
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/cheapest
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/cheapest
+    n: 65
+    median_ms: 349.324612
+    caller_ms: 356.909169
+    linked_errors: 0
+    dominant_calls: 22
+    first_time: '2025-08-28 08:30:21.157000+00:00'
+    last_time: '2025-08-28 08:34:17.462000+00:00'
+  query_refs:
+  - q_0da2ee74fed197e968ed
+  - q_d9432ec4f93f6d837441
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-travel-plan-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_36fe07887519e0d904c55f70
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-travel-plan-service
+    callee: ts-route-plan-service
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/quickestRoute
+  baseline:
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/quickestRoute
+    n: 65
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 241.900953
+    p95_ms: 941.0675657999994
+    server_ms: 238.998299
+    wait_ms: 1.653122
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-08-28 08:26:19.058751+00:00'
+    last_time: '2025-08-28 08:30:09.117248+00:00'
+  incident:
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/quickestRoute
+    n: 66
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 178.164274
+    p95_ms: 725.00973125
+    server_ms: 177.02358149999998
+    wait_ms: 1.6519659999999998
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-08-28 08:30:19.378303+00:00'
+    last_time: '2025-08-28 08:34:11.368119+00:00'
+  query_refs:
+  - q_026a99ceacc220b796cd
+  - q_0f93632b21fd20500e06
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-route-plan-service->ts-travel-plan-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_3af176005e1a1cc7822c4c82
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/shanghai/suzhou/D1345
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/shanghai/suzhou/D1345
+    span_kind: Server
+    http_method: GET
+    n: 34
+    median_ms: 34.111778
+    p95_ms: 53.85624109999997
+    p99_ms: 73.00673215000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:27.191022+00:00'
+    last_time: '2025-08-28 08:30:16.843811+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/shanghai/suzhou/D1345
+    span_kind: Server
+    http_method: GET
+    n: 34
+    median_ms: 34.6907425
+    p95_ms: 76.24458419999999
+    p99_ms: 317.0523762700006
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:24.146398+00:00'
+    last_time: '2025-08-28 08:34:16.619885+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_3cc4c8dd2788325b432ac3bb
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 17
+    median_ms: 35.524063
+    p95_ms: 41.981794799999996
+    p99_ms: 42.02389336000001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:22.341171+00:00'
+    last_time: '2025-08-28 08:30:03.285201+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 16
+    median_ms: 29.020915
+    p95_ms: 106.07061575
+    p99_ms: 163.18397914999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:23.542165+00:00'
+    last_time: '2025-08-28 08:34:15.668643+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_473bfe28fa3281bdfe13e6a5
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id009
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+  baseline: &id010
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    n: 34
+    median_ms: 9.87149
+    p95_ms: 13.484169849999999
+    p99_ms: 14.730442780000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.733938+00:00'
+    last_time: '2025-08-28 08:30:08.636947+00:00'
+  incident: &id011
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    n: 28
+    median_ms: 10.983315
+    p95_ms: 66.89591859999989
+    p99_ms: 175.75432861000004
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:19.067388+00:00'
+    last_time: '2025-08-28 08:34:14.531069+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_47d53612b3a1e31d0c6b7305
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 24
+    median_ms: 38.090962
+    p95_ms: 138.75511009999985
+    p99_ms: 305.1376702799999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:23.854417+00:00'
+    last_time: '2025-08-28 08:30:17.043643+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 20
+    median_ms: 33.560756
+    p95_ms: 227.7220058500015
+    p99_ms: 1824.9853515699974
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:23.347337+00:00'
+    last_time: '2025-08-28 08:34:07.009936+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4819846acd611b6d9aaa111f
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-route-plan-service
+    span_name: POST /api/v1/routeplanservice/routePlan/minStopStations
+    span_kind: Server
+    http_method: POST
+    pod: ts-route-plan-service-556cddc5c9-5b82k
+  baseline:
+    service_name: ts-route-plan-service
+    span_name: POST /api/v1/routeplanservice/routePlan/minStopStations
+    span_kind: Server
+    http_method: POST
+    pod: ts-route-plan-service-556cddc5c9-5b82k
+    n: 53
+    median_ms: 323.798653
+    p95_ms: 2011.8158057999995
+    p99_ms: 2846.1149976799984
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.764000+00:00'
+    last_time: '2025-08-28 08:30:18.943000+00:00'
+  incident:
+    service_name: ts-route-plan-service
+    span_name: POST /api/v1/routeplanservice/routePlan/minStopStations
+    span_kind: Server
+    http_method: POST
+    pod: ts-route-plan-service-556cddc5c9-5b82k
+    n: 58
+    median_ms: 108.926876
+    p95_ms: 872.3060288499994
+    p99_ms: 2630.85584383
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.283000+00:00'
+    last_time: '2025-08-28 08:34:15.462000+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-route-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_4b19ef0fa5f34c3db5856767
+- rule_id: edge_linked_error_increase
+  rule_version: 1.0.0
+  subject: &id003
+    caller: ts-travel-plan-service
+    callee: ts-route-plan-service
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/minStopStations
+  baseline: &id004
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/minStopStations
+    n: 53
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 338.471729
+    p95_ms: 2013.4527901999995
+    server_ms: 323.798653
+    wait_ms: 1.702424
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 1
+    method_mismatch: 0
+    first_time: '2025-08-28 08:26:19.756580+00:00'
+    last_time: '2025-08-28 08:30:18.933110+00:00'
+  incident: &id005
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/minStopStations
+    n: 58
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 110.870423
+    p95_ms: 771.0657582499999
+    server_ms: 108.926876
+    wait_ms: 1.8957635000000002
+    errors: 58
+    linked_errors: 58
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-08-28 08:30:29.272749+00:00'
+    last_time: '2025-08-28 08:34:15.449935+00:00'
+  query_refs:
+  - q_026a99ceacc220b796cd
+  - q_0f93632b21fd20500e06
+  verdict: supports
+  obligation_ids:
+  - propagation:ts-route-plan-service->ts-travel-plan-service
+  note: 'Composite witness: exact dependency AND increased calls with errors at CLIENT and containing caller SERVER; compatible
+    with propagation, not proof of causal direction.'
+  units: fraction
+  id: e_4dd4085007e2e5cb08d9ce75
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject: *id003
+  baseline: *id004
+  incident: *id005
+  query_refs:
+  - q_026a99ceacc220b796cd
+  - q_0f93632b21fd20500e06
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-route-plan-service->ts-travel-plan-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_52587bffb078527628a52769
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    n: 80
+    median_ms: 9.6483555
+    p95_ms: 14.6854225
+    p99_ms: 23.548097219999807
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.527523+00:00'
+    last_time: '2025-08-28 08:30:18.410965+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    n: 83
+    median_ms: 9.41181
+    p95_ms: 15.165230899999997
+    p99_ms: 679.8322829799785
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:22.120237+00:00'
+    last_time: '2025-08-28 08:34:17.273897+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_6213435425d08dfa2424e22d
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    n: 33
+    median_ms: 39.420583
+    p95_ms: 122.95268279999983
+    p99_ms: 307.8147015199999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:20.895485+00:00'
+    last_time: '2025-08-28 08:29:53.148079+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    n: 25
+    median_ms: 35.94824
+    p95_ms: 209.71596179999986
+    p99_ms: 2230.490625279995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:26.294896+00:00'
+    last_time: '2025-08-28 08:34:12.578308+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_66c84a37c956c41928999e81
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    n: 132
+    median_ms: 5.1212385
+    p95_ms: 9.14359635
+    p99_ms: 12.278616749999994
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:20.931155+00:00'
+    last_time: '2025-08-28 08:30:17.194530+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/assuranceservice/assurances/types
+    span_kind: Server
+    http_method: GET
+    n: 108
+    median_ms: 4.6761655
+    p95_ms: 7.542546249999996
+    p99_ms: 1617.116671729987
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:21.572007+00:00'
+    last_time: '2025-08-28 08:34:16.652341+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_6fc0ded930951e3fbad731a5
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-route-plan-service
+    span_name: POST /api/v1/routeplanservice/routePlan/minStopStations
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-route-plan-service
+    span_name: POST /api/v1/routeplanservice/routePlan/minStopStations
+    span_kind: Server
+    http_method: POST
+    n: 53
+    median_ms: 323.798653
+    p95_ms: 2011.8158057999995
+    p99_ms: 2846.1149976799984
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.764000+00:00'
+    last_time: '2025-08-28 08:30:18.943000+00:00'
+  incident:
+    service_name: ts-route-plan-service
+    span_name: POST /api/v1/routeplanservice/routePlan/minStopStations
+    span_kind: Server
+    http_method: POST
+    n: 58
+    median_ms: 108.926876
+    p95_ms: 872.3060288499994
+    p99_ms: 2630.85584383
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.283000+00:00'
+    last_time: '2025-08-28 08:34:15.462000+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-route-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_7597c0176e12d2c41842db3b
+- rule_id: server_parent_linked_errors
+  rule_version: 1.0.0
+  subject: &id006
+    caller: ts-ui-dashboard
+    callee: ts-travel-plan-service
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/minStation
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/minStation
+  baseline: &id007
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/minStation
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/minStation
+    n: 53
+    median_ms: 485.064825
+    caller_ms: 485.79486
+    linked_errors: 0
+    dominant_calls: 0
+    first_time: '2025-08-28 08:26:19.754000+00:00'
+    last_time: '2025-08-28 08:30:18.931000+00:00'
+  incident: &id008
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/minStation
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/minStation
+    n: 58
+    median_ms: 117.760227
+    caller_ms: 118.7716455
+    linked_errors: 16
+    dominant_calls: 16
+    first_time: '2025-08-28 08:30:29.270000+00:00'
+    last_time: '2025-08-28 08:34:15.448000+00:00'
+  query_refs:
+  - q_0da2ee74fed197e968ed
+  - q_d9432ec4f93f6d837441
+  verdict: supports
+  obligation_ids:
+  - propagation:ts-travel-plan-service->ts-ui-dashboard
+  note: Increased fraction of nested parent and child SERVER errors; propagation-compatible.
+  units: null
+  id: e_77abc8010c1f55cda7dcda72
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-travel-plan-service
+    span_name: POST
+    span_kind: Client
+    http_method: POST
+  baseline:
+    service_name: ts-travel-plan-service
+    span_name: POST
+    span_kind: Client
+    http_method: POST
+    n: 1003
+    median_ms: 14.935333
+    p95_ms: 426.65224629999994
+    p99_ms: 1871.364413080001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.058751+00:00'
+    last_time: '2025-08-28 08:30:18.933110+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    span_name: POST
+    span_kind: Client
+    http_method: POST
+    n: 769
+    median_ms: 13.465746
+    p95_ms: 382.9224163999995
+    p99_ms: 936.389259599976
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:19.030903+00:00'
+    last_time: '2025-08-28 08:34:17.600057+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_793a56106357ff8a96301f2a
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 33
+    median_ms: 39.420583
+    p95_ms: 122.95268279999983
+    p99_ms: 307.8147015199999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:20.895485+00:00'
+    last_time: '2025-08-28 08:29:53.148079+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1234
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 25
+    median_ms: 35.94824
+    p95_ms: 209.71596179999986
+    p99_ms: 2230.490625279995
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:26.294896+00:00'
+    last_time: '2025-08-28 08:34:12.578308+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_79f3d1c15e2d681c9c73cd36
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 24
+    median_ms: 38.090962
+    p95_ms: 138.75511009999985
+    p99_ms: 305.1376702799999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:23.854417+00:00'
+    last_time: '2025-08-28 08:30:17.043643+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    n: 20
+    median_ms: 33.560756
+    p95_ms: 227.7220058500015
+    p99_ms: 1824.9853515699974
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:23.347337+00:00'
+    last_time: '2025-08-28 08:34:07.009936+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_7ade17cf9a310bf897b13d64
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/shanghai/suzhou/D1345
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/shanghai/suzhou/D1345
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 34
+    median_ms: 34.111778
+    p95_ms: 53.85624109999997
+    p99_ms: 73.00673215000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:27.191022+00:00'
+    last_time: '2025-08-28 08:30:16.843811+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/shanghai/suzhou/D1345
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 34
+    median_ms: 34.6907425
+    p95_ms: 76.24458419999999
+    p99_ms: 317.0523762700006
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:24.146398+00:00'
+    last_time: '2025-08-28 08:34:16.619885+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_7c20e8e3c9ce35801c900bcf
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject: *id006
+  baseline: *id007
+  incident: *id008
+  query_refs:
+  - q_0da2ee74fed197e968ed
+  - q_d9432ec4f93f6d837441
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-travel-plan-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_8988e0b94877db86ec9cfaca
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 80
+    median_ms: 9.6483555
+    p95_ms: 14.6854225
+    p99_ms: 23.548097219999807
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.527523+00:00'
+    last_time: '2025-08-28 08:30:18.410965+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/consignservice/consigns/account/4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 83
+    median_ms: 9.41181
+    p95_ms: 15.165230899999997
+    p99_ms: 679.8322829799785
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:22.120237+00:00'
+    last_time: '2025-08-28 08:34:17.273897+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_95fb6aa5721a7ff161add30c
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-route-plan-service
+    span_name: RoutePlanController.getMinStopStations
+    span_kind: Internal
+    http_method: null
+    pod: ts-route-plan-service-556cddc5c9-5b82k
+  baseline:
+    service_name: ts-route-plan-service
+    span_name: RoutePlanController.getMinStopStations
+    span_kind: Internal
+    http_method: null
+    pod: ts-route-plan-service-556cddc5c9-5b82k
+    n: 53
+    median_ms: 322.315889
+    p95_ms: 2010.4383013999995
+    p99_ms: 2841.9687583199984
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.765000+00:00'
+    last_time: '2025-08-28 08:30:18.943939+00:00'
+  incident:
+    service_name: ts-route-plan-service
+    span_name: RoutePlanController.getMinStopStations
+    span_kind: Internal
+    http_method: null
+    pod: ts-route-plan-service-556cddc5c9-5b82k
+    n: 58
+    median_ms: 104.324246
+    p95_ms: 761.39168705
+    p99_ms: 2627.00548274
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.284005+00:00'
+    last_time: '2025-08-28 08:34:15.462693+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-route-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_9a33fbbf82bbd34a9ef5ada6
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-route-plan-service
+    span_name: RoutePlanController.getMinStopStations
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-route-plan-service
+    span_name: RoutePlanController.getMinStopStations
+    span_kind: Internal
+    http_method: null
+    n: 53
+    median_ms: 322.315889
+    p95_ms: 2010.4383013999995
+    p99_ms: 2841.9687583199984
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.765000+00:00'
+    last_time: '2025-08-28 08:30:18.943939+00:00'
+  incident:
+    service_name: ts-route-plan-service
+    span_name: RoutePlanController.getMinStopStations
+    span_kind: Internal
+    http_method: null
+    n: 58
+    median_ms: 104.324246
+    p95_ms: 761.39168705
+    p99_ms: 2627.00548274
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.284005+00:00'
+    last_time: '2025-08-28 08:34:15.462693+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-route-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_9bc67b3b0be064455a3a28a3
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id009
+  baseline: *id010
+  incident: *id011
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_9fc0b4eecf8394ccc32b0fd7
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-travel-plan-service
+    span_name: POST
+    span_kind: Client
+    http_method: POST
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+  baseline:
+    service_name: ts-travel-plan-service
+    span_name: POST
+    span_kind: Client
+    http_method: POST
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+    n: 1003
+    median_ms: 14.935333
+    p95_ms: 426.65224629999994
+    p99_ms: 1871.364413080001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.058751+00:00'
+    last_time: '2025-08-28 08:30:18.933110+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    span_name: POST
+    span_kind: Client
+    http_method: POST
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+    n: 769
+    median_ms: 13.465746
+    p95_ms: 382.9224163999995
+    p99_ms: 936.389259599976
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:19.030903+00:00'
+    last_time: '2025-08-28 08:34:17.600057+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_a737ace283451e03bacb0aca
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-ui-dashboard
+    callee: ts-travel-plan-service
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/quickest
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/quickest
+  baseline:
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/quickest
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/quickest
+    n: 65
+    median_ms: 348.253335
+    caller_ms: 348.965423
+    linked_errors: 0
+    dominant_calls: 2
+    first_time: '2025-08-28 08:26:19.056000+00:00'
+    last_time: '2025-08-28 08:30:09.115000+00:00'
+  incident:
+    caller_operation: POST /api/v1/travelplanservice/travelPlan/quickest
+    callee_operation: POST /api/v1/travelplanservice/travelPlan/quickest
+    n: 66
+    median_ms: 261.851392
+    caller_ms: 263.468845
+    linked_errors: 0
+    dominant_calls: 19
+    first_time: '2025-08-28 08:30:19.376000+00:00'
+    last_time: '2025-08-28 08:34:11.366000+00:00'
+  query_refs:
+  - q_0da2ee74fed197e968ed
+  - q_d9432ec4f93f6d837441
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-travel-plan-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_ba98abd9f435a58417d7c691
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-travel-plan-service
+    span_name: TravelPlanController.getByMinStation
+    span_kind: Internal
+    http_method: null
+  baseline:
+    service_name: ts-travel-plan-service
+    span_name: TravelPlanController.getByMinStation
+    span_kind: Internal
+    http_method: null
+    n: 53
+    median_ms: 482.706324
+    p95_ms: 2108.9153943999995
+    p99_ms: 3726.720275839993
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.755417+00:00'
+    last_time: '2025-08-28 08:30:18.932136+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    span_name: TravelPlanController.getByMinStation
+    span_kind: Internal
+    http_method: null
+    n: 58
+    median_ms: 114.008476
+    p95_ms: 774.6737739
+    p99_ms: 2635.27546255
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.271882+00:00'
+    last_time: '2025-08-28 08:34:15.448994+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_be002882fd01c23f31a110b9
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 53
+    median_ms: 485.79486
+    p95_ms: 2112.0058809999996
+    p99_ms: 3730.4287080399927
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.754512+00:00'
+    last_time: '2025-08-28 08:30:18.932647+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 58
+    median_ms: 118.7716455
+    p95_ms: 781.6287439999999
+    p99_ms: 2641.8947097399996
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.271414+00:00'
+    last_time: '2025-08-28 08:34:15.449295+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_c18f3226b8e1591069da53e6
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    n: 53
+    median_ms: 485.79486
+    p95_ms: 2112.0058809999996
+    p99_ms: 3730.4287080399927
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.754512+00:00'
+    last_time: '2025-08-28 08:30:18.932647+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    n: 58
+    median_ms: 118.7716455
+    p95_ms: 781.6287439999999
+    p99_ms: 2641.8947097399996
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.271414+00:00'
+    last_time: '2025-08-28 08:34:15.449295+00:00'
+  query_refs:
+  - q_06b8a23ec723817718e5
+  - q_65afef48210132a1eae3
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_cd6310a2db8d2cbf1b45b937
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: service
+    service_name: ts-travel-plan-service
+  baseline:
+    service_name: ts-travel-plan-service
+    n: 1773
+    median_ms: 14.781202
+    p95_ms: 726.651711
+    p99_ms: 2655.29868952
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.056000+00:00'
+    last_time: '2025-08-28 08:30:18.933110+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    n: 1495
+    median_ms: 13.67424
+    p95_ms: 608.2676802
+    p99_ms: 2323.127976099989
+    errors: 174
+    http4xx: 0
+    first_time: '2025-08-28 08:30:19.026124+00:00'
+    last_time: '2025-08-28 08:34:17.600057+00:00'
+  query_refs:
+  - q_0cb6af7b8ed2ec740c2e
+  - q_c82f89036714099996f1
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_d10b4f8866ad707f893e3f79
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-travel-plan-service
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+  baseline:
+    service_name: ts-travel-plan-service
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+    n: 53
+    median_ms: 485.064825
+    p95_ms: 2111.1642889999994
+    p99_ms: 3729.3751717599926
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.754000+00:00'
+    last_time: '2025-08-28 08:30:18.931000+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    span_name: POST /api/v1/travelplanservice/travelPlan/minStation
+    span_kind: Server
+    http_method: POST
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+    n: 58
+    median_ms: 117.760227
+    p95_ms: 779.0838544999999
+    p99_ms: 2639.75631196
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.270000+00:00'
+    last_time: '2025-08-28 08:34:15.448000+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_d34cedd5c0b9629f37df9431
+- rule_id: log_error_message
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-route-plan-service
+  baseline:
+    service_name: ts-route-plan-service
+    n: 883
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-route-plan-service
+    n: 816
+    events: 58
+    first_event: '2025-08-28 08:30:29.397000+00:00'
+    last_event: '2025-08-28 08:34:15.545000+00:00'
+  query_refs:
+  - q_b59a083bb7e2a4e7d019
+  - q_f5de6e37d86e5f75a20f
+  verdict: supports
+  obligation_ids:
+  - node:ts-route-plan-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_d72c4193ddb69dae2b83025c
+- rule_id: matched_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-travel-plan-service
+    callee: ts-route-plan-service
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/cheapestRoute
+  baseline:
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/cheapestRoute
+    n: 61
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 237.564083
+    p95_ms: 2030.407438
+    server_ms: 235.896709
+    wait_ms: 1.663913
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 1
+    method_mismatch: 0
+    first_time: '2025-08-28 08:26:30.002498+00:00'
+    last_time: '2025-08-28 08:30:13.345030+00:00'
+  incident:
+    client_operation: POST
+    server_operation: POST /api/v1/routeplanservice/routePlan/cheapestRoute
+    n: 65
+    client_methods:
+    - POST
+    server_methods:
+    - POST
+    median_ms: 221.793737
+    p95_ms: 615.543085
+    server_ms: 220.202853
+    wait_ms: 1.590884
+    errors: 0
+    linked_errors: 0
+    dominant_calls: 0
+    method_mismatch: 0
+    first_time: '2025-08-28 08:30:21.159265+00:00'
+    last_time: '2025-08-28 08:34:17.464182+00:00'
+  query_refs:
+  - q_026a99ceacc220b796cd
+  - q_0f93632b21fd20500e06
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-route-plan-service->ts-travel-plan-service
+  note: Exact (trace_id, CLIENT span_id = SERVER parent_span_id); kind checked.
+  units: null
+  id: e_db32063e20206e51b2099fe3
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 17
+    median_ms: 35.524063
+    p95_ms: 41.981794799999996
+    p99_ms: 42.02389336000001
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:22.341171+00:00'
+    last_time: '2025-08-28 08:30:03.285201+00:00'
+  incident:
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/suzhou/shanghai/G1236
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 16
+    median_ms: 29.020915
+    p95_ms: 106.07061575
+    p99_ms: 163.18397914999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:23.542165+00:00'
+    last_time: '2025-08-28 08:34:15.668643+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_db40066b6b619648eba82db4
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject:
+    scope: pod_operation
+    service_name: ts-travel-plan-service
+    span_name: TravelPlanController.getByMinStation
+    span_kind: Internal
+    http_method: null
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+  baseline:
+    service_name: ts-travel-plan-service
+    span_name: TravelPlanController.getByMinStation
+    span_kind: Internal
+    http_method: null
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+    n: 53
+    median_ms: 482.706324
+    p95_ms: 2108.9153943999995
+    p99_ms: 3726.720275839993
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.755417+00:00'
+    last_time: '2025-08-28 08:30:18.932136+00:00'
+  incident:
+    service_name: ts-travel-plan-service
+    span_name: TravelPlanController.getByMinStation
+    span_kind: Internal
+    http_method: null
+    pod: ts-travel-plan-service-7875c49896-jcx6z
+    n: 58
+    median_ms: 114.008476
+    p95_ms: 774.6737739
+    p99_ms: 2635.27546255
+    errors: 58
+    http4xx: 0
+    first_time: '2025-08-28 08:30:29.271882+00:00'
+    last_time: '2025-08-28 08:34:15.448994+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_e61ff7de1c54456f82b575c6
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: &id012
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+  baseline: &id013
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 34
+    median_ms: 9.87149
+    p95_ms: 13.484169849999999
+    p99_ms: 14.730442780000002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:26:19.733938+00:00'
+    last_time: '2025-08-28 08:30:08.636947+00:00'
+  incident: &id014
+    service_name: ts-ui-dashboard
+    span_name: GET /api/v1/foodservice/foods/2025-08-28/nanjing/beijing/Z1235
+    span_kind: Server
+    http_method: GET
+    pod: ts-ui-dashboard-57867cb85c-frws4
+    n: 28
+    median_ms: 10.983315
+    p95_ms: 66.89591859999989
+    p99_ms: 175.75432861000004
+    errors: 0
+    http4xx: 0
+    first_time: '2025-08-28 08:30:19.067388+00:00'
+    last_time: '2025-08-28 08:34:14.531069+00:00'
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_f1045c3e48edea6a5035aa4d
+- rule_id: log_error_message
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-travel-plan-service
+  baseline:
+    service_name: ts-travel-plan-service
+    n: 1003
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-travel-plan-service
+    n: 827
+    events: 58
+    first_event: '2025-08-28 08:30:29.415000+00:00'
+    last_event: '2025-08-28 08:34:15.539000+00:00'
+  query_refs:
+  - q_b59a083bb7e2a4e7d019
+  - q_f5de6e37d86e5f75a20f
+  verdict: supports
+  obligation_ids:
+  - node:ts-travel-plan-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_f6080478bf9d88f912945b21
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id012
+  baseline: *id013
+  incident: *id014
+  query_refs:
+  - q_663a6b74c6c7732b39bb
+  - q_d4798a5797f4e8d7183a
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_fc616e01eae60e15f131a477

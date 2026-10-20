@@ -1,0 +1,37 @@
+{
+    "benchmark": "clickhouse",
+    "created_at": "2025-09-04T02:58:54.117Z",
+    "description": "Fault for task 88da5339-dacf-4d5a-934e-ccb4e5e3258c",
+    "display_config": "{\"duration\":4,\"injection_point\":{\"app_name\":\"ts-food-service\",\"method\":\"GET\",\"route\":\"/api/v1/trainfoodservice/trainfoods/*\",\"server_address\":\"ts-train-food-service\",\"server_port\":\"8080\"},\"namespace\":\"ts\"}",
+    "end_time": "2025-09-04T03:02:54Z",
+    "engine_config": "{\"name\":\"InjectionConf\",\"range\":[0,30],\"children\":{\"5\":{\"name\":\"5\",\"range\":[0,2],\"children\":{\"0\":{\"name\":\"0\",\"range\":[1,60],\"children\":null,\"description\":\"Time Unit Minute\",\"value\":4},\"1\":{\"name\":\"1\",\"range\":[0,0],\"children\":null,\"description\":\"{ts: 0}\",\"value\":0},\"2\":{\"name\":\"2\",\"range\":[0,67],\"children\":null,\"description\":\"Flattened HTTP Endpoint Index\",\"value\":15}},\"description\":\"\",\"value\":0}},\"description\":\"\",\"value\":5}",
+    "fault_type": 5,
+    "ground_truth": {
+        "container": [
+            "ts-food-service",
+            "ts-train-food-service"
+        ],
+        "function": null,
+        "metric": null,
+        "pod": [
+            "ts-food-service-5fd45cf66d-zqgrp",
+            "ts-train-food-service-7b67f6b66f-rlw2s"
+        ],
+        "service": [
+            "ts-food-service",
+            "ts-train-food-service"
+        ],
+        "span": [
+            "ts-food-service",
+            "ts-train-food-service"
+        ]
+    },
+    "id": 8396,
+    "injection_name": "ts4-ts-food-service-request-abort-gzrt8n",
+    "pre_duration": 4,
+    "start_time": "2025-09-04T02:58:54Z",
+    "status": 2,
+    "task": null,
+    "task_id": "88da5339-dacf-4d5a-934e-ccb4e5e3258c",
+    "updated_at": "2025-09-04T03:02:54.628Z"
+}

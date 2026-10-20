@@ -1,0 +1,1369 @@
+schema_version: '2.0'
+case: ts2-ts-auth-service-loss-5k6gqr
+status: needs_review
+construction: deterministic_rule_enumeration
+privileged_offline_artifact: true
+rule_contract:
+  version: 1.0.0
+  min_samples: 5
+  min_events: 3
+  latency_ratio: 3.0
+  latency_delta_ms: 20.0
+  error_rate_delta: 0.05
+  error_rate_ratio: 2.0
+  log_rate_delta: 0.01
+  log_rate_ratio: 3.0
+  metric_ratio: 3.0
+  cpu_delta: 0.5
+  nested_min_ms: 20.0
+  nested_min_fraction_of_caller: 0.5
+  nested_min_fraction_of_pairs: 0.5
+  lifecycle_restart_delta: 1
+  lifecycle_ready_ratio: 0.5
+  semantics: Exploratory fixed heuristics; not calibrated detection guarantees.
+reference_path:
+  nodes:
+  - timestamp: null
+    component: service|mysql
+    state:
+    - degraded
+    - unavailable
+  - timestamp: null
+    component: service|ts-auth-service
+    state:
+    - degraded
+    - missing
+    - slow
+    - unavailable
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - missing
+    - silent
+    - slow
+  edges:
+  - source: service|mysql
+    target: service|ts-auth-service
+  - source: service|ts-auth-service
+    target: service|mysql
+  - source: service|ts-auth-service
+    target: service|ts-ui-dashboard
+  root_causes:
+  - timestamp: null
+    component: service|mysql
+    state:
+    - unknown
+  - timestamp: null
+    component: service|ts-auth-service
+    state:
+    - unknown
+  alarm_nodes:
+  - timestamp: null
+    component: service|ts-ui-dashboard
+    state:
+    - unknown
+  component_to_service:
+    service|mysql: mysql
+    service|ts-auth-service: ts-auth-service
+    service|ts-ui-dashboard: ts-ui-dashboard
+summary:
+  n_clauses: 10
+  covered: 3
+  open: 7
+  n_candidates: 10217
+  n_literals: 48
+  n_queries: 68
+  coverage_all: 0.3
+semantics: AND of obligation clauses; OR of complete composite witnesses within each clause. Empty clause remains false/unresolved;
+  never dropped. Coverage is operational evidence coverage, not proof of injected root cause.
+clauses:
+- id: node:mysql
+  kind: node_involvement
+  subject:
+    service: mysql
+  meaning: local anomaly OR incident call on annotated root boundary
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-auth-service
+  kind: node_involvement
+  subject:
+    service: ts-auth-service
+  meaning: local anomaly OR incident call on annotated root boundary
+  literals:
+  - e_0287f92691b5778ae9a82b4f
+  - e_0748b2aff1858eb5e804c2d2
+  - e_15bce9c26791bc213a60f7d9
+  - e_165bf5a23a7d7c94817a4deb
+  - e_202e0e98f0ea6a87d0e9536a
+  - e_21e5b84c4b1244f80ea36c05
+  - e_2d3c0f9127d6124b8e77b15e
+  - e_2f080c65078261db14beae7d
+  - e_31be9b70ad18870675f9ca8a
+  - e_338d13b782c07c36923c3f36
+  - e_35e1877eb8987bc44cdd218a
+  - e_39ef654f03fd8c469737f778
+  - e_3a02b5abe741db1a8cf0f654
+  - e_44358348ecb1dfcad4577e4c
+  - e_4acd722f303cf16e7f4df7ae
+  - e_4bb696d6d34d9040473529f4
+  - e_542eb6deba102d4c49b2f9ea
+  - e_542f44ae29b46889099e27bd
+  - e_56003248413709b06d7e17a3
+  - e_56d42d5746003e6848c8681f
+  - e_6752cd5f3b19fd4b70d3ab34
+  - e_7d82ac19d3a6a28d5e33669c
+  - e_81949752b18af1f94e655fbc
+  - e_8915787c2db1e7b6076e40a3
+  - e_899a3ce56ece19ce8f07849e
+  - e_8dbde6b07071f15bc17578a0
+  - e_9584d9124be5405361ef0d44
+  - e_ac927cbd9a77f88fdc49cd07
+  - e_aec39e0846c2dbc90c8e70cc
+  - e_b3de2d6ef7eff3d0c54f2891
+  - e_bc0315e0af8090c1d7a64f78
+  - e_c16b36aab60381c25221f951
+  - e_cb00955395f7db11afeccc38
+  - e_e0da45d1cf4eadfb55187ee5
+  - e_e32ea1129bbeef34c81403c1
+  - e_e3c7dc0c46853774957f44a1
+  - e_e3f56b55d5b4085f14a0c140
+  - e_e6e24b80220effb37369255e
+  - e_fce35f1a345ca4a699f55a56
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: node:ts-ui-dashboard
+  kind: node_anomaly
+  subject:
+    service: ts-ui-dashboard
+  meaning: local anomalous telemetry
+  literals:
+  - e_4a8b635cb48b4f214a7f0dd4
+  - e_71684b9198ae2dff1d3e1edf
+  - e_756594cd09c2992ab96d580b
+  - e_902bc2cfcc52acb78bbe6a0e
+  - e_bb15e8f0bf8962711f464228
+  - e_bcb65ee68230ce95003b7242
+  - e_bef7edfc02bf223961700adc
+  - e_c4ce98eb21cc2828527afa1f
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:mysql->ts-auth-service
+  kind: dependency
+  subject: &id001
+    source: mysql
+    target: ts-auth-service
+    caller: ts-auth-service
+    callee: mysql
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:mysql->ts-auth-service
+  kind: propagation_observation
+  subject: *id001
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-auth-service->mysql
+  kind: dependency
+  subject: &id002
+    source: ts-auth-service
+    target: mysql
+    caller: mysql
+    callee: ts-auth-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-auth-service->mysql
+  kind: propagation_observation
+  subject: *id002
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: dependency:ts-auth-service->ts-ui-dashboard
+  kind: dependency
+  subject: &id003
+    source: ts-auth-service
+    target: ts-ui-dashboard
+    caller: ts-ui-dashboard
+    callee: ts-auth-service
+  meaning: observed caller-to-callee dependency; reverse of annotated impact direction
+  literals:
+  - e_6104c068091606a755303662
+  status: covered
+  gap_reason: null
+  observable: unknown
+  excluded_from_denominator: false
+- id: propagation:ts-auth-service->ts-ui-dashboard
+  kind: propagation_observation
+  subject: *id003
+  meaning: request-linked anomalous call and caller symptom compatible with propagation; not causal identification
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+- id: root_boundary
+  kind: boundary_anomaly
+  subject:
+    ends:
+    - mysql
+    - ts-auth-service
+  meaning: anomalous call on this boundary; does not identify injection mechanism or side
+  literals: []
+  status: open
+  gap_reason: insufficient_evidence_under_rule_contract
+  observable: unknown
+  excluded_from_denominator: false
+literals:
+- rule_id: log_connection_failure
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-auth-service
+  baseline:
+    service_name: ts-auth-service
+    n: 1440
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-auth-service
+    n: 64
+    events: 20
+    first_event: '2025-07-18 13:58:11.291000+00:00'
+    last_event: '2025-07-18 14:01:17.972000+00:00'
+  query_refs:
+  - q_4cd5ca90f90f049665f9
+  - q_e5aa4d4ee7d5f89738fc
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_0287f92691b5778ae9a82b4f
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id013
+    scope: pod_operation
+    service_name: ts-auth-service
+    span_name: UserRepository.findByUsername
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+  baseline: &id014
+    service_name: ts-auth-service
+    span_name: UserRepository.findByUsername
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 960
+    median_ms: 0.8084475
+    p95_ms: 1.1755852999999998
+    p99_ms: 1.4880757999999996
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.167263+00:00'
+    last_time: '2025-07-18 13:57:24.202324+00:00'
+  incident: &id015
+    service_name: ts-auth-service
+    span_name: UserRepository.findByUsername
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 14
+    median_ms: 22737.3730965
+    p95_ms: 30007.139172100004
+    p99_ms: 30011.128365620003
+    errors: 7
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.094096+00:00'
+    last_time: '2025-07-18 14:00:47.970098+00:00'
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_0748b2aff1858eb5e804c2d2
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id007
+    scope: pod_operation
+    service_name: ts-auth-service
+    span_name: SELECT User
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+  baseline: &id008
+    service_name: ts-auth-service
+    span_name: SELECT User
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 960
+    median_ms: 0.6551425
+    p95_ms: 0.99998305
+    p99_ms: 1.2531871299999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.167489+00:00'
+    last_time: '2025-07-18 13:57:24.202457+00:00'
+  incident: &id009
+    service_name: ts-auth-service
+    span_name: SELECT User
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 14
+    median_ms: 22736.720379
+    p95_ms: 30005.55971125
+    p99_ms: 30008.298319849997
+    errors: 7
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.094202+00:00'
+    last_time: '2025-07-18 14:00:47.970221+00:00'
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_15bce9c26791bc213a60f7d9
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: &id010
+    scope: service
+    service_name: ts-auth-service
+  baseline: &id011
+    service_name: ts-auth-service
+    n: 4800
+    median_ms: 0.7051515
+    p95_ms: 88.72450610000001
+    p99_ms: 92.27347592
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.157000+00:00'
+    last_time: '2025-07-18 13:57:24.202527+00:00'
+  incident: &id012
+    service_name: ts-auth-service
+    n: 69
+    median_ms: 1269.207018
+    p95_ms: 30016.8079712
+    p99_ms: 30023.24929612
+    errors: 14
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.086000+00:00'
+    last_time: '2025-07-18 14:01:08.177071+00:00'
+  query_refs:
+  - q_0d12eed4f69029926b9e
+  - q_5952c2a3cde224b22058
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_165bf5a23a7d7c94817a4deb
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: &id004
+    scope: operation
+    service_name: ts-auth-service
+    span_name: SELECT User
+    span_kind: Internal
+    http_method: null
+  baseline: &id005
+    service_name: ts-auth-service
+    span_name: SELECT User
+    span_kind: Internal
+    http_method: null
+    n: 960
+    median_ms: 0.6551425
+    p95_ms: 0.99998305
+    p99_ms: 1.2531871299999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.167489+00:00'
+    last_time: '2025-07-18 13:57:24.202457+00:00'
+  incident: &id006
+    service_name: ts-auth-service
+    span_name: SELECT User
+    span_kind: Internal
+    http_method: null
+    n: 14
+    median_ms: 22736.720379
+    p95_ms: 30005.55971125
+    p99_ms: 30008.298319849997
+    errors: 7
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.094202+00:00'
+    last_time: '2025-07-18 14:00:47.970221+00:00'
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_202e0e98f0ea6a87d0e9536a
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id004
+  baseline: *id005
+  incident: *id006
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_21e5b84c4b1244f80ea36c05
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: &id016
+    scope: operation
+    service_name: ts-auth-service
+    span_name: UserController.getToken
+    span_kind: Internal
+    http_method: null
+  baseline: &id017
+    service_name: ts-auth-service
+    span_name: UserController.getToken
+    span_kind: Internal
+    http_method: null
+    n: 480
+    median_ms: 86.650903
+    p95_ms: 90.4501217
+    p99_ms: 99.87349726999999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.159105+00:00'
+    last_time: '2025-07-18 13:57:24.116835+00:00'
+  incident: &id018
+    service_name: ts-auth-service
+    span_name: UserController.getToken
+    span_kind: Internal
+    http_method: null
+    n: 9
+    median_ms: 30014.312578
+    p95_ms: 30019.4181866
+    p99_ms: 30021.66062532
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.087114+00:00'
+    last_time: '2025-07-18 14:00:47.960996+00:00'
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_2d3c0f9127d6124b8e77b15e
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id019
+    scope: operation
+    service_name: ts-auth-service
+    span_name: UserRepository.findByUsername
+    span_kind: Internal
+    http_method: null
+  baseline: &id020
+    service_name: ts-auth-service
+    span_name: UserRepository.findByUsername
+    span_kind: Internal
+    http_method: null
+    n: 960
+    median_ms: 0.8084475
+    p95_ms: 1.1755852999999998
+    p99_ms: 1.4880757999999996
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.167263+00:00'
+    last_time: '2025-07-18 13:57:24.202324+00:00'
+  incident: &id021
+    service_name: ts-auth-service
+    span_name: UserRepository.findByUsername
+    span_kind: Internal
+    http_method: null
+    n: 14
+    median_ms: 22737.3730965
+    p95_ms: 30007.139172100004
+    p99_ms: 30011.128365620003
+    errors: 7
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.094096+00:00'
+    last_time: '2025-07-18 14:00:47.970098+00:00'
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_2f080c65078261db14beae7d
+- rule_id: log_timeout
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-auth-service
+  baseline:
+    service_name: ts-auth-service
+    n: 1440
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-auth-service
+    n: 64
+    events: 7
+    first_event: '2025-07-18 13:59:16.697000+00:00'
+    last_event: '2025-07-18 14:01:17.971000+00:00'
+  query_refs:
+  - q_351ffce293d224cc9a4e
+  - q_5d64c5057dbc83678237
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_31be9b70ad18870675f9ca8a
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id007
+  baseline: *id008
+  incident: *id009
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_338d13b782c07c36923c3f36
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id010
+  baseline: *id011
+  incident: *id012
+  query_refs:
+  - q_0d12eed4f69029926b9e
+  - q_5952c2a3cde224b22058
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_35e1877eb8987bc44cdd218a
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: &id028
+    scope: operation
+    service_name: ts-auth-service
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+  baseline: &id029
+    service_name: ts-auth-service
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    n: 480
+    median_ms: 88.343618
+    p95_ms: 93.20219005
+    p99_ms: 102.87816844999999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.157000+00:00'
+    last_time: '2025-07-18 13:57:24.116000+00:00'
+  incident: &id030
+    service_name: ts-auth-service
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    n: 9
+    median_ms: 30016.010796
+    p95_ms: 30022.178423600002
+    p99_ms: 30024.78282552
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.086000+00:00'
+    last_time: '2025-07-18 14:00:47.960000+00:00'
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_39ef654f03fd8c469737f778
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id004
+  baseline: *id005
+  incident: *id006
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_3a02b5abe741db1a8cf0f654
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id004
+  baseline: *id005
+  incident: *id006
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_44358348ecb1dfcad4577e4c
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id037
+    scope: operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+  baseline: &id038
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    n: 480
+    median_ms: 90.368521
+    p95_ms: 95.38390315000001
+    p99_ms: 105.63950946999998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.157925+00:00'
+    last_time: '2025-07-18 13:57:24.117544+00:00'
+  incident: &id039
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    n: 13
+    median_ms: 20001.069346
+    p95_ms: 20003.948147400002
+    p99_ms: 20004.783333479998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.087101+00:00'
+    last_time: '2025-07-18 14:00:47.959305+00:00'
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4a8b635cb48b4f214a7f0dd4
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id013
+  baseline: *id014
+  incident: *id015
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4acd722f303cf16e7f4df7ae
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: &id031
+    scope: pod_operation
+    service_name: ts-auth-service
+    span_name: SELECT ts.auth_user
+    span_kind: Client
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+  baseline: &id032
+    service_name: ts-auth-service
+    span_name: SELECT ts.auth_user
+    span_kind: Client
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 960
+    median_ms: 0.3295015
+    p95_ms: 0.53265905
+    p99_ms: 0.6232556099999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.168126+00:00'
+    last_time: '2025-07-18 13:57:24.202527+00:00'
+  incident: &id033
+    service_name: ts-auth-service
+    span_name: SELECT ts.auth_user
+    span_kind: Client
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 7
+    median_ms: 0.483098
+    p95_ms: 5068.698389599996
+    p99_ms: 6517.369205119997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.094610+00:00'
+    last_time: '2025-07-18 13:58:26.907583+00:00'
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_4bb696d6d34d9040473529f4
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id016
+  baseline: *id017
+  incident: *id018
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_542eb6deba102d4c49b2f9ea
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id043
+    scope: operation
+    service_name: ts-auth-service
+    span_name: SELECT ts.auth_user
+    span_kind: Client
+    http_method: null
+  baseline: &id044
+    service_name: ts-auth-service
+    span_name: SELECT ts.auth_user
+    span_kind: Client
+    http_method: null
+    n: 960
+    median_ms: 0.3295015
+    p95_ms: 0.53265905
+    p99_ms: 0.6232556099999997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.168126+00:00'
+    last_time: '2025-07-18 13:57:24.202527+00:00'
+  incident: &id045
+    service_name: ts-auth-service
+    span_name: SELECT ts.auth_user
+    span_kind: Client
+    http_method: null
+    n: 7
+    median_ms: 0.483098
+    p95_ms: 5068.698389599996
+    p99_ms: 6517.369205119997
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.094610+00:00'
+    last_time: '2025-07-18 13:58:26.907583+00:00'
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_542f44ae29b46889099e27bd
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id013
+  baseline: *id014
+  incident: *id015
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_56003248413709b06d7e17a3
+- rule_id: log_error_message
+  rule_version: 1.0.0
+  subject:
+    service_name: ts-auth-service
+  baseline:
+    service_name: ts-auth-service
+    n: 1440
+    events: 0
+    first_event: null
+    last_event: null
+  incident:
+    service_name: ts-auth-service
+    n: 64
+    events: 20
+    first_event: '2025-07-18 13:58:11.291000+00:00'
+    last_event: '2025-07-18 14:01:17.972000+00:00'
+  query_refs:
+  - q_ad9c8edf3943eb5d36cc
+  - q_fa7f22b6f951d5a4e9b9
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fixed regex match frequency among this service's logs; overlapping patterns are alternatives, not independent votes.
+  units: fraction
+  id: e_56d42d5746003e6848c8681f
+- rule_id: server_parent_dependency
+  rule_version: 1.0.0
+  subject:
+    caller: ts-ui-dashboard
+    callee: ts-auth-service
+    caller_operation: POST /api/v1/users/login
+    callee_operation: POST /api/v1/users/login
+  baseline:
+    caller_operation: POST /api/v1/users/login
+    callee_operation: POST /api/v1/users/login
+    n: 480
+    median_ms: 88.343618
+    caller_ms: 90.368521
+    linked_errors: 0
+    dominant_calls: 3
+    first_time: '2025-07-18 13:53:25.157000+00:00'
+    last_time: '2025-07-18 13:57:24.116000+00:00'
+  incident:
+    caller_operation: POST /api/v1/users/login
+    callee_operation: POST /api/v1/users/login
+    n: 9
+    median_ms: 30016.010796
+    caller_ms: 20000.845521
+    linked_errors: 0
+    dominant_calls: 0
+    first_time: '2025-07-18 13:57:25.086000+00:00'
+    last_time: '2025-07-18 14:00:47.960000+00:00'
+  query_refs:
+  - q_b061f6b7c5328def52fc
+  - q_e561b600f6e5e9b3ef90
+  verdict: supports
+  obligation_ids:
+  - dependency:ts-auth-service->ts-ui-dashboard
+  note: Direct cross-service SERVER parent/child (e.g. gateway); no CLIENT span assumed.
+  units: null
+  id: e_6104c068091606a755303662
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: *id019
+  baseline: *id020
+  incident: *id021
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_6752cd5f3b19fd4b70d3ab34
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id025
+    scope: service
+    service_name: ts-ui-dashboard
+  baseline: &id026
+    service_name: ts-ui-dashboard
+    n: 3080
+    median_ms: 7.868748
+    p95_ms: 194.38442094999985
+    p99_ms: 495.6306520800003
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.150343+00:00'
+    last_time: '2025-07-18 13:57:24.637157+00:00'
+  incident: &id027
+    service_name: ts-ui-dashboard
+    n: 35
+    median_ms: 7.214253
+    p95_ms: 20002.178792299997
+    p99_ms: 20004.400539860002
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.080127+00:00'
+    last_time: '2025-07-18 14:01:08.165001+00:00'
+  query_refs:
+  - q_0d12eed4f69029926b9e
+  - q_5952c2a3cde224b22058
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_71684b9198ae2dff1d3e1edf
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: &id040
+    scope: pod_operation
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-9c5b7b7d4-s8w5j
+  baseline: &id041
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-9c5b7b7d4-s8w5j
+    n: 480
+    median_ms: 90.368521
+    p95_ms: 95.38390315000001
+    p99_ms: 105.63950946999998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.157925+00:00'
+    last_time: '2025-07-18 13:57:24.117544+00:00'
+  incident: &id042
+    service_name: ts-ui-dashboard
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-ui-dashboard-9c5b7b7d4-s8w5j
+    n: 13
+    median_ms: 20001.069346
+    p95_ms: 20003.948147400002
+    p99_ms: 20004.783333479998
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.087101+00:00'
+    last_time: '2025-07-18 14:00:47.959305+00:00'
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_756594cd09c2992ab96d580b
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: &id022
+    scope: pod_operation
+    service_name: ts-auth-service
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-auth-service-5db57c8fc9-6j62m
+  baseline: &id023
+    service_name: ts-auth-service
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 480
+    median_ms: 88.343618
+    p95_ms: 93.20219005
+    p99_ms: 102.87816844999999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.157000+00:00'
+    last_time: '2025-07-18 13:57:24.116000+00:00'
+  incident: &id024
+    service_name: ts-auth-service
+    span_name: POST /api/v1/users/login
+    span_kind: Server
+    http_method: POST
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 9
+    median_ms: 30016.010796
+    p95_ms: 30022.178423600002
+    p99_ms: 30024.78282552
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.086000+00:00'
+    last_time: '2025-07-18 14:00:47.960000+00:00'
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_7d82ac19d3a6a28d5e33669c
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id016
+  baseline: *id017
+  incident: *id018
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_81949752b18af1f94e655fbc
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id007
+  baseline: *id008
+  incident: *id009
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_8915787c2db1e7b6076e40a3
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id022
+  baseline: *id023
+  incident: *id024
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_899a3ce56ece19ce8f07849e
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: &id034
+    scope: pod_operation
+    service_name: ts-auth-service
+    span_name: UserController.getToken
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+  baseline: &id035
+    service_name: ts-auth-service
+    span_name: UserController.getToken
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 480
+    median_ms: 86.650903
+    p95_ms: 90.4501217
+    p99_ms: 99.87349726999999
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:53:25.159105+00:00'
+    last_time: '2025-07-18 13:57:24.116835+00:00'
+  incident: &id036
+    service_name: ts-auth-service
+    span_name: UserController.getToken
+    span_kind: Internal
+    http_method: null
+    pod: ts-auth-service-5db57c8fc9-6j62m
+    n: 9
+    median_ms: 30014.312578
+    p95_ms: 30019.4181866
+    p99_ms: 30021.66062532
+    errors: 0
+    http4xx: 0
+    first_time: '2025-07-18 13:57:25.087114+00:00'
+    last_time: '2025-07-18 14:00:47.960996+00:00'
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_8dbde6b07071f15bc17578a0
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id025
+  baseline: *id026
+  incident: *id027
+  query_refs:
+  - q_0d12eed4f69029926b9e
+  - q_5952c2a3cde224b22058
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_902bc2cfcc52acb78bbe6a0e
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id028
+  baseline: *id029
+  incident: *id030
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_9584d9124be5405361ef0d44
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id031
+  baseline: *id032
+  incident: *id033
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_ac927cbd9a77f88fdc49cd07
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id028
+  baseline: *id029
+  incident: *id030
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_aec39e0846c2dbc90c8e70cc
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id034
+  baseline: *id035
+  incident: *id036
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_b3de2d6ef7eff3d0c54f2891
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id037
+  baseline: *id038
+  incident: *id039
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_bb15e8f0bf8962711f464228
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: *id007
+  baseline: *id008
+  incident: *id009
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_bc0315e0af8090c1d7a64f78
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id040
+  baseline: *id041
+  incident: *id042
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_bcb65ee68230ce95003b7242
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id037
+  baseline: *id038
+  incident: *id039
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_bef7edfc02bf223961700adc
+- rule_id: trace_latency_p99_ms
+  rule_version: 1.0.0
+  subject: *id010
+  baseline: *id011
+  incident: *id012
+  query_refs:
+  - q_0d12eed4f69029926b9e
+  - q_5952c2a3cde224b22058
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_c16b36aab60381c25221f951
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id040
+  baseline: *id041
+  incident: *id042
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-ui-dashboard
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_c4ce98eb21cc2828527afa1f
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id019
+  baseline: *id020
+  incident: *id021
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_cb00955395f7db11afeccc38
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id022
+  baseline: *id023
+  incident: *id024
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e0da45d1cf4eadfb55187ee5
+- rule_id: trace_latency_median_ms
+  rule_version: 1.0.0
+  subject: *id019
+  baseline: *id020
+  incident: *id021
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e32ea1129bbeef34c81403c1
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id034
+  baseline: *id035
+  incident: *id036
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e3c7dc0c46853774957f44a1
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: *id010
+  baseline: *id011
+  incident: *id012
+  query_refs:
+  - q_0d12eed4f69029926b9e
+  - q_5952c2a3cde224b22058
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_e3f56b55d5b4085f14a0c140
+- rule_id: trace_latency_p95_ms
+  rule_version: 1.0.0
+  subject: *id043
+  baseline: *id044
+  incident: *id045
+  query_refs:
+  - q_1a22ff9e9d53363b79b0
+  - q_d5ef9bbb7f65a77cfebd
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Duration belongs to the recorded span kind/operation, not automatically database execution.
+  units: ms
+  id: e_e6e24b80220effb37369255e
+- rule_id: trace_rate_errors
+  rule_version: 1.0.0
+  subject: *id013
+  baseline: *id014
+  incident: *id015
+  query_refs:
+  - q_347616981ff703efb181
+  - q_3c3497b0092a25b78e31
+  verdict: supports
+  obligation_ids:
+  - node:ts-auth-service
+  note: Fraction of spans, not request availability.
+  units: fraction
+  id: e_fce35f1a345ca4a699f55a56

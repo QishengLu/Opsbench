@@ -1,0 +1,419 @@
+[
+  {
+    "case": "ts2-ts-auth-service-loss-5k6gqr",
+    "n_clauses": 10,
+    "covered": 3,
+    "open": 7,
+    "n_candidates": 10217,
+    "n_literals": 48,
+    "n_queries": 68,
+    "coverage_all": 0.3,
+    "candidate_verdicts": {
+      "insufficient": 5479,
+      "context": 4563,
+      "not_met": 127,
+      "supports": 48
+    },
+    "cnf_sha256": "9af2e6580fd47126610f9701c110af65a032705f9edd7ca63920a39d93662e9d",
+    "open_obligations": [
+      {
+        "id": "node:mysql",
+        "kind": "node_involvement"
+      },
+      {
+        "id": "dependency:mysql->ts-auth-service",
+        "kind": "dependency"
+      },
+      {
+        "id": "propagation:mysql->ts-auth-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "dependency:ts-auth-service->mysql",
+        "kind": "dependency"
+      },
+      {
+        "id": "propagation:ts-auth-service->mysql",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-auth-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "root_boundary",
+        "kind": "boundary_anomaly"
+      }
+    ]
+  },
+  {
+    "case": "ts2-ts-auth-service-stress-lq54b9",
+    "n_clauses": 4,
+    "covered": 3,
+    "open": 1,
+    "n_candidates": 23777,
+    "n_literals": 15,
+    "n_queries": 56,
+    "coverage_all": 0.75,
+    "candidate_verdicts": {
+      "insufficient": 12514,
+      "context": 10837,
+      "not_met": 411,
+      "supports": 15
+    },
+    "cnf_sha256": "f2dc92c4bfeae29f0e4d7d9058369e521c48c2710350bae69280d95c076f6a6e",
+    "open_obligations": [
+      {
+        "id": "propagation:ts-auth-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      }
+    ]
+  },
+  {
+    "case": "ts4-ts-order-other-service-delay-mpwtgz",
+    "n_clauses": 34,
+    "covered": 20,
+    "open": 14,
+    "n_candidates": 23481,
+    "n_literals": 228,
+    "n_queries": 122,
+    "coverage_all": 0.5882352941176471,
+    "candidate_verdicts": {
+      "context": 12425,
+      "insufficient": 9868,
+      "not_met": 951,
+      "supports": 237
+    },
+    "cnf_sha256": "b5a099b2cf2c8106d04cf8a8b0b7222bb8fcb0aad2078ad0733b2f60fe537f8a",
+    "open_obligations": [
+      {
+        "id": "node:mysql",
+        "kind": "node_involvement"
+      },
+      {
+        "id": "dependency:mysql->ts-order-other-service",
+        "kind": "dependency"
+      },
+      {
+        "id": "propagation:mysql->ts-order-other-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-order-other-service->ts-seat-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-order-other-service->ts-security-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-order-other-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-seat-service->ts-travel-plan-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-seat-service->ts-travel-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-seat-service->ts-travel2-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-security-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-plan-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel2-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "root_boundary",
+        "kind": "boundary_anomaly"
+      }
+    ]
+  },
+  {
+    "case": "ts2-ts-order-other-service-container-kill-48rlds",
+    "n_clauses": 30,
+    "covered": 19,
+    "open": 11,
+    "n_candidates": 15439,
+    "n_literals": 87,
+    "n_queries": 116,
+    "coverage_all": 0.6333333333333333,
+    "candidate_verdicts": {
+      "insufficient": 5826,
+      "context": 8360,
+      "not_met": 1163,
+      "supports": 90
+    },
+    "cnf_sha256": "c961a3a405d84e52ca91289b707317a5cbbd68f093b93167ad962d15e774ec32",
+    "open_obligations": [
+      {
+        "id": "node:ts-travel-service",
+        "kind": "node_anomaly"
+      },
+      {
+        "id": "propagation:ts-order-other-service->ts-seat-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-order-other-service->ts-security-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-order-other-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-preserve-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-seat-service->ts-travel-plan-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-seat-service->ts-travel-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-security-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-plan-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel2-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      }
+    ]
+  },
+  {
+    "case": "ts5-ts-travel-service-partition-9pdvpn",
+    "n_clauses": 14,
+    "covered": 7,
+    "open": 7,
+    "n_candidates": 22697,
+    "n_literals": 54,
+    "n_queries": 74,
+    "coverage_all": 0.5,
+    "candidate_verdicts": {
+      "insufficient": 11010,
+      "context": 10877,
+      "supports": 54,
+      "not_met": 756
+    },
+    "cnf_sha256": "d72c348bde87c272db8de6826084f591750d847dce93a6da2563834f92c3c34a",
+    "open_obligations": [
+      {
+        "id": "node:ts-travel-plan-service",
+        "kind": "node_anomaly"
+      },
+      {
+        "id": "node:ts-travel-service",
+        "kind": "node_involvement"
+      },
+      {
+        "id": "propagation:ts-route-plan-service->ts-travel-plan-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-plan-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-service->ts-route-plan-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "root_boundary",
+        "kind": "boundary_anomaly"
+      }
+    ]
+  },
+  {
+    "case": "ts4-ts-route-plan-service-exception-ztg25x",
+    "n_clauses": 7,
+    "covered": 7,
+    "open": 0,
+    "n_candidates": 37981,
+    "n_literals": 40,
+    "n_queries": 62,
+    "coverage_all": 1.0,
+    "candidate_verdicts": {
+      "context": 17517,
+      "insufficient": 19857,
+      "supports": 41,
+      "not_met": 566
+    },
+    "cnf_sha256": "bd995ed5e9654011d117d0cd5c5f9ddf6663ddb589c52200ba202c67d3455be6",
+    "open_obligations": []
+  },
+  {
+    "case": "ts6-ts-security-service-response-replace-code-nj74q4",
+    "n_clauses": 11,
+    "covered": 10,
+    "open": 1,
+    "n_candidates": 48964,
+    "n_literals": 48,
+    "n_queries": 68,
+    "coverage_all": 0.9090909090909091,
+    "candidate_verdicts": {
+      "context": 22511,
+      "insufficient": 25840,
+      "not_met": 564,
+      "supports": 49
+    },
+    "cnf_sha256": "33e03125f35a803fb39dc596279dba1d363260ef0e02cc7ea2c41eac687120a3",
+    "open_obligations": [
+      {
+        "id": "propagation:ts-preserve-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      }
+    ]
+  },
+  {
+    "case": "ts4-ts-food-service-request-abort-gzrt8n",
+    "n_clauses": 13,
+    "covered": 7,
+    "open": 6,
+    "n_candidates": 864,
+    "n_literals": 19,
+    "n_queries": 74,
+    "coverage_all": 0.5384615384615384,
+    "candidate_verdicts": {
+      "insufficient": 324,
+      "supports": 19,
+      "not_met": 298,
+      "context": 223
+    },
+    "cnf_sha256": "6a7ca8c111e6e15b89747e3519248e8372918b7856358dc4f3cbf318810a22ae",
+    "open_obligations": [
+      {
+        "id": "node:ts-preserve-service",
+        "kind": "node_anomaly"
+      },
+      {
+        "id": "node:ts-train-food-service",
+        "kind": "node_involvement"
+      },
+      {
+        "id": "propagation:ts-food-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-preserve-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-train-food-service->ts-food-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "root_boundary",
+        "kind": "boundary_anomaly"
+      }
+    ]
+  },
+  {
+    "case": "ts4-ts-user-service-bandwidth-gvv8b5",
+    "n_clauses": 13,
+    "covered": 6,
+    "open": 7,
+    "n_candidates": 15618,
+    "n_literals": 60,
+    "n_queries": 74,
+    "coverage_all": 0.46153846153846156,
+    "candidate_verdicts": {
+      "context": 6948,
+      "insufficient": 8454,
+      "not_met": 156,
+      "supports": 60
+    },
+    "cnf_sha256": "1d4a54d39a13b539995af5036271fb6e83dc1e7e8ae1eda199b62d618d86a83e",
+    "open_obligations": [
+      {
+        "id": "node:mysql",
+        "kind": "node_involvement"
+      },
+      {
+        "id": "dependency:mysql->ts-user-service",
+        "kind": "dependency"
+      },
+      {
+        "id": "propagation:mysql->ts-user-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-preserve-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-user-service->ts-preserve-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-user-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "root_boundary",
+        "kind": "boundary_anomaly"
+      }
+    ]
+  },
+  {
+    "case": "ts2-ts-travel2-service-response-delay-mxrns5",
+    "n_clauses": 16,
+    "covered": 13,
+    "open": 3,
+    "n_candidates": 30935,
+    "n_literals": 196,
+    "n_queries": 80,
+    "coverage_all": 0.8125,
+    "candidate_verdicts": {
+      "context": 16596,
+      "insufficient": 13504,
+      "not_met": 629,
+      "supports": 206
+    },
+    "cnf_sha256": "4964346e311006c4799b3f8f2133a61e293d74649c8ceb1ddcd361ed799d1527",
+    "open_obligations": [
+      {
+        "id": "propagation:ts-seat-service->ts-travel2-service",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel-plan-service->ts-ui-dashboard",
+        "kind": "propagation_observation"
+      },
+      {
+        "id": "propagation:ts-travel2-service->ts-route-plan-service",
+        "kind": "propagation_observation"
+      }
+    ]
+  }
+]

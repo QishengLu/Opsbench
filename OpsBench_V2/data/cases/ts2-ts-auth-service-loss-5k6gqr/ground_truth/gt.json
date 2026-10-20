@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|mysql",
+      "state": [
+        "degraded",
+        "unavailable"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-auth-service",
+      "state": [
+        "degraded",
+        "missing",
+        "slow",
+        "unavailable"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "missing",
+        "silent",
+        "slow"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|mysql",
+      "target": "service|ts-auth-service"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "service|mysql"
+    },
+    {
+      "source": "service|ts-auth-service",
+      "target": "service|ts-ui-dashboard"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|mysql",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-auth-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|mysql": "mysql",
+    "service|ts-auth-service": "ts-auth-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

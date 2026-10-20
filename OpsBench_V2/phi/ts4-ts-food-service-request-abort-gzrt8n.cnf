@@ -1,0 +1,29 @@
+c OpsBench V2 ts4-ts-food-service-request-abort-gzrt8n
+c Empty clause = unresolved reference obligation; retained deliberately.
+p cnf 19 13
+c node:ts-food-service
+4 6 8 10 11 16 19 0
+c node:ts-preserve-service
+0
+c node:ts-train-food-service
+0
+c node:ts-ui-dashboard
+3 5 7 12 13 14 18 0
+c dependency:ts-food-service->ts-preserve-service
+9 0
+c propagation:ts-food-service->ts-preserve-service
+0
+c dependency:ts-food-service->ts-ui-dashboard
+2 0
+c propagation:ts-food-service->ts-ui-dashboard
+1 0
+c dependency:ts-preserve-service->ts-ui-dashboard
+15 0
+c propagation:ts-preserve-service->ts-ui-dashboard
+0
+c dependency:ts-train-food-service->ts-food-service
+17 0
+c propagation:ts-train-food-service->ts-food-service
+0
+c root_boundary
+0

@@ -1,0 +1,103 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-route-plan-service",
+      "state": [
+        "healthy",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-plan-service",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-travel2-service",
+      "state": [
+        "healthy",
+        "missing",
+        "silent",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "healthy",
+        "missing",
+        "slow"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-seat-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "service|ts-route-plan-service",
+      "target": "service|ts-travel-plan-service"
+    },
+    {
+      "source": "service|ts-travel-plan-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-travel2-service",
+      "target": "service|ts-route-plan-service"
+    },
+    {
+      "source": "service|ts-travel2-service",
+      "target": "service|ts-ui-dashboard"
+    },
+    {
+      "source": "service|ts-seat-service",
+      "target": "service|ts-travel2-service"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-travel2-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": null,
+      "component": "service|ts-seat-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-ui-dashboard",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-route-plan-service": "ts-route-plan-service",
+    "service|ts-seat-service": "ts-seat-service",
+    "service|ts-travel-plan-service": "ts-travel-plan-service",
+    "service|ts-travel2-service": "ts-travel2-service",
+    "service|ts-ui-dashboard": "ts-ui-dashboard"
+  }
+}

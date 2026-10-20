@@ -1,0 +1,315 @@
+{
+  "nodes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-service",
+      "state": [
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-travel-service::SELECT ts.trip",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-travel-service::SELECT Trip",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-travel-service::TripRepository.findByTripId",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-travel-service::TravelController.getTripAllDetailInfo",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail",
+      "state": [
+        "injection_affected",
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-route-plan-service::RoutePlanController.getMinStopStations",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "unknown",
+        "high_p99_latency"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+      "state": [
+        "high_avg_latency",
+        "healthy",
+        "unknown",
+        "high_p99_latency"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-preserve-service::PreserveController.preserve",
+      "state": [
+        "injection_affected",
+        "timeout",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "high_error_rate",
+        "timeout",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "state": [
+        "timeout",
+        "high_avg_latency",
+        "unknown",
+        "high_p99_latency"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "timeout",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-travel-service::TripRepository.findByRouteId",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-travel-service::TravelController.getTripsByRouteId",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436395,
+      "component": "span|ts-travel-service::POST /api/v1/travelservice/trips/routes",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations",
+      "target": "span|ts-travel-plan-service::TravelPlanController.getByMinStation"
+    },
+    {
+      "source": "span|ts-travel-service::TripRepository.findByRouteId",
+      "target": "span|ts-travel-service::TravelController.getTripsByRouteId"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::SELECT Trip"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trips/routes",
+      "target": "span|ts-route-plan-service::RoutePlanController.getMinStopStations"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::TravelController.getTripAllDetailInfo"
+    },
+    {
+      "source": "span|ts-route-plan-service::RoutePlanController.getMinStopStations",
+      "target": "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations"
+    },
+    {
+      "source": "span|ts-travel-service::TravelController.getTripAllDetailInfo",
+      "target": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "span|ts-preserve-service::PreserveController.preserve",
+      "target": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::TripRepository.findByTripId"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::TripRepository.findByRouteId"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::POST /api/v1/travelservice/trips/routes"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail",
+      "target": "span|ts-route-plan-service::RoutePlanController.getMinStopStations"
+    },
+    {
+      "source": "span|ts-travel-service::TripRepository.findByTripId",
+      "target": "span|ts-travel-service::TravelController.getTripAllDetailInfo"
+    },
+    {
+      "source": "span|ts-travel-plan-service::TravelPlanController.getByMinStation",
+      "target": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "span|ts-preserve-service::POST /api/v1/preserveservice/preserve",
+      "target": "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail"
+    },
+    {
+      "source": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "target": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation"
+    },
+    {
+      "source": "span|ts-travel-service::POST /api/v1/travelservice/trip_detail",
+      "target": "span|ts-preserve-service::PreserveController.preserve"
+    },
+    {
+      "source": "span|ts-travel-service::SELECT Trip",
+      "target": "span|ts-travel-service::TripRepository.findByRouteId"
+    },
+    {
+      "source": "span|ts-travel-service::SELECT Trip",
+      "target": "span|ts-travel-service::TripRepository.findByTripId"
+    },
+    {
+      "source": "span|ts-travel-service::TravelController.getTripsByRouteId",
+      "target": "span|ts-travel-service::POST /api/v1/travelservice/trips/routes"
+    },
+    {
+      "source": "service|ts-travel-service",
+      "target": "span|ts-travel-service::SELECT ts.trip"
+    },
+    {
+      "source": "span|ts-travel-service::SELECT ts.trip",
+      "target": "span|ts-travel-service::SELECT Trip"
+    },
+    {
+      "source": "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation",
+      "target": "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation"
+    }
+  ],
+  "root_causes": [
+    {
+      "timestamp": null,
+      "component": "service|ts-travel-service",
+      "state": [
+        "unknown"
+      ]
+    }
+  ],
+  "alarm_nodes": [
+    {
+      "timestamp": 1754436395,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation",
+      "state": [
+        "healthy",
+        "unknown"
+      ]
+    },
+    {
+      "timestamp": 1754436375,
+      "component": "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve",
+      "state": [
+        "timeout",
+        "unknown"
+      ]
+    }
+  ],
+  "component_to_service": {
+    "service|ts-travel-service": "ts-travel-service",
+    "span|ts-travel-service::SELECT ts.trip": "ts-travel-service",
+    "span|ts-travel-service::SELECT Trip": "ts-travel-service",
+    "span|ts-travel-service::TripRepository.findByTripId": "ts-travel-service",
+    "span|ts-travel-service::TravelController.getTripAllDetailInfo": "ts-travel-service",
+    "span|ts-travel-service::POST /api/v1/travelservice/trip_detail": "ts-travel-service",
+    "span|ts-route-plan-service::RoutePlanController.getMinStopStations": "ts-route-plan-service",
+    "span|ts-route-plan-service::POST /api/v1/routeplanservice/routePlan/minStopStations": "ts-route-plan-service",
+    "span|ts-travel-plan-service::TravelPlanController.getByMinStation": "ts-travel-plan-service",
+    "span|ts-travel-plan-service::POST /api/v1/travelplanservice/travelPlan/minStation": "ts-travel-plan-service",
+    "span|ts-ui-dashboard::POST /api/v1/travelplanservice/travelPlan/minStation": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/travelplanservice/travelPlan/minStation": "loadgenerator",
+    "span|ts-preserve-service::PreserveController.preserve": "ts-preserve-service",
+    "span|ts-preserve-service::POST /api/v1/preserveservice/preserve": "ts-preserve-service",
+    "span|ts-ui-dashboard::POST /api/v1/preserveservice/preserve": "ts-ui-dashboard",
+    "span|loadgenerator::HTTP POST http://ts-ui-dashboard:8080/api/v1/preserveservice/preserve": "loadgenerator",
+    "span|ts-travel-service::TripRepository.findByRouteId": "ts-travel-service",
+    "span|ts-travel-service::TravelController.getTripsByRouteId": "ts-travel-service",
+    "span|ts-travel-service::POST /api/v1/travelservice/trips/routes": "ts-travel-service"
+  }
+}
